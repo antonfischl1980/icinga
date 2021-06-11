@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+
+GO_CARBON_CONFIG="${GO_CARBON_CONFIG:-/etc/go-carbon/go-carbon.conf}"
+
+extra_commands="configtest"
+extra_started_commands="reload"
+
+pidfile="/run/${RC_SVCNAME}"
+output_log="/var/log/go-carbon/${RC_SVCNAME}.log"
+error_log="/var/log/go-carbon/${RC_SVCNAME}-error.log"
+
+command="/usr/bin/go-carbon"
+command_args="-config='${GO_CARBON_CONFIG}'"
+command_background="true"
+command_user="${GO_CARBON_USER:-carbon:carbon}"
+
+depend() {
+	need local
+	use net
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o "${command_user}" $(dirname ${output_log})
+}
+
+reload() {
+	configtest || return 1
+	ebegin "Reloading go-carbon"
+	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
+	eend $? "Failed to reload go-carbon"
+}
+
+configtest() {
+	ebegin "Checking go-carbon configuration"
+	${command} -check-config=true -config="${GO_CARBON_CONFIG}"
+	eend $? "Configuration test failed, please correct errors."
+}
+
