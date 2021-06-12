@@ -8,7 +8,7 @@ inherit git-r3
 DESCRIPTION="Golang implementation of Graphite/Carbon server with classic architecture Agent -> Cache -> Persister"
 HOMEPAGE="https://github.com/go-graphite/go-carbon"
 EGIT_REPO_URI="https://github.com/go-graphite/go-carbon/"
-EGIT_COMMIT="v${PVR}"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="MIT"
 SLOT="0"

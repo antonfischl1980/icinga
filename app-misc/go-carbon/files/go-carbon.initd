@@ -9,7 +9,7 @@ pidfile="/run/${RC_SVCNAME}"
 output_log="/var/log/go-carbon/${RC_SVCNAME}.log"
 error_log="/var/log/go-carbon/${RC_SVCNAME}-error.log"
 
-command="/usr/bin/go-carbon"
+command="/usr/sbin/go-carbon"
 command_args="-config='${GO_CARBON_CONFIG}'"
 command_background="true"
 command_user="${GO_CARBON_USER:-carbon:carbon}"
