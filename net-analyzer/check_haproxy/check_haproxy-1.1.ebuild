@@ -29,4 +29,7 @@ src_install() {
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
 	doins "${FILESDIR}/check_haproxy_pl.conf"
+
+	insinto /etc/icingaweb2/modules/graphite/templates/
+	doins "${FILESDIR}/check_proxy.pl.ini"
 }
