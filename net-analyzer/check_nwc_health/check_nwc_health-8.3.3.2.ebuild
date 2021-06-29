@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="${PN#nagios-}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="A nagios plugin for checking MS-SQL server health"
+DESCRIPTION="check_nwc_health is a plugin which checks the health of network components and interfaces."
 HOMEPAGE="https://labs.consol.de/nagios/${MY_PN}/"
 SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 
