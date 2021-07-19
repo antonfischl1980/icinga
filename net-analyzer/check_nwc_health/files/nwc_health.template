@@ -29,7 +29,7 @@ areaAlpha = "0.5"
 areaMode = "all"
 lineWidth = "2"
 title = "Usage for Interface $interface$"
-yUnitSystem = "usage"
+yUnitSystem = "none"
 
 [nwc_health-usage.functions]
 usage.in.value = "legendValue(alias(color(keepLastValue(scale($metric$,-1)), '#76B26D'), '%in'), 'last', 'max', 'avg', 'min', 'si')"
