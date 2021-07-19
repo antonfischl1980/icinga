@@ -30,3 +30,10 @@ src_configure(){
 	econf --libexecdir="/usr/$(get_libdir)/nagios/plugins/contrib"
 }
 
+src_install(){
+	default
+
+	insinto /usr/share/icingaweb2/modules/graphite/templates/
+	newins "${FILESDIR}/nwc_health.template" "nwc_health.ini"
+}
+

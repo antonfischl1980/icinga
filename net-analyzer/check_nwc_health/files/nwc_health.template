@@ -1,0 +1,36 @@
+[nwc_health-traffic.graph]
+check_command = "nwc_health"
+
+[nwc_health-traffic.metrics_filters]
+traffic.in.value = "$service_name_template$.perfdata.$interface$_traffic_in.value"
+traffic.out.value = "$service_name_template$.perfdata.$interface$_traffic_out.value"
+
+[nwc_health-traffic.urlparams]
+areaAlpha = "0.5"
+areaMode = "all"
+lineWidth = "2"
+title = "Traffic for Interface $interface$"
+yUnitSystem = "binary"
+
+[nwc_health-traffic.functions]
+traffic.in.value = "legendValue(alias(color(keepLastValue(scale(perSecond($metric$),-1)), '#76B26D'), 'Bytes in/sec'), 'last', 'max', 'avg', 'min', 'binary')"
+traffic.out.value = "legendValue(alias(color(keepLastValue(perSecond($metric$)), '#EAB839'), 'Bytes out/sec'), 'last', 'max', 'avg', 'min', 'binary')"
+
+
+[nwc_health-usage.graph]
+check_command = "nwc_health"
+
+[nwc_health-usage.metrics_filters]
+usage.in.value = "$service_name_template$.perfdata.$interface$_usage_in.value"
+usage.out.value = "$service_name_template$.perfdata.$interface$_usage_out.value"
+
+[nwc_health-usage.urlparams]
+areaAlpha = "0.5"
+areaMode = "all"
+lineWidth = "2"
+title = "Usage for Interface $interface$"
+yUnitSystem = "usage"
+
+[nwc_health-usage.functions]
+usage.in.value = "legendValue(alias(color(keepLastValue(scale($metric$,-1)), '#76B26D'), '%in'), 'last', 'max', 'avg', 'min', 'si')"
+usage.out.value = "legendValue(alias(color(keepLastValue($metric$), '#EAB839'), '% out'), 'last', 'max', 'avg', 'min', 'si')"
