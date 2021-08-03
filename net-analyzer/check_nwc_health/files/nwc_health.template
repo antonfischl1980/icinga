@@ -29,6 +29,7 @@ areaAlpha = "0.5"
 areaMode = "all"
 lineWidth = "2"
 title = "Usage for Interface $interface$"
+vtitle = "%"
 yUnitSystem = "none"
 
 [nwc_health-usage.functions]
