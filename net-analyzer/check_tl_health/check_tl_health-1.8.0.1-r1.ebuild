@@ -22,6 +22,12 @@ src_configure(){
 	econf --libexecdir="/usr/$(get_libdir)/nagios/plugins/contrib"
 }
 
+src_install(){
+	default
+
+	insinto /usr/share/icinga2/include/plugins-contrib.d/
+	doins ${FILESDIR}/${PN}.conf
+}
 # Here we should have a pkg_preinst() that creates the nagios user/group
 # (using the same command from e.g. net-analyzer/nagios-plugins). But
 # right now, the build system for check_mysql_health has a bug: it

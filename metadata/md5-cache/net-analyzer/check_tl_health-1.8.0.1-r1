@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure
+DEFINED_PHASES=configure install
 DESCRIPTION=A nagios plugin for checking USV health
 EAPI=7
 HOMEPAGE=https://labs.consol.de/nagios/check_tl_health/
@@ -6,4 +6,4 @@ KEYWORDS=amd64 x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_tl_health-1.8.0.1.tar.gz
-_md5_=e55fe8dda806f22bff14decf29431a2f
+_md5_=5805aceb64203724dc673df20ee7f849
