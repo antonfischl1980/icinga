@@ -7,7 +7,7 @@ index ad03666..434e4af 100755
  	xml_storage_storages_other = int(xml_storage.find('num_storages_other').text)
  
 -	print('OK - Users: {0}, files: {1}, storages: {2}, storages local: {3}, storages home: {4}, storages other: {5} | users={0}, files={1}, storages={2}, storages_local={3}, storages_home={4}, storage_other={5}'.format(xml_storage_users, xml_storage_files, xml_storage_storages, xml_storage_storages_local, xml_storage_storages_home, xml_storage_storages_other))
-+	print('OK - Users: {0}, files: {1}, storages: {2}, storages local: {3}, storages home: {4}, storages other: {5} | users={0} files={1} storages={2} storages_local={3} storages_home={4} storage_other={5}'.format(xml_storage_users, xml_storage_files, xml_storage_storages, xml_storage_storages_local, xml_storage_storages_home, xml_storage_storages_other))
++	print('OK - Users: {0}, files: {1}, storages: {2}, storages local: {3}, storages home: {4}, storages other: {5} | users={0} files={1} storages={2} storages_local={3} storages_home={4} storages_other={5}'.format(xml_storage_users, xml_storage_files, xml_storage_storages, xml_storage_storages_local, xml_storage_storages_home, xml_storage_storages_other))
  	sys.exit(0)
  
  # Get informations about the shares
