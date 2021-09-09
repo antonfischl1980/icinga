@@ -12,7 +12,7 @@ SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -28,5 +28,12 @@ S="${WORKDIR}/${MY_P}"
 src_configure(){
 	# Should match net-analyzer/{monitoring,nagios}-plugins.
 	econf --libexecdir="/usr/$(get_libdir)/nagios/plugins/contrib"
+}
+
+src_install(){
+	default
+
+	insinto /usr/share/icingaweb2/modules/graphite/templates/
+	newins "${FILESDIR}/nwc_health.template" "nwc_health.ini"
 }
 
