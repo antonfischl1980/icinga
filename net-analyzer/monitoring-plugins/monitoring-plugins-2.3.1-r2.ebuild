@@ -57,9 +57,10 @@ RDEPEND="${DEPEND}
 # At least one test is interactive.
 RESTRICT="test"
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/define-own-mysql-port-constant.patch"
 	"${FILESDIR}/01-check_disk.patch"
+	"${FILESDIR}/02-check_snmp-add-multiplier.patch"
 )
 
 src_configure() {
