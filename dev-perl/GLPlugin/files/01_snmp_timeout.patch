@@ -1,0 +1,15 @@
+diff --git a/GLPlugin/lib/Monitoring/GLPlugin/SNMP.pm b/GLPlugin/lib/Monitoring/GLPlugin/SNMP.pm
+index 0f27902..84c49ee 100644
+--- a/lib/Monitoring/GLPlugin/SNMP.pm
++++ b/lib/Monitoring/GLPlugin/SNMP.pm
+@@ -1140,8 +1140,8 @@ sub establish_snmp_session {
+     # removing this at all may cause strange epn errors. As if only
+     # certain oids were returned as undef, others not.
+     # next try: 50
+-    $params{'-timeout'} = $self->opts->timeout() >= 60 ?
+-        50 : $self->opts->timeout() - 2;
++    #$params{'-timeout'} = $self->opts->timeout() >= 60 ?
++    #    50 : $self->opts->timeout() - 2;
+     my $stderrvar = "";
+     *SAVEERR = *STDERR;
+     open ERR ,'>',\$stderrvar;
