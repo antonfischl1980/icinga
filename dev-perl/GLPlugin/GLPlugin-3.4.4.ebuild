@@ -22,10 +22,21 @@ KEYWORDS="amd64 x86"
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+src_configure(){
+	default
+
+	echo '1;'> autosplit.ix
+}
+
 src_install(){
 	default
 
 	my_vendorlib="$(perl_get_vendorlib)"
+
+	insinto ${my_vendorlib}/auto/Monitoring/GLPlugin/UPNP/
+	doins autosplit.ix
+	insinto ${my_vendorlib}/auto/Monitoring/GLPlugin/SNMP/
+	doins autosplit.ix
 
 	pushd lib/Monitoring
 	perl_domodule -C Monitoring -r .
