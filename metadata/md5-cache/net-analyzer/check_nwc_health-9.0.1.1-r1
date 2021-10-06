@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=check_nwc_health is a plugin which checks the health of network components and interfaces.
+EAPI=8
+HOMEPAGE=https://labs.consol.de/nagios/check_nwc_health/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=dev-perl/GLPlugin
+SLOT=0
+SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_nwc_health-9.0.1.1.tar.gz
+_md5_=9735e3e26a7450d5405d71660e695101
