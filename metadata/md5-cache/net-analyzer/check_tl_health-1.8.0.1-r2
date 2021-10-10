@@ -1,9 +1,10 @@
 DEFINED_PHASES=configure install
 DESCRIPTION=A nagios plugin for checking tape libraries health
-EAPI=7
+EAPI=8
 HOMEPAGE=https://labs.consol.de/nagios/check_tl_health/
-KEYWORDS=amd64 x86
-LICENSE=BSD
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/GLPlugin
 SLOT=0
 SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_tl_health-1.8.0.1.tar.gz
-_md5_=5bb59dfcd935e39e00e4ffbcd1da5da9
+_md5_=b71e6824e7c4dbb73b209520762ba52c
