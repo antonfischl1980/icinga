@@ -19,9 +19,10 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
-BDEPEND=">net-analyzer/check_nwc_health-9.0.1.1"
+RDEPEND="
+	dev-perl/JSON
+"
+DEPEND=""
 
 src_configure(){
 	default
