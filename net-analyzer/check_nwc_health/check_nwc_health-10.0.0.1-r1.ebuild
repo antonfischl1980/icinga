@@ -16,7 +16,10 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="
+	dev-perl/JSON
+	dev-perl/File-Slurp
+	"
 BDEPEND=""
 PDEPEND="dev-perl/GLPlugin"
 
