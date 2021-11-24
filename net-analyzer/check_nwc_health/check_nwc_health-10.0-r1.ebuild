@@ -19,9 +19,9 @@ DEPEND=""
 RDEPEND="
 	dev-perl/JSON
 	dev-perl/File-Slurp
+	dev-perl/GLPlugin
 	"
 BDEPEND=""
-PDEPEND="dev-perl/GLPlugin"
 
 src_configure(){
 	# Should match net-analyzer/{monitoring,nagios}-plugins.

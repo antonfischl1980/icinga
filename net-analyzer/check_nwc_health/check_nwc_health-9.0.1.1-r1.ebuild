@@ -16,9 +16,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="dev-perl/GLPlugin"
 BDEPEND=""
-PDEPEND="dev-perl/GLPlugin"
 
 src_configure(){
 	# Should match net-analyzer/{monitoring,nagios}-plugins.
