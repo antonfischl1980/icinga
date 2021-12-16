@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Create top-level views of your applications in a graphical editor."
-HOMEPAGE="https://github.com/Icinga/${PN}/"
+HOMEPAGE="https://github.com/Icinga/icingaweb2-module-businessprocess/"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/${PN}.git"
@@ -23,6 +23,7 @@ DEPEND=">=net-analyzer/icinga2-2.4.3
 		dev-lang/php:7.3[curl]
 		dev-lang/php:7.4[curl]
 		dev-lang/php:8.0[curl]
+		dev-lang/php:8.1[curl]
 	)"
 RDEPEND="${DEPEND}"
 
