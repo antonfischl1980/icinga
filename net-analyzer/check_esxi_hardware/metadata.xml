@@ -6,4 +6,7 @@
     <name>Anton Fischl</name>
   </maintainer>
   <stabilize-allarches/>
+  <upstream>
+    <remote-id type="github">Napsty/check_esxi_hardware</remote-id>
+  </upstream>
 </pkgmetadata>
