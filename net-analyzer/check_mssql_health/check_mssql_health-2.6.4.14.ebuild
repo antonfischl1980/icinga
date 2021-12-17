@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ MY_PN="${PN#nagios-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A nagios plugin for checking MS-SQL server health"
-HOMEPAGE="https://labs.consol.de/nagios/${MY_PN}/"
+HOMEPAGE="https://labs.consol.de/nagios/check_mssql_health/"
 SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 
 LICENSE="BSD"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 # Found by grepping for "use " in the built
-# plugins-scripts/check_mysql_health.
+# plugins-scripts/check_mssql_health.
 RDEPEND="dev-perl/DBD-Sybase
 	dev-perl/DBI
 	virtual/perl-Data-Dumper

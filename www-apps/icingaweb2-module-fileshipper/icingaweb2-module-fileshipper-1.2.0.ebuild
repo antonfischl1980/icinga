@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Create top-level views of your applications in a graphical editor."
-HOMEPAGE="https://github.com/Icinga/${PN}/"
+HOMEPAGE="https://github.com/Icinga/icingaweb2-module-fileshipper"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/${PN}.git"

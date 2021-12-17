@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz -> ${P}.t
 LICENSE="GPL-3"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 RDEPEND="|| ( >=net-analyzer/nagios-plugins-1.4.13-r1 >=net-analyzer/monitoring-plugins-2 )"
 

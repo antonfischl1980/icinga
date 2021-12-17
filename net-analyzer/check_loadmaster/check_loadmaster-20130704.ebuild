@@ -14,7 +14,7 @@ IUSE=""
 
 src_unpack() {
 	mkdir "${P}"
-	cp ${DISTDIR}/${A} "${P}/${PN}.pl"
+	cp "${DISTDIR}/${A}" "${P}/${PN}.pl"
 }
 
 src_install(){
@@ -23,5 +23,5 @@ src_install(){
 	doexe "${PN}.pl"
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 }

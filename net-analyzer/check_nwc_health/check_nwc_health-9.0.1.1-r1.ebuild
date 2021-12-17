@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="${PN#nagios-}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="check_nwc_health is a plugin which checks the health of network components and interfaces."
+DESCRIPTION="plugin which checks the health of network components and interfaces."
 HOMEPAGE="https://labs.consol.de/nagios/check_nwc_health/"
 SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 

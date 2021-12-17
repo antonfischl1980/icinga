@@ -1,7 +1,7 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=config install unpack
 DEPEND=acct-group/carbon acct-user/carbon >=dev-lang/go-1.8 app-admin/logrotate
-DESCRIPTION=Golang implementation of Graphite/Carbon server with classic architecture Agent -> Cache -> Persister
+DESCRIPTION=Golang implementation of Graphite/Carbon server with classic architecture
 EAPI=7
 HOMEPAGE=https://github.com/go-graphite/go-carbon
 INHERIT=eutils git-r3
@@ -10,5 +10,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=acct-group/carbon acct-user/carbon >=dev-lang/go-1.8 app-admin/logrotate
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=1748366ebf648c71bc5665bac7ef7e67
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	dab5d8ec471d025b79c9e6906bcf3bff	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_md5_=72cc0c7eaa1246cab994ae105d71a093

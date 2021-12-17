@@ -1,11 +1,11 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit go-module
 
-DESCRIPTION="check plugin to verify HPE controllers an SSD disks are not affected by certain vulnerabilities"
+DESCRIPTION="checks if HPE controllers an SSDs are not affected by certain vulnerabilities"
 HOMEPAGE="https://github.com/NETWAYS/check_hp_firmware"
 
 EGO_SUM=(

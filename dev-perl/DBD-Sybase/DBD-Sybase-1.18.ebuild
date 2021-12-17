@@ -1,6 +1,5 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="7"
 
@@ -16,11 +15,10 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-perl/Module-Build
-	test? ( virtual/perl-Test-Simple )
-	dev-db/freetds[mssql]
-	dev-perl/DBI"
-RDEPEND="${DEPEND}"
+DEPEND="dev-db/freetds[mssql]
+	dev-perl/Module-Build
+	dev-perl/DBI
+	test? ( virtual/perl-Test-Simple )"
 
 SRC_TEST="do"
 

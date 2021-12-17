@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,5 +25,5 @@ src_install(){
 	newins fortigate/FortiADC_mibs FORTIADC-MIB.txt
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 }

@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=dev-perl/MIME-tools
 SLOT=0
 _eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
-_md5_=ce121aef9a543c4c9865962563c933de
+_md5_=a50bc932de882330375766f1abf2d147

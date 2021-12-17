@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Drill-down view for Icinga web 2 based on custom variables."
-HOMEPAGE="https://github.com/Icinga/${PN}/"
+HOMEPAGE="https://github.com/Icinga/icingaweb2-module-cube/"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/${PN}.git"

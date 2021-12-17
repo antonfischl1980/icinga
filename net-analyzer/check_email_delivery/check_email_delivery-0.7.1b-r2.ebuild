@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="Check Email Delivery is a plugin for Nagios, the leading open-source network monitoring tool. It can also be used stand-alone from the command line."
+DESCRIPTION="Check Email Delivery is a plugin for Nagios"
 HOMEPAGE="http://buhacoff.net/software/check_email_delivery/index.html"
 SRC_URI="http://buhacoff.net/software/check_email_delivery/archive/${P}.tar.gz"
 
@@ -27,5 +27,5 @@ src_install(){
 	dodoc docs/*
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 }

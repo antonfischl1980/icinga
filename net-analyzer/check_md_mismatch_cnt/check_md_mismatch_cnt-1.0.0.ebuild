@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="This is a Nagios/Icinga compatible check plugin for software raid (mdadm) mismatch_cnt"
+DESCRIPTION="Nagios/Icinga compatible check plugin for software raid (mdadm) mismatch_cnt"
 HOMEPAGE="https://github.com/antonfischl1980/check_md_mismatch_cnt"
 SRC_URI="https://github.com/antonfischl1980/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 

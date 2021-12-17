@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,5 +28,5 @@ src_install(){
 	default
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 }

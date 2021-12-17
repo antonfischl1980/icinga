@@ -29,8 +29,8 @@ src_install(){
 	doexe check/check_nextcloud.py
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 
 	insinto /usr/share/icingaweb2/modules/graphite/templates/
-	doins ${FILESDIR}/${PN}.ini
+	doins "${FILESDIR}/${PN}.ini"
 }

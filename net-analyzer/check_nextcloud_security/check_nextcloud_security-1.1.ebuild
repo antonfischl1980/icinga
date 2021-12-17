@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="dev-lang/php"
+DEPEND="dev-lang/php:*"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -23,8 +23,8 @@ src_install(){
 	default
 
 	exeinto /usr/lib64/nagios/plugins/contrib/
-	newexe ${MY_PN}.php ${PN}.php
+	newexe "${MY_PN}.php"" "${PN}.php""
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${FILESDIR}/${PN}.conf
+	doins "${FILESDIR}/${PN}.conf"
 }

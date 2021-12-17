@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit eutils
 inherit git-r3
 
-DESCRIPTION="Golang implementation of Graphite/Carbon server with classic architecture Agent -> Cache -> Persister"
+DESCRIPTION="Golang implementation of Graphite/Carbon server with classic architecture"
 HOMEPAGE="https://github.com/go-graphite/go-carbon"
 EGIT_REPO_URI="https://github.com/go-graphite/go-carbon/"
 EGIT_COMMIT="v${PV}"
@@ -31,9 +31,9 @@ src_install(){
 	newdoc deploy/go-carbon.conf go-carbon.conf.sample
 	newdoc deploy/storage-aggregation.conf storage-aggregation.conf.sample
 	newdoc deploy/storage-schemas.conf storage-schemas.conf.sample
-	newinitd ${FILESDIR}/go-carbon.initd go-carbon
+	newinitd "${FILESDIR}/go-carbon.initd go-carbon"
 	insinto /etc/logrotate.d/
-	newins ${FILESDIR}/go-carbon.logrotate go-carbon
+	newins "${FILESDIR}/go-carbon.logrotate go-carbon"
 }
 
 pkg_config(){
