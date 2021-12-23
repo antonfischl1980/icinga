@@ -1,15 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit git-r3
+EAPI=8
 
 DESCRIPTION="Nagios plugin to check amavisd-new daemon"
 HOMEPAGE="https://github.com/glensc/monitoring-plugin-check_amavis"
-EGIT_REPO_URI="https://github.com/glensc/monitoring-plugin-check_amavis.git"
-EGIT_COMMIT="${PV}"
-if [ "${PV}" == "1.1.1" ]; then EGIT_COMMIT="c202e045c99d9f9b58a9972e2b38419f7da3db16"; fi
+if [[ "${PV}" == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/glensc/monitoring-plugin-check_amavis.git"
+else
+	MY_PN="monitoring-plugin-check_amavis"
+	MY_P="$MY_PN-$PV"
+	SRC_URI="https://github.com/glensc/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
+fi
+
+if [ "${PVR}" == "1.1-r1" ]; then
+	PATCHES="$FILESDIR/bugfixes-2017-01-14.patch"
+fi
 
 LICENSE="BSD"
 SLOT="0"

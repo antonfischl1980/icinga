@@ -1,0 +1,363 @@
+From 19c269898a4701cfff8317d12b1dabf84340fe97 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 28 Mar 2014 16:25:05 +0200
+Subject: [PATCH 01/10] Create README.md
+
+---
+ README.md | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+ create mode 100644 README.md
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..c134575
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,35 @@
++Nagios plugin to check amavisd-new daemon
++=========================================
++
++`check_amavis` checks if [amavisd-new][1] daemon is working and if its antivirus engine is working.
++
++This check talks with amavisd-new daemon (default port is 10024) with SMTP protocol.
++It tests if the daemon is up and if it's able to scan an email with a virus (EICAR test virus is sent).
++
++Please note that if `amavisd-new` is run on a different machine, you should enable the connection from nagios ip address (take a look at `amavisd.conf`).
++
++This Perl script needs [GetOpt::Long][2], [MIME::Tools][3] and [Net::SMTP][4] to work.
++
++Parameters:
++
++ - `--server` amavisd-new address (mandatory)
++ - `--port` amavisd-new port (default 10024)
++ - `--from` sender email address (mandatory)
++ - `--to` recipient address (if not present copied from `--from`)
++ - `--debug` useful for debugging (launch it at command line)
++
++Command configuration: 
++```
++define command {
++    command_name check_amavis 
++    command_line $USER1$/check_amavis.pl --server $HOSTADDRESS$ --from email_address --to email_address --port 10024 
++}
++```
++
++where `email_address` is a valid email address handled by amavisd.
++
++
++  [1]: http://www.amavis.org/
++  [2]: http://perldoc.perl.org/Getopt/Long.html
++  [3]: http://search.cpan.org/perldoc?MIME::Tools
++  [4]: http://search.cpan.org/perldoc?Net::SMTP
+
+From e0545b58e5314469543b26f6de06a6c544afee9d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 28 Mar 2014 16:29:54 +0200
+Subject: [PATCH 02/10] Create CHANGELOG.md
+
+---
+ CHANGELOG.md | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 CHANGELOG.md
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..d73491e
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,8 @@
++## 1.1-1 (2011-12-22)
++
++Initial release by [Elan Ruusamäe][1]
++
++  - fix exit codes to be Nagios compatible
++  - allow `2.7.1` and `2.7.0` status codes
++
++  [1]: https://github.com/glensc
+
+From 09812e28105ab9649f98a3b14dfe98a2e12eb341 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 28 Mar 2014 16:33:36 +0200
+Subject: [PATCH 03/10] License GPL v2
+
+use same license as specified in Nagios Exchange
+http://exchange.nagios.org/directory/Plugins/Anti-2DVirus/Amavis/check_amavis/details
+---
+ README.md | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/README.md b/README.md
+index c134575..d84f82f 100644
+--- a/README.md
++++ b/README.md
+@@ -28,6 +28,11 @@ define command {
+ 
+ where `email_address` is a valid email address handled by amavisd.
+ 
++## Copyright
++
++License: GPL v2
++
++(c) 2011-2014 Elan Ruusamäe <glen@pld-linux.org> (maintainer from version 1.1 and upwards)
+ 
+   [1]: http://www.amavis.org/
+   [2]: http://perldoc.perl.org/Getopt/Long.html
+
+From 736ae6e1f982ba9095aa3755f345ee12c6924fcb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 17:53:06 +0200
+Subject: [PATCH 04/10] update urls
+
+---
+ check_amavis.pl | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/check_amavis.pl b/check_amavis.pl
+index 33d4aa4..cf6439a 100644
+--- a/check_amavis.pl
++++ b/check_amavis.pl
+@@ -1,10 +1,9 @@
+ #!/usr/bin/perl
+ # Downloaded from exchange.nagios.org
+-# URL: http://exchange.nagios.org/directory/Plugins/Anti-2DVirus/Amavis/check_amavis/details
++# URL: https://exchange.nagios.org/directory/Plugins/Anti-2DVirus/Amavis/check_amavis/details
+ #
+ # Maintained later on by Elan Ruusamäe <glen@pld-linux.org>
+-# http://cvs.pld-linux.org/packages/nagios-plugin-check_amavis/
+-# v1.1, 2011-12-22
++# https://github.com/glensc/monitoring-plugin-check_amavis
+ 
+ use Getopt::Long;
+ use MIME::Entity;
+
+From 8eb9f022b91fba02378c6ca8e82f37d01d68ae1b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 17:54:20 +0200
+Subject: [PATCH 05/10] strict mode fix
+
+---
+ check_amavis.pl | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+ mode change 100644 => 100755 check_amavis.pl
+
+diff --git a/check_amavis.pl b/check_amavis.pl
+old mode 100644
+new mode 100755
+index cf6439a..8435c65
+--- a/check_amavis.pl
++++ b/check_amavis.pl
+@@ -8,6 +8,8 @@
+ use Getopt::Long;
+ use MIME::Entity;
+ use Net::SMTP;
++use strict;
++use warnings;
+ 
+ my $server = '';
+ my $port = 10024;
+@@ -23,7 +25,7 @@
+ 	"DEPENDENT" => 4,
+ );
+ 
+-$result = GetOptions (
++GetOptions (
+ 	"server|s=s"    => \$server,
+ 	"port|p=s"      => \$port,
+ 	"from|f=s"      => \$from,
+
+From 6451b2c0e52618c049dbccdc7907ab6d9523f29c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 17:55:03 +0200
+Subject: [PATCH 06/10] match status code regexp properly
+
+---
+ check_amavis.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/check_amavis.pl b/check_amavis.pl
+index 8435c65..06a0184 100755
+--- a/check_amavis.pl
++++ b/check_amavis.pl
+@@ -79,7 +79,7 @@
+ my $result = $smtp->message();
+ $smtp->close();
+ 
+-if ($result =~/2.7.[01] Ok, discarded/) {
++if ($result =~/2\.7\.[01] Ok, discarded/) {
+ 	print "OK - All fine\n";
+ 	exit $STATES{OK};
+ } else {
+
+From bd89e87a1201809db8305837bfbdea321fdf3a96 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 17:57:21 +0200
+Subject: [PATCH 07/10] add timeout 15s
+
+---
+ check_amavis.pl | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/check_amavis.pl b/check_amavis.pl
+index 06a0184..848f56a 100755
+--- a/check_amavis.pl
++++ b/check_amavis.pl
+@@ -16,6 +16,7 @@
+ my $from = '';
+ my $to = '';
+ my $debug = 0;
++my $timeout = 15;
+ 
+ my %STATES = (
+ 	"OK" => 0,
+@@ -29,6 +30,7 @@
+ 	"server|s=s"    => \$server,
+ 	"port|p=s"      => \$port,
+ 	"from|f=s"      => \$from,
++	"timeout=s"     => \$timeout,
+ 	"debug|d"       => \$debug,
+ 	"to|t=s"        => \$to,
+ );
+@@ -64,6 +66,7 @@
+ 	$server,
+ 	Port => $port,
+ 	Debug => $debug,
++	Timeout => $timeout,
+ );
+ 
+ if (!$smtp) {
+
+From b446fb5c4d1f3b9784523e06a21a7416067399d3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 17:59:41 +0200
+Subject: [PATCH 08/10] fix release
+
+---
+ CHANGELOG.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index d73491e..d71c14a 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,4 +1,4 @@
+-## 1.1-1 (2011-12-22)
++## 1.1 (2011-12-22)
+ 
+ Initial release by [Elan Ruusamäe][1]
+ 
+
+From 8a858e5e44c17857e8a9ef363e52546183894767 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Fri, 13 Jan 2017 18:07:26 +0200
+Subject: [PATCH 09/10] update changelog/readme
+
+---
+ CHANGELOG.md | 14 +++++++++++++-
+ README.md    | 11 +++++------
+ 2 files changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index d71c14a..4873392 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,4 +1,15 @@
+-## 1.1 (2011-12-22)
++# Change Log for `check_amavis` monitoring plugin
++
++## [1.2] - UNRELEASED
++
++  - add timeout 15s, [bd89e87]
++  - strict mode fix, [8eb9f02]
++
++[bd89e87]: https://github.com/glensc/monitoring-plugin-check_amavis/commit/bd89e87
++[8eb9f02]: https://github.com/glensc/monitoring-plugin-check_amavis/commit/8eb9f02
++[1.2]: https://github.com/glensc/monitoring-plugin-check_amavis/compare/v1.1...master
++
++## [1.1] - 2011-12-22
+ 
+ Initial release by [Elan Ruusamäe][1]
+ 
+@@ -6,3 +17,4 @@ Initial release by [Elan Ruusamäe][1]
+   - allow `2.7.1` and `2.7.0` status codes
+ 
+   [1]: https://github.com/glensc
++[1.1]: https://github.com/glensc/monitoring-plugin-check_amavis/commits/v1.1
+diff --git a/README.md b/README.md
+index d84f82f..fd09434 100644
+--- a/README.md
++++ b/README.md
+@@ -1,5 +1,4 @@
+-Nagios plugin to check amavisd-new daemon
+-=========================================
++# Nagios/Icinga plugin to check amavisd-new daemon
+ 
+ `check_amavis` checks if [amavisd-new][1] daemon is working and if its antivirus engine is working.
+ 
+@@ -18,11 +17,11 @@ Parameters:
+  - `--to` recipient address (if not present copied from `--from`)
+  - `--debug` useful for debugging (launch it at command line)
+ 
+-Command configuration: 
++Command configuration:
+ ```
+ define command {
+-    command_name check_amavis 
+-    command_line $USER1$/check_amavis.pl --server $HOSTADDRESS$ --from email_address --to email_address --port 10024 
++    command_name check_amavis
++    command_line $USER1$/check_amavis.pl --server $HOSTADDRESS$ --from email_address --to email_address --port 10024
+ }
+ ```
+ 
+@@ -32,7 +31,7 @@ where `email_address` is a valid email address handled by amavisd.
+ 
+ License: GPL v2
+ 
+-(c) 2011-2014 Elan Ruusamäe <glen@pld-linux.org> (maintainer from version 1.1 and upwards)
++(c) 2011-2017 Elan Ruusamäe <glen@pld-linux.org> (maintainer from version 1.1 and upwards)
+ 
+   [1]: http://www.amavis.org/
+   [2]: http://perldoc.perl.org/Getopt/Long.html
+
+From c202e045c99d9f9b58a9972e2b38419f7da3db16 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@delfi.ee>
+Date: Sat, 14 Jan 2017 22:17:30 +0200
+Subject: [PATCH 10/10] support alternative smtp messages. fixes #1
+
+---
+ CHANGELOG.md    | 4 +++-
+ check_amavis.pl | 5 ++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 4873392..dd4b481 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -4,9 +4,11 @@
+ 
+   - add timeout 15s, [bd89e87]
+   - strict mode fix, [8eb9f02]
++  - support alternative smtp messages. fixes [#1]
+ 
+-[bd89e87]: https://github.com/glensc/monitoring-plugin-check_amavis/commit/bd89e87
++[#1]: https://github.com/glensc/monitoring-plugin-check_amavis/issues/1
+ [8eb9f02]: https://github.com/glensc/monitoring-plugin-check_amavis/commit/8eb9f02
++[bd89e87]: https://github.com/glensc/monitoring-plugin-check_amavis/commit/bd89e87
+ [1.2]: https://github.com/glensc/monitoring-plugin-check_amavis/compare/v1.1...master
+ 
+ ## [1.1] - 2011-12-22
+diff --git a/check_amavis.pl b/check_amavis.pl
+index 848f56a..b33932a 100755
+--- a/check_amavis.pl
++++ b/check_amavis.pl
+@@ -82,7 +82,10 @@
+ my $result = $smtp->message();
+ $smtp->close();
+ 
+-if ($result =~/2\.7\.[01] Ok, discarded/) {
++warn "RESULT[$result]\n" if $debug;
++
++# <<< 250 2.5.0 Ok, id=21563-09, BOUNCE
++if ($result =~ /2\.7\.[01] Ok,/ && $result =~ /discarded|BOUNCE/) {
+ 	print "OK - All fine\n";
+ 	exit $STATES{OK};
+ } else {
