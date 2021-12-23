@@ -1,18 +1,21 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit git-r3
+EAPI=8
 
 KEYWORDS="amd64"
 DESCRIPTION="maps network topology and displays realtime status of Icinga 2 Networks"
 HOMEPAGE="https://github.com/visgence/icinga2-dependency-module"
-EGIT_REPO_URI="https://github.com/visgence/icinga2-dependency-module.git"
-if [[ "${PV}" == "1.0.1" ]]; then
-	EGIT_COMMIT="719547efa86bfe55d581a4e5ccedcee00e1a0d5d"
-elif [[ "${PV}" != 9999 ]]; then
+
+if [[ "${PV}" == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/visgence/icinga2-dependency-module.git"
 	EGIT_COMMIT="${PV}"
+else
+	MY_PN="icinga2-dependency-module"
+	MY_P="$MY_PN-$PV"
+	SRC_URI="https://github.com/visgence/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-3"

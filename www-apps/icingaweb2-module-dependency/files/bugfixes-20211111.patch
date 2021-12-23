@@ -1,0 +1,183 @@
+diff --git a/README.MD b/README.MD
+index 94280ab..a55fc48 100644
+--- a/README.MD
++++ b/README.MD
+@@ -34,8 +34,15 @@ These instructions assume all listed operations are being performed on a machine
+ First clone this repository into `/usr/share/icingaweb2/modules`
+ Next rename to dependency_plugin: `mv icinga2-dependency-module dependency_plugin`
+ 
++Create directory `/etc/icingaweb2/modules/dependency_plugin/`
++In that directory create file `config.ini` and add the following:
++```
++[db]
++resource = "dependencies"
++```
++
+ ## Icinga 2 Dependencies
+-This module will attempt to graph ***any*** dependencies, an example apply rule to generate dependencies is shown below:
++This module will attempt to graph ***any*** dependencies, an example apply rule to generate dependencies is shown below (create new file /etc/icinga2/conf.d/parents.conf):
+ ```
+ apply Dependency "Parent" for (parent in host.vars.parents) to Host {
+       parent_host_name = parent
+@@ -113,7 +120,7 @@ using  `sudo vim /etc/icinga2/conf.d/api-users.conf` add the following lines to
+ ```
+     object ApiUser "dependencies" {
+       password = "dependencies"
+-      permissions = [ "*" ]
++      permissions = [ "status/query", "objects/query/*" ]
+     }
+ ```
+ ***Note: replace password "dependencies" with desired password***
+@@ -132,18 +139,17 @@ In Icinga Web, navigate to Configuration > Modules, and select dependency plugin
+ 
+ 
+ ### Launch Kickstart Page
+-Finally, navigate to to the modules entry in Icinga Web 2 to automatically launch the kickstart page and finish the setup process by selecting created resource and entering in Icinga 2 API information. The icinga2 default API port is 5665. If you have misconfigured the settings and maybe getting an `Unexpected Error Encountered, Check Console` you may always call /dependency_plugin/module/kickstart again to correct the settings again.
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
++Next, navigate to the modules entry in Icinga Web 2 to automatically launch the kickstart page and finish the setup process by selecting created resource and entering in Icinga 2 API information. The icinga2 default API port is 5665. If you have misconfigured the settings and maybe getting an `Unexpected Error Encountered, Check Console` you may always call /dependency_plugin/module/kickstart again to correct the settings again.
+ 
++### Add Custom Data Field
++Navigate to Icinga Director > Define Data Fields. Add new entry with Caption and Field name both equal to 'parents', Data type is Array, click Add.
+ 
++### Update or Add Template with new Data Field
++Navigate to Icinga Director > Hosts > Host Templates. Choose one to modify or add new.
++Modify: Choose Template, click Fields tab, choose parents from drop down list and click Add.
++Add: Enter name and other data then click Add. New tabs appear at the top right, click Fields tab, choose 'parents' from drop down list and click Add.
+ 
++# Upgrade
+ 
++Apply all files ending with `-migration.sql` which are in `application/schema` in ascending
++order.
+diff --git a/application/controllers/ModuleController.php b/application/controllers/ModuleController.php
+index 1962ff7..159a2be 100644
+--- a/application/controllers/ModuleController.php
++++ b/application/controllers/ModuleController.php
+@@ -238,9 +238,10 @@ class ModuleController extends Controller{
+         if($data != null){
+ 
+             $resource = $data[0]['value'];
+-            $port = $data[1]['value'];
+-            $username = $data[2]['value'];
+-            $password = $data[3]['value'];
++            $host = $data[1]['value'];
++            $port = $data[2]['value'];
++            $username = $data[3]['value'];
++            $password = $data[4]['value'];
+ 
+ 
+             try {
+@@ -252,6 +253,7 @@ class ModuleController extends Controller{
+                 'api_user' => $username, 
+                 'api_password' => $password, 
+                 'api_endpoint' => $port,
++                'api_host' => $host,
+             ));
+ 
+             $config = $this->config();
+@@ -300,7 +302,7 @@ class ModuleController extends Controller{
+                 die(json_encode(array('message' => $e->getMessage(), 'code' => '500')));
+         }
+ 
+-            $request_url = 'https://localhost:'. $vals[0]->api_endpoint . '/v1/objects/dependencies';
++            $request_url = 'https://' . $vals[0]->api_host . ':'. $vals[0]->api_endpoint . '/v1/objects/dependencies';
+             $username = $vals[0]->api_user;
+             $password = $vals[0]->api_password;
+             $headers = array(
+@@ -361,7 +363,7 @@ class ModuleController extends Controller{
+                 die(json_encode(array('message' => $e->getMessage(), 'code' => "500")));
+         }
+ 
+-            $request_url = 'https://localhost:'. $vals[0]->api_endpoint . '/v1/objects/hosts';
++            $request_url = 'https://' . $vals[0]->api_host . ':'. $vals[0]->api_endpoint . '/v1/objects/hosts';
+             $username = $vals[0]->api_user;
+             $password = $vals[0]->api_password;
+             $headers = array(
+@@ -600,4 +602,4 @@ class ModuleController extends Controller{
+ 
+ }
+ 
+-?>
+\ No newline at end of file
++?>
+diff --git a/application/schema/01-migration.sql b/application/schema/01-migration.sql
+new file mode 100644
+index 0000000..44b8c71
+--- /dev/null
++++ b/application/schema/01-migration.sql
+@@ -0,0 +1 @@
++ALTER TABLE plugin_settings ADD api_host TEXT;
+diff --git a/application/schema/init.sql b/application/schema/init.sql
+index a7dd9b4..2dde274 100644
+--- a/application/schema/init.sql
++++ b/application/schema/init.sql
+@@ -8,7 +8,8 @@ CREATE TABLE node_positions (
+ CREATE TABLE plugin_settings (
+     api_endpoint TEXT,
+     api_user TEXT,
+-    api_password TEXT 
++    api_password TEXT,
++    api_host TEXT
+ );
+ 
+ CREATE TABLE graph_settings (
+diff --git a/application/views/scripts/module/kickstart.phtml b/application/views/scripts/module/kickstart.phtml
+index 24a39fb..7aeb9f6 100644
+--- a/application/views/scripts/module/kickstart.phtml
++++ b/application/views/scripts/module/kickstart.phtml
+@@ -25,6 +25,12 @@
+                 <legend>API Login Information</legend>
+                 <dl>
+                     <!-- <div class="hint"></div> -->
++                    <dt id="host-label">
++                        <label for="host">Host</label>
++                    </dt>
++                    <dd id="host-element">
++                        <input type="text" name="host" id="host-field">
++                    </dd>
+                     <dt id="port-label">
+                         <label for="port">Port</label>
+                     </dt>
+@@ -66,4 +72,4 @@ if (document.readyState === "complete"){
+ 
+     }
+ }
+-</script>
+\ No newline at end of file
++</script>
+diff --git a/changelog.txt b/changelog.txt
+deleted file mode 100644
+index dc61337..0000000
+--- a/changelog.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-[1.0.0] 2019-04-23
+-* First stable release 
+diff --git a/public/css/module.less b/public/css/module.less
+index fb559da..28a04ad 100644
+--- a/public/css/module.less
++++ b/public/css/module.less
+@@ -4,6 +4,7 @@
+     width: 100%;
+     height: 100%;
+     float: left;
++    line-height: 0;
+ }
+ 
+ #grid-container{
+@@ -256,6 +257,7 @@ div.outerBorder {
+     height: 100%;
+     float: right;
+     border: 1px solid lightgray;
++    line-height: 0;
+ }
+ 
+ #settings-form {
