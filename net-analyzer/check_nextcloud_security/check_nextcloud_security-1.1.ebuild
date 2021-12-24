@@ -23,7 +23,7 @@ src_install(){
 	default
 
 	exeinto /usr/lib64/nagios/plugins/contrib/
-	newexe "${MY_PN}.php"" "${PN}.php""
+	newexe "${MY_PN}.php" "${PN}.php"
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
 	doins "${FILESDIR}/${PN}.conf"
