@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 DESCRIPTION="maps network topology and displays realtime status of Icinga 2 Networks"
 HOMEPAGE="https://github.com/visgence/icinga2-dependency-module"
 
