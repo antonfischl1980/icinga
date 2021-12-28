@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
+EAPI=8
+HOMEPAGE=https://github.com/antonfischl1980/check_poe_consumption_snmp
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=app-shells/bash net-analyzer/net-snmp virtual/awk
+SLOT=0
+SRC_URI=https://github.com/antonfischl1980/check_poe_consumption_snmp/archive/refs/tags/1.0.0.tar.gz -> check_poe_consumption_snmp-1.0.0.tar.gz
+_md5_=5668c1dd2aa0feb14b51b7334c0cf327
