@@ -12,7 +12,7 @@ HOMEPAGE="http://search.cpan.org/~jkeenan/List-Compare/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 SRC_TEST=do
