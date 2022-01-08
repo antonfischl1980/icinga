@@ -9,7 +9,7 @@ inherit git-r3
 DESCRIPTION="Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins"
 HOMEPAGE="https://github.com/lausser/GLPlugin"
 EGIT_REPO_URI="https://github.com/lausser/GLPlugin.git"
-EGIT_COMMIT="b2d008c3dfff7133406080bba38e404225e63b1c"
+EGIT_COMMIT="74176e8ca89192c9c76b80989c5608ba82758dde"
 
 PATCHES=(
 	"${FILESDIR}"/01_snmp_timeout.patch
@@ -17,11 +17,12 @@ PATCHES=(
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
-BDEPEND=">net-analyzer/check_nwc_health-9.0.1.1"
+RDEPEND="
+	dev-perl/JSON
+"
+DEPEND=""
 
 src_configure(){
 	default
