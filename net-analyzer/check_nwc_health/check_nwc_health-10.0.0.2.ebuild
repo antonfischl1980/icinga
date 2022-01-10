@@ -12,11 +12,15 @@ SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-perl/GLPlugin"
+RDEPEND="
+	dev-perl/JSON
+	dev-perl/File-Slurp
+	dev-perl/GLPlugin
+	"
 BDEPEND=""
 
 src_configure(){
