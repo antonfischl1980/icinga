@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DESCRIPTION=plugin that checks a CRL distribution point (CDP) over HTTP.
+EAPI=8
+HOMEPAGE=https://github.com/kerard/check_crl
+INHERIT=git-r3
+KEYWORDS=amd64
+LICENSE=Apache-2.0
+PROPERTIES=live
+RDEPEND=dev-libs/openssl net-misc/curl
+SLOT=0
+_eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_md5_=04329ae6f92709e23ad9c71d8a4dffd3
