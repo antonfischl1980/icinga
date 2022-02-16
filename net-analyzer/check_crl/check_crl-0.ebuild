@@ -12,7 +12,7 @@ EGIT_COMMIT="d159c3278a876d2accccf6c8147b03d19847a805"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86 x64-cygwin amd64-linux x86-linux ppc-macos x64-macos sparc-solaris sparc64-solaris x64-solaris x86-solaris"
 
 DEPEND=""
 RDEPEND="
