@@ -1,14 +1,15 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=dev-lang/go-1.16 app-arch/unzip
 DEFINED_PHASES=config install unpack
 DEPEND=acct-group/carbon acct-user/carbon >=dev-lang/go-1.8 app-admin/logrotate
 DESCRIPTION=Golang implementation of Graphite/Carbon server with classic architecture
 EAPI=8
 HOMEPAGE=https://github.com/go-graphite/go-carbon
-INHERIT=git-r3
+INHERIT=go-module
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-PROPERTIES=live
 RDEPEND=acct-group/carbon acct-user/carbon >=dev-lang/go-1.8 app-admin/logrotate
+RESTRICT=strip
 SLOT=0
-_eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
-_md5_=d51612f1c5be78f9b4ffa8518cb5180f
+SRC_URI=https://github.com/go-graphite/go-carbon/archive/refs/tags/v0.16.2.tar.gz -> go-carbon-0.16.2.tar.gz
+_eclasses_=go-module	ea6b447321803e690cb8d3e006fd01a3
+_md5_=c213207aeaad33435c8bcb7d1eec5513

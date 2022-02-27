@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit git-r3
+inherit go-module
 
 DESCRIPTION="Golang implementation of Graphite/Carbon server with classic architecture"
 HOMEPAGE="https://github.com/go-graphite/go-carbon"
-EGIT_REPO_URI="https://github.com/go-graphite/go-carbon/"
-EGIT_COMMIT="v${PV}"
+
+SRC_URI="https://github.com/go-graphite/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,7 +27,7 @@ src_install(){
 	dosbin go-carbon
 	keepdir /etc/go-carbon
 	keepdir /var/log/go-carbon
-	newdoc deploy/go-carbon.conf go-carbon.conf.sample
+	newdoc go-carbon.conf.example go-carbon.conf.example
 	newdoc deploy/storage-aggregation.conf storage-aggregation.conf.sample
 	newdoc deploy/storage-schemas.conf storage-schemas.conf.sample
 	newinitd "${FILESDIR}/go-carbon.initd" "${PN}"
@@ -38,7 +38,7 @@ src_install(){
 pkg_config(){
 	cd "${ROOT}"/etc/go-carbon/
 	if [ ! -f "${ROOT}"/etc/go-carbon/go-carbon.conf ];then
-		unpack "${ROOT}"/usr/share/doc/${PF}/go-carbon.conf.sample.bz2
+		unpack "${ROOT}"/usr/share/doc/${PF}/go-carbon.conf.example.bz2
 		mv go-carbon.conf.sample go-carbon.conf
 	fi
 	if [ ! -f "${ROOT}"/etc/go-carbon/storage-aggregation.conf ];then
