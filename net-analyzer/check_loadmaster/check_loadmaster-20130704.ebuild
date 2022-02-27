@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="KEMP LoadMaster Nagios Monitoring Plugin"
 HOMEPAGE="https://www.thomas-dohl.de/?Projekte___Nagios%2FIcinga___Plugin_Loadmaster"
-SRC_URI="http://www.thomas-dohl.de/downloads/nagios_icinga/check_loadmaster.pl"
+SRC_URI="https://www.thomas-dohl.de/downloads/nagios_icinga/check_loadmaster.pl"
 
 LICENSE="GPL-3"
 SLOT="0"
