@@ -8,11 +8,11 @@ In rare cases these ebuilds also include templates for icingaweb2-modules-graphi
 
 There are also a few icingaweb2-modules in category www-apps.
 
-I try to have these ebuilds as current to upstream as possible. In the near future I want to have a bot doing most of the maintenance stuff (like bumping ebuilds on new releases)
+I try to have these ebuilds as current to upstream as possible. ~~In the near future I want to have a bot doing most of the maintenance stuff (like bumping ebuilds on new releases)~~ For this, I have build a bot that does most of the (unstable) version bumping
 
-If you think there is an important check plugin missing, please file an Issue or (much more appreciated) a pull request. 
+If you think there is an check plugin missing, please file an Issue or (much more appreciated) a pull request at [Github](https://github.com/antonfischl1980/icinga). 
 
 ## TODOs
 
-* automatically generate new ebuilds (marked as unstable) if upstream releases new version
+* ~~automatically generate new ebuilds (marked as unstable) if upstream releases new version~~
 * provide a meta-ebuild that installs haproxy/apache/php/mariadb/graphite/grafana with example config and documentation. The goal here is to provide an "easy" installation for a running icinga2 instance in Gentoo
