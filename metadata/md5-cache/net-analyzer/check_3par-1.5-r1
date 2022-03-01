@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Basic support for monitoring HP 3PAR arrays by Nagios
+EAPI=8
+HOMEPAGE=https://github.com/qaxi/nagios-check_3par
+KEYWORDS=amd64 x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/qaxi/nagios-check_3par/archive/refs/tags/1.5.tar.gz -> check_3par-1.5.tar.gz
+_md5_=59d721c28a872831272e2d918151efc3

@@ -1,14 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3
+MY_PN="nagios-${PN}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Basic support for monitoring HP 3PAR arrays by Nagios"
 HOMEPAGE="https://github.com/qaxi/nagios-check_3par"
-EGIT_REPO_URI="https://github.com/qaxi/nagios-check_3par.git"
-EGIT_COMMIT="${PV}"
+SRC_URI="https://github.com/qaxi/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
