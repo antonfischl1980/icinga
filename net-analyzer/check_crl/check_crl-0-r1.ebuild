@@ -1,14 +1,14 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022+ Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3
+COMMIT="d159c3278a876d2accccf6c8147b03d19847a805"
 
 DESCRIPTION="plugin that checks a CRL distribution point (CDP) over HTTP. "
 HOMEPAGE="https://github.com/kerard/check_crl"
-EGIT_REPO_URI="https://github.com/kerard/${PN}.git"
-EGIT_COMMIT="d159c3278a876d2accccf6c8147b03d19847a805"
+SRC_URI="https://github.com/kerard/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
