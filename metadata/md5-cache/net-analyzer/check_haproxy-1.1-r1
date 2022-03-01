@@ -1,13 +1,10 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install
 DESCRIPTION=checks haproxy including performance data
-EAPI=7
+EAPI=8
 HOMEPAGE=https://github.com/men-crt-sup/nagios-plugins
-INHERIT=git-r3
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=dev-lang/perl dev-perl/Locale-gettext virtual/perl-Time-HiRes
 SLOT=0
-_eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
-_md5_=2798c465bfb95e7471e0b724044f370a
+SRC_URI=https://github.com/men-crt-sup/nagios-plugins/archive/62fd8d5225f3553a7f1c64b1e0974c42ec5167f1.tar.gz -> check_haproxy-1.1.tar.gz
+_md5_=99a7462ff6d7686b3b73e5c3cbef3ec6

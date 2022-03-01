@@ -1,15 +1,15 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021+ Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3
+COMMIT="62fd8d5225f3553a7f1c64b1e0974c42ec5167f1"
+MY_PN="nagios-plugins"
 
 DESCRIPTION="checks haproxy including performance data"
 HOMEPAGE="https://github.com/men-crt-sup/nagios-plugins"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/men-crt-sup/nagios-plugins.git"
-EGIT_COMMIT="62fd8d5225f3553a7f1c64b1e0974c42ec5167f1"
+SRC_URI="https://github.com/men-crt-sup/$MY_PN/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
