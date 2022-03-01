@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-perl/List-Compare
+DESCRIPTION=A nagios plugin for checking Fortigate
+EAPI=8
+HOMEPAGE=https://github.com/riskersen/Monitoring
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://github.com/riskersen/Monitoring/archive/cc0232e2fa30d3403c662d0ee1a34b99f85c3a52.tar.gz -> check_fortigate-1.8.10.tar.gz
+_md5_=8d6e80fe22a7b17aa71c0cbb69d57a74

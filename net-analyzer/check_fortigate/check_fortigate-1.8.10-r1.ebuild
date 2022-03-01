@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2021+ Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3
-
+MY_PN="Monitoring"
+COMMIT="cc0232e2fa30d3403c662d0ee1a34b99f85c3a52"
 DESCRIPTION="A nagios plugin for checking Fortigate"
 HOMEPAGE="https://github.com/riskersen/Monitoring"
-EGIT_REPO_URI="https://github.com/riskersen/Monitoring.git"
-EGIT_COMMIT="cc0232e2fa30d3403c662d0ee1a34b99f85c3a52"
+SRC_URI="https://github.com/riskersen/Monitoring/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
 DEPEND="dev-perl/List-Compare"
 
