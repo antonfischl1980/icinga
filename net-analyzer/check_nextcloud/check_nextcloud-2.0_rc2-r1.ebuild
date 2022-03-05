@@ -1,14 +1,13 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021+ Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3
-
+COMMIT="b7e57558ead1511bab83922a97180a7f27760fef"
 DESCRIPTION="Nagios/Centreon/Icinga plugin for nextcloud serverinfo API"
 HOMEPAGE="https://github.com/BornToBeRoot/check_nextcloud"
-EGIT_REPO_URI="https://github.com/BornToBeRoot/check_nextcloud.git"
-EGIT_COMMIT="b7e57558ead1511bab83922a97180a7f27760fef"
+SRC_URI="https://github.com/BornToBeRoot/check_nextcloud/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -17,10 +16,6 @@ KEYWORDS="amd64 x86"
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-PATCHES=(
-	"${FILESDIR}/01-fix-perfdata.patch"
-	)
 
 src_install(){
 	default
