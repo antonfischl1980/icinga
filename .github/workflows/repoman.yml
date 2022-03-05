@@ -1,0 +1,33 @@
+name: repoman
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+      - cron: '17 17 * * *' # Daily
+
+jobs:
+  repoman:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: emerge-sync
+      run: |
+        sudo -u portage git -C /var/db/repos/gentoo pull
+        emerge --sync
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: repoman
+      run: |
+        repoman full -dx
