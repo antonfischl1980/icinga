@@ -1,8 +1,11 @@
 name: pkgcheck
 
 on:
-  - push
-  - pull_request
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+      - cron: '17 17 * * *' # Daily
 
 jobs:
   build:
