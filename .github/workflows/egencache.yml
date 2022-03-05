@@ -1,0 +1,44 @@
+name: egencache
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  egencache:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: emerge-sync
+      run: |
+        sudo -u portage git -C /var/db/repos/gentoo pull
+        emerge --sync
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: egencache
+      run: |
+        egencache --update --update-use-local-desc --update-pkg-desc-index --repo icinga
+
+    - name: commit and push
+      run: |
+        git config user.name 'workflow egencache'
+        git config user.email 'noreply@fischl-online.de'
+        git status 
+        git add metadata profiles 
+        git status 
+        git commit -m "update metadata" || echo "Nothing to commit" 
+        git push
+
