@@ -26,9 +26,6 @@ jobs:
 
   trigger-pmaint-regen:
     needs: check-last-commit
-    runs-on: ubuntu-latest
     if: ${{ !needs.check-last-commit.outputs.skip }}
-    steps:
-    - uses: ./.github/workflows/pmaint-regen
-
+    uses: ./.github/workflows/pmaint-regen.yml
 
