@@ -1,4 +1,7 @@
 # Gentoo Overlay Repository for Icinga2 related stuff (mainly check plugins)
+QA-Status:
+[![repoman](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml)
+[![pkgcheck](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml)
 
 ## Intro
 in its current form this repo hosts ebuilds for a handful of icinga2 check plugins (and, if necessary, their dependencies) that I found useful for myself.
@@ -11,6 +14,38 @@ There are also a few icingaweb2-modules in category www-apps.
 I try to have these ebuilds as current to upstream as possible. ~~In the near future I want to have a bot doing most of the maintenance stuff (like bumping ebuilds on new releases)~~ For this, I have build a bot that does most of the (unstable) version bumping
 
 If you think there is an check plugin missing, please file an Issue or (much more appreciated) a pull request at [Github](https://github.com/antonfischl1980/icinga). 
+
+## Adding the overlay
+
+### Official list
+
+#### Layman
+
+If you are using [Layman](https://wiki.gentoo.org/wiki/Layman), execute:
+
+``` sh
+layman -a icinga
+```
+
+#### eselect-repository
+
+If you are using [eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository), execute:
+
+``` sh
+eselect repository enable icinga
+```
+
+## Submitting an Issue
+
+### Ebuild error
+
+[the issue tracker is located in our **GitHub** repository.](https://github.com/antonfischl1980/icinga/issues) If an ebuild appears to produce an error, please report it there.
+
+
+# Contributing
+
+I appreciate and encourage for contribution. If you want a specific package or want to create a package for me to maintain, please make a pull request.
+
 
 ## TODOs
 
