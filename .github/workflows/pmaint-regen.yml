@@ -1,14 +1,12 @@
-name: egencache
+name: 'Regenerate metadata/md5-cache'
 
 on:
   push:
   pull_request:
   workflow_dispatch:
-  schedule:
-    - cron: '*/15 * * * *'
 
 jobs:
-  egencache:
+  pmaint-regen:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
@@ -28,13 +26,13 @@ jobs:
         pwd -P >> /etc/portage/repos.conf/icinga.conf
         cat /etc/portage/repos.conf/*.conf
 
-    - name: egencache
+    - name: pmaint regen
       run: |
-        egencache --update --update-use-local-desc --update-pkg-desc-index --repo icinga
+        pmaint regen --force -t$(nproc) icinga
 
     - name: commit and push
       run: |
-        git config user.name 'workflow egencache'
+        git config user.name 'Regenerate metadata/md5-cache'
         git config user.email 'noreply@fischl-online.de'
         git status 
         git add metadata profiles 

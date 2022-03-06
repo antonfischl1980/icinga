@@ -1,0 +1,34 @@
+name: 'trigger regenerate metadata/md5-cache on change on gentoo-mirror/gentoo'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  check-last-commit:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.skip-regen.outputs.cache-hit }}
+    steps:
+    - name: Get last commit id
+      id: gentoo
+      run: |
+        echo "::set-output name=last-commit::$(git ls-remote --exit-code -h https://github.com/gentoo-mirror/gentoo stable|head -1|cut -f 1)"
+        echo "${{ steps.gentoo.outputs.last-commit }}" > gentoo-last-commit
+
+    - name: Check if gentoo-repo has changed
+      id: skip-regen
+      uses: actions/cache@v2
+      with:
+        key: ${{ steps.gentoo.outputs.last-commit }} 
+        path: gentoo-last-commit
+
+  trigger-pmaint-regen:
+    needs: check-last-commit
+    runs-on: ubuntu-latest
+    if: ${{ !needs.check-last-commit.outputs.skip }}
+    steps:
+    - uses: ./.github/workflows/pmaint-regen
+
+
