@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/Locale-gettext virtual/perl-Time-HiRes
 SLOT=0
 SRC_URI=https://github.com/men-crt-sup/nagios-plugins/archive/62fd8d5225f3553a7f1c64b1e0974c42ec5167f1.tar.gz -> check_haproxy-1.1.tar.gz
-_md5_=99a7462ff6d7686b3b73e5c3cbef3ec6
+_md5_=0a89d80180c67507c431890f49160ac5

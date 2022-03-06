@@ -7,4 +7,4 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/openssl net-misc/curl
 SLOT=0
 SRC_URI=https://github.com/kerard/check_crl/archive/d159c3278a876d2accccf6c8147b03d19847a805.tar.gz -> check_crl-0.tar.gz
-_md5_=49687a2f5a8cbe2ff6ededcdefbc0b91
+_md5_=c8336f61551ca685e0c070da95e21137
