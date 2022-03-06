@@ -39,7 +39,7 @@ eselect repository enable icinga
 
 ### Ebuild error
 
-[the issue tracker is located in our **GitHub** repository.](https://github.com/antonfischl1980/icinga/issues) If an ebuild appears to produce an error, please report it there.
+[the issue tracker is located in my **GitHub** repository.](https://github.com/antonfischl1980/icinga/issues) If an ebuild appears to produce an error, please report it there.
 
 
 # Contributing
