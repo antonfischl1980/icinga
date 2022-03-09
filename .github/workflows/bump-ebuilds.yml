@@ -1,0 +1,138 @@
+name: 'bump ebuilds'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * *'  # @Daily
+
+jobs:
+  find-updates:
+    outputs:
+      skip: ${{ steps.generate-matrix.outputs.skip }} 
+      matrix: ${{ steps.generate-matrix.outputs.matrix }} 
+      checked: ${{ steps.generate-matrix.outputs.checked }} 
+      all: ${{ steps.generate-matrix.outputs.all }}
+      GLPlugin: ${{ steps.generate-matrix.outputs.GLPlugin }}
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    # emerge --sync not needed in this run
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+      # Find all packages that have "github" upstream
+      # then compare local version with latest remote version tag
+    - name: find updates hosted on github
+      run: |
+        .github/bin/find-updates.sh
+
+    - name: generate matrix of bumps
+      id: generate-matrix
+      run: |
+        if [ -r /todo.lst ]; then
+          echo "xxxxxxxxxxxxxxxxxxxxx"
+          echo "Todo:"
+          cat /todo.lst
+          echo -n "::set-output name=matrix::"
+          jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo.lst
+        else
+          echo "::set-output name=skip::true"
+        fi
+        echo -n "::set-output name=checked::"
+        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /checked.lst
+        equery l -o "*::icinga" --format='$category/$name'|sort -u >/all.lst
+        echo -n "::set-output name=all::"
+        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /all.lst
+        if [ -r /GLPlugin.version ]; then
+          echo -n "::set-output name=GLPlugin::"
+          cat /GLPlugin.version
+        fi
+
+    - name: verify matrix
+      run: |
+        echo "skip: ${{ steps.generate-matrix.outputs.skip }}"
+        echo "matrix: ${{ steps.generate-matrix.outputs.matrix }}"
+        echo "GLPlugin: ${{ steps.generate-matrix.outputs.GLPlugin }}"
+
+
+  bump-ebuild:
+    needs: find-updates
+    if: ${{ !needs.find-updates.outputs.skip }}
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    strategy:
+      matrix:
+        bump: ${{ fromJSON(needs.find-updates.outputs.matrix) }}
+
+    steps:
+    - name: verify variables
+      run: |
+        echo "bump: ${{ matrix.bump }}"
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: bump ebuild
+      run: |
+        PACKAGE_NAME="$(echo "${{ matrix.bump }}"|sed -E 's#-[^-]+$##')"
+        NEW_VERSION="${{ matrix.bump }}"
+        LATEST_EBUILD="$(equery l -o "$PACKAGE_NAME::icinga" --format='$category/$name/$name-$fullversion.ebuild'|tail -1)"
+        NEW_EBUILD="$PACKAGE_NAME/$(echo "$NEW_VERSION"|sed -E 's#^[^/]+/##').ebuild"
+        echo "PACKAGE_NAME: $PACKAGE_NAME"
+        echo "NEW_VERSION: $NEW_VERSION"
+        echo "NEW_EBUILD: $NEW_EBUILD"
+        echo "LATEST_EBUILD: $LATEST_EBUILD"
+        cp -a "$LATEST_EBUILD" "$NEW_EBUILD"
+        ekeyword ~all "$NEW_EBUILD"
+        ebuild "$NEW_EBUILD" manifest
+        if [ "${PACKAGE_NAME}" == "dev-perl/GLPlugin" ];then
+          REMOTE_COMMIT="$( echo "${{ needs.find-updates.outputs.GLPlugin }}" )"
+          echo "REMOTE_COMMIT: ${REMOTE_COMMIT}"
+          sed --in-place -E 's/COMMIT=.*/COMMIT="'${REMOTE_COMMIT}'"/g' "$NEW_EBUILD"
+        fi
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        title: '[ bump-ebuilds ] ${{ matrix.bump }}'
+        body: 'automated bump from .github/workflows/bump-ebuilds.yml'
+        commit-message: 'bump ${{ matrix.bump }}'
+        branch: ${{ matrix.bump }}
+        assignees: antonfischl1980
+        delete-branch: true
+
+
+  list-non-checked:
+    needs: find-updates
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: verify variables
+      run: |
+        echo '${{ needs.find-updates.outputs.checked }}' |jq -r '.[]'|sort -u > checked.lst
+        cat checked.lst
+        echo '${{ needs.find-updates.outputs.all }}' |jq -r '.[]'|sort -u > all.lst
+        cat all.lst
+
+    - name: list of not checked packages 
+      run: |
+        diff checked.lst all.lst | awk '/^>/{print $2}'
+
+
