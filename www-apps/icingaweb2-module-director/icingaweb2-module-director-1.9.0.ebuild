@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Icinga Web 2 plugin for configuration"
 HOMEPAGE="https://github.com/Icinga/icingaweb2-module-director/"
@@ -17,16 +17,18 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-analyzer/icinga2-2.4.3
-	>=www-apps/icingaweb2-2.2.0
+# Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
+DEPEND=">=net-analyzer/icinga2-2.6.0
+	>=www-apps/icingaweb2-2.6.0
 	|| (
-		dev-lang/php:7.3[curl]
-		dev-lang/php:7.4[curl]
-		dev-lang/php:8.0[curl]
+		dev-lang/php:7.3[curl,iconv,pcntl,posix,sockets,json]
+		dev-lang/php:7.4[curl,iconv,pcntl,posix,sockets,json]
+		dev-lang/php:8.0[curl,iconv,pcntl,posix,sockets]
+		dev-lang/php:8.1[curl,iconv,pcntl,posix,sockets]
 	)
-	www-apps/icingaweb2-module-reactbundle
-	www-apps/icingaweb2-module-incubator
-	www-apps/icingaweb2-module-ipl
+	>=www-apps/icingaweb2-module-reactbundle-0.9.0
+	>=www-apps/icingaweb2-module-incubator-0.12.0
+	>=www-apps/icingaweb2-module-ipl-0.5.0
 	"
 RDEPEND="${DEPEND}"
 
