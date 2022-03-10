@@ -75,3 +75,34 @@ echo "dev-perl/GLPlugin" >>/checked.lst
 # Ende dev-perl/GLPlugin
 
 
+# CPAN
+# setup cpan
+echo | cpan >/dev/null
+while read PLUGIN;do 
+	echo "xxxxxxxxxxxxxxxxxxxxx"
+	echo "Checking ${PLUGIN}"
+
+	REMOTE_NAME="$(grep ${PLUGIN}/metadata.xml |head -1|sed -E 's#^.*>(([a-zA-Z]+::)+[a-zA-Z]+)<.*$#\1#')"
+	echo "REMOTE_NAME: ${REMOTE_NAME}"
+
+	# cpan -D DBD::Oracle|awk '/CPAN:/{print $2}'
+	REMOTE_VERSION="$(cpan -D "${REMOTE_NAME}"|awk '/CPAN:/{print $2}')"
+	echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'
+	if [ $? -ne 0 ];then
+		echo "Keine Remote-Version (${REMOTE_VERSION})"
+		continue
+	fi
+	echo "${REMOTE_VERSION} (version upstream)"
+
+	LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
+	echo "${LOCAL_VERSION} (version local)"
+
+	if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ];then
+		echo "bump needed"
+		echo "$PLUGIN-$REMOTE_VERSION" >> /todo.lst
+	fi
+
+	echo "${PLUGIN}" >>/checked.lst
+done < <(grep -l 'remote-id type="cpan"' */*/metadata.xml|xargs dirname)
+
+# END CPAN
