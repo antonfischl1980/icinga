@@ -75,6 +75,8 @@ echo "dev-perl/GLPlugin" >>/checked.lst
 # Ende dev-perl/GLPlugin
 
 
+exit 0
+
 # CPAN
 # setup cpan
 echo | cpan >/dev/null
