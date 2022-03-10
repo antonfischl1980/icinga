@@ -8,7 +8,7 @@ on:
       - cron: '17 17 * * *' # Daily
 
 jobs:
-  build:
+  pkgcheck:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
