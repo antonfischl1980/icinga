@@ -3,8 +3,6 @@ name: 'Regenerate metadata/md5-cache'
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
   workflow_dispatch:
   workflow_call:
 
