@@ -82,7 +82,7 @@ while read PLUGIN;do
 	echo "xxxxxxxxxxxxxxxxxxxxx"
 	echo "Checking ${PLUGIN}"
 
-	REMOTE_NAME="$(grep cpan-module "${PLUGIN}/metadata.xml"" |head -1|sed -E 's#^.*>(([a-zA-Z]+::)+[a-zA-Z]+)<.*$#\1#')"
+	REMOTE_NAME="$(grep cpan-module "${PLUGIN}/metadata.xml" |head -1|sed -E 's#^.*>(([a-zA-Z]+::)+[a-zA-Z]+)<.*$#\1#')"
 	echo "REMOTE_NAME: ${REMOTE_NAME}"
 
 	# cpan -D DBD::Oracle|awk '/CPAN:/{print $2}'
