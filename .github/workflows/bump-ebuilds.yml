@@ -100,13 +100,32 @@ jobs:
         echo "NEW_EBUILD: $NEW_EBUILD"
         echo "LATEST_EBUILD: $LATEST_EBUILD"
         cp -a "$LATEST_EBUILD" "$NEW_EBUILD"
-        ekeyword ~all "$NEW_EBUILD"
-        ebuild "$NEW_EBUILD" manifest
+       
+        echo "XXXXXXXXXXXXXXXXXX"
+        cat "$NEW_EBUILD"
+        echo "XXXXXXXXXXXXXXXXXX"
+        # Check if perl-module
+        grep -q "^inherit.*perl-module" "$NEW_EBUILD" && (
+          # initialize cpan
+          cpan </dev/null >/dev/null 2>&1
+
+          REMOTE_NAME="$(grep cpan-module "${PACKAGE_NAME}/metadata.xml" |head -1|sed -E 's#^.*>(([a-zA-Z]+::)+[a-zA-Z]+)<.*$#\1#')"
+          echo "REMOTE_NAME: ${REMOTE_NAME}"
+
+          REMOTE_AUTHOR="$(cpan -D "${REMOTE_NAME}"|awk -F / '/.tar.gz$/{print $3}')"
+          echo "REMOTE_AUTHOR: ${REMOTE_AUTHOR}"
+
+          sed --in-place -E 's#^DIST_AUTHOR=.*#DIST_AUTHOR="'${REMOTE_AUTHOR}'"#g' "$NEW_EBUILD"
+          sed --in-place -E 's#^DIST_VERSION=.*#DIST_VERSION="'${NEW_VERSION}'"#g' "$NEW_EBUILD"
+        ) || echo "not CPAN"
+        # Special case dev-perl/GLPlugin
         if [ "${PACKAGE_NAME}" == "dev-perl/GLPlugin" ];then
           REMOTE_COMMIT="$( echo "${{ needs.find-updates.outputs.GLPlugin }}" )"
           echo "REMOTE_COMMIT: ${REMOTE_COMMIT}"
           sed --in-place -E 's/COMMIT=.*/COMMIT="'${REMOTE_COMMIT}'"/g' "$NEW_EBUILD"
         fi
+        ekeyword ~all "$NEW_EBUILD"
+        ebuild "$NEW_EBUILD" manifest
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3

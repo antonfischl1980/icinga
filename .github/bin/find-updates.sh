@@ -75,20 +75,17 @@ echo "dev-perl/GLPlugin" >>/checked.lst
 # Ende dev-perl/GLPlugin
 
 
-exit 0
-
 # CPAN
-# setup cpan
-echo | cpan >/dev/null
+# initialize cpan
+cpan </dev/null >/dev/null 2>&1
 while read PLUGIN;do 
 	echo "xxxxxxxxxxxxxxxxxxxxx"
 	echo "Checking ${PLUGIN}"
 
-	REMOTE_NAME="$(grep cpan-module "${PLUGIN}/metadata.xml" |head -1|sed -E 's#^.*>(([a-zA-Z]+::)+[a-zA-Z]+)<.*$#\1#')"
+	REMOTE_NAME="$(grep cpan-module "${PLUGIN}/metadata.xml" |head -1|sed -E 's#^.*>(([a-zA-Z]+::)*[a-zA-Z]+)<.*$#\1#')"
 	echo "REMOTE_NAME: ${REMOTE_NAME}"
 
-	# cpan -D DBD::Oracle|awk '/CPAN:/{print $2}'
-	REMOTE_VERSION="$(cpan -D "${REMOTE_NAME}"|awk '/CPAN:/{print $2}')"
+	REMOTE_VERSION="$(cpan -D "${REMOTE_NAME}"|awk '/CPAN:/{print $2}'|head -1)"
 	echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'
 	if [ $? -ne 0 ];then
 		echo "Keine Remote-Version (${REMOTE_VERSION})"
@@ -96,7 +93,12 @@ while read PLUGIN;do
 	fi
 	echo "${REMOTE_VERSION} (version upstream)"
 
-	LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
+	LATEST_EBUILD="$(equery l -o "$PLUGIN::icinga" --format='$category/$name/$name-$fullversion.ebuild'|tail -1)"
+	LOCAL_VERSION="$(cat $LATEST_EBUILD |grep ^DIST_VERSION|sed -E 's#^.+=[^0-9]?(([0-9]+\.)[0-9]+).?#\1#')"
+	echo "${LOCAL_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'
+	if [ $? -ne 0 ];then
+		LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
+	fi
 	echo "${LOCAL_VERSION} (version local)"
 
 	if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ];then
