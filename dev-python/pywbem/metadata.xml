@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">pywbem</remote-id>
+    <remote-id type="github">pywbem/pywbem</remote-id>
     <maintainer status="unknown">
       <email>maiera@de.ibm.com, k.schopmeyer@swbell.net</email>
       <name>Andreas Maier, Karl Schopmeyer</name>
