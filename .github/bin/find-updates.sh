@@ -11,7 +11,9 @@ while read PLUGIN;do
 	echo "$REMOTE_URL"|grep -q "^https://github.com/lausser/" && continue # ignore repos from Lausser, he stopped tagging versions a few years ago
 	echo "remote URL: ${REMOTE_URL}"
 
-	REMOTE_VERSION="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort='version:refname' --tags "${REMOTE_URL}"|cut --delimiter='/' --fields=3|grep -E "^v?[0-9.]+$"|tail -1|sed 's/v//g')"
+	FILTER="$(grep "${PLUGIN}" .github/bin/find-updates.filter|awk '{print $2}')"
+	if [ "${FILTER}" == "" ]; then FILTER="^v?[0-9.]+$"; fi
+	REMOTE_VERSION="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort='version:refname' --tags "${REMOTE_URL}"|cut --delimiter='/' --fields=3|grep -E "${FILTER}"|tail -1|sed 's/v//g')"
 	if [ -z "${REMOTE_VERSION}" ]; then
 		echo "No Remote-tags"
 		continue
