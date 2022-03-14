@@ -1,0 +1,52 @@
+name: 'remove old ebuilds'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * 5'  # @Weekly
+
+env:
+  VERSIONS_TO_KEEP: 3
+
+jobs:
+  remove-old-ebuilds:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # emerge --sync not needed for this workflow
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: find and remove old ebuilds
+      run: |
+        while read PACKAGE;do
+          EBUILDS_TO_REMOVE="$(equery --no-color l -o "${PACKAGE}::icinga" -F '$category/$name/$name-$fullversion.ebuild $mask2' | \
+            grep -v "~amd64" | \
+            head -n -${VERSIONS_TO_KEEP} | \
+            cut -f 1 -d ' '
+          )"
+          if [ "${EBUILDS_TO_REMOVE}" == "" ];then continue;fi
+
+          echo "${EBUILDS_TO_REMOVE}" | xargs -r rm -v
+          ebuild "$(equery --no-color l -o "${PACKAGE}::icinga" -F '$category/$name/$name-$fullversion.ebuild'|tail -1)" manifest
+
+        done < <(equery l -o '*/*::icinga' --format '$cp'|uniq)
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        title: 'remove old ebuilds'
+        commit-message: 'remove old ebuilds'
+        branch: remove-old-ebuilds
+        assignees: antonfischl1980
+        delete-branch: true
+
