@@ -33,7 +33,7 @@ jobs:
 
     - name: update-pkg-desc
       run: |
-        egencache --update-pkg-desc-index --repo icinga
+        egencache --update-pkg-desc-index --write-timestamp --repo icinga
 
     - name: commit and push
       run: |
