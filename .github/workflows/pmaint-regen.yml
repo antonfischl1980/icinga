@@ -34,8 +34,20 @@ jobs:
     - name: update-pkg-desc
       run: |
         egencache --update-pkg-desc-index --write-timestamp --repo icinga
+    
+    - name: check if modified
+      id: check-modified
+      run: |
+        NUMBER_FILES_CHANGED="$(
+          git status --porcelain | \
+          grep -v metadata/timestamp.chk | \
+          wc -l
+          )"
+        echo "NUMBER_FILES_CHANGED=${NUMBER_FILES_CHANGED}" 
+        echo "::set-output name=NUMBER_FILES_CHANGED::${NUMBER_FILES_CHANGED}" 
 
     - name: commit and push
+      if: steps.check-modified.outputs.NUMBER_FILES_CHANGED > 0
       run: |
         git config user.name 'Regenerate metadata/md5-cache'
         git config user.email 'noreply@fischl-online.de'
