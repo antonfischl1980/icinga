@@ -29,7 +29,8 @@ jobs:
       id: list-all-ebuilds
       run: |
         equery --no-color l -o "*/*::icinga" -F '=$cpv' | \
-          grep -vf .github/workflows/emerge-test.filter > /todo.lst
+          grep -vf .github/workflows/emerge-test.filter | \
+          sort -u > /todo.lst
         cat /todo.lst
         echo -n "::set-output name=matrix::"
         jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo.lst
