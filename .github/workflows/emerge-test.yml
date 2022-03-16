@@ -57,6 +57,7 @@ jobs:
       id: get-date
       run: |
         echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        echo "::set-output name=datetime::$(/bin/date -u "+%Y%m%d-%H%M%S")"
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -87,21 +88,12 @@ jobs:
         sudo -u portage git -C /var/db/repos/gentoo pull
         emerge --sync
 
-    - name: Get Package Name 
-      id: get-package
-      run: |
-        echo "::set-output name=package::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$cp')"
-        echo "::set-output name=version::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$version')"
-        echo "set-output name=package::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$cp')"
-        echo "set-output name=version::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$version')"
-
     - uses: actions/cache@v2
       name: Cache binpkg
       with:
         path: /var/cache/binpkgs/
-        key: ${{ runner.os }}-binpkg-${{ steps.get-package.outputs.package }}-${{ steps.get-package.outputs.version }}
+        key: ${{ runner.os }}-binpkg-${{ steps.get-date.outputs.datetime }}
         restore-keys: |
-          ${{ runner.os }}-binpkg-${{ steps.get-package.outputs.package }}
           ${{ runner.os }}-binpkg-
 
     - name: emerge ${{ matrix.ebuild }}
