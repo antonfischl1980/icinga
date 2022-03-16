@@ -1,0 +1,115 @@
+name: 'emerge test all ebuilds'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 11 * * *'  # @Daily
+
+jobs:
+  list-all-ebuilds:
+    outputs:
+      matrix: ${{ steps.list-all-ebuilds.outputs.matrix }}
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # emerge --sync not needed in this run
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: list-all-ebuilds
+      id: list-all-ebuilds
+      run: |
+        equery --no-color l -o "*/*::icinga" -F '=$cpv' | \
+          grep -vf .github/workflows/emerge-test.filter > /todo.lst
+        cat /todo.lst
+        echo -n "::set-output name=matrix::"
+        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo.lst
+
+
+
+  emerge-ebuild:
+    needs: list-all-ebuilds
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+      options: --privileged
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        ebuild: ${{ fromJSON(needs.list-all-ebuilds.outputs.matrix) }}
+
+    steps:
+    - name: verify variables
+      run: |
+        echo "ebuild: ${{ matrix.ebuild }}"
+
+    - name: Get Date
+      id: get-date
+      run: |
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: setup portage
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+        echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
+        echo "make.conf:"
+        cat /etc/portage/make.conf
+        mkdir -p /etc/portage/package.license
+        cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
+        cat .github/workflows/emerge-test/package.use >>/etc/portage/package.use/90_SETUP
+
+    - uses: actions/cache@v2
+      name: Cache gentoo-repo
+      id: cache-gentoo-repo
+      with:
+        path: /var/db/repos/gentoo/
+        key: ${{ runner.os }}-repos-gentoo-${{ steps.get-date.outputs.date }}
+
+    - name: emerge-sync
+      if: steps.cache-gentoo-repo.outputs.cache-hit != 'true'
+      run: |
+        sudo -u portage git -C /var/db/repos/gentoo pull
+        emerge --sync
+
+    - name: Get Package Name 
+      id: get-package
+      run: |
+        echo "::set-output name=package::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$cp')"
+        echo "::set-output name=version::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$version')"
+        echo "set-output name=package::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$cp')"
+        echo "set-output name=version::$(equery --no-color l -o '${{ matrix.ebuild }}' --format '$version')"
+
+    - uses: actions/cache@v2
+      name: Cache binpkg
+      with:
+        path: /var/cache/binpkgs/
+        key: ${{ runner.os }}-binpkg-${{ steps.get-package.outputs.package }}-${{ steps.get-package.outputs.version }}
+        restore-keys: |
+          ${{ runner.os }}-binpkg-${{ steps.get-package.outputs.package }}
+          ${{ runner.os }}-binpkg-
+
+    - name: emerge ${{ matrix.ebuild }}
+      run: |
+        echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST
+        emerge -t1v --jobs=4 "${{ matrix.ebuild }}"
+
+    - name: binpkgs
+      run: |
+        find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -la
+
