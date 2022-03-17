@@ -5,6 +5,12 @@ on:
   schedule:
     - cron: '17 11 * * *'  # @Daily
 
+inputs:
+  grep-ebuilds:
+    description: 'Which ebuilds to build'
+    required: true
+    default: 'all'
+
 jobs:
   list-all-ebuilds:
     outputs:
@@ -29,7 +35,12 @@ jobs:
       id: list-all-ebuilds
       run: |
         equery --no-color l -o "*/*::icinga" -F '=$cpv' | \
-          grep -vf .github/workflows/emerge-test.filter | \
+          (
+            if [ "${{ github.event.inputs.grep-ebuilds }}" == "all"  ];then
+              grep -vf .github/workflows/emerge-test.filter
+            else
+              grep "${{ github.event.inputs.grep-ebuilds }}"
+          ) | \
           sort -u > /todo.lst
         cat /todo.lst
         echo -n "::set-output name=matrix::"
