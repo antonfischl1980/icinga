@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DESCRIPTION=A nagios plugin for checking MS-SQL server health
+DESCRIPTION=A nagios/icinga plugin for checking VMWare ESX server health
 EAPI=7
 HOMEPAGE=https://www.claudiokuenzler.com/monitoring-plugins/check_esxi_hardware.php
 KEYWORDS=amd64 x86
@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=<dev-python/pywbem-1.3
 SLOT=0
 SRC_URI=https://github.com/Napsty/check_esxi_hardware/archive/refs/tags/20200710.tar.gz -> check_esxi_hardware-20200710.tar.gz
-_md5_=fd6d391dafd8ae101fa4a58518b63178
+_md5_=c011411d54172f23c8dd9f2c82eaf04e

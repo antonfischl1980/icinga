@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="A nagios plugin for checking MS-SQL server health"
+DESCRIPTION="A nagios/icinga plugin for checking VMWare ESX server health"
 HOMEPAGE="https://www.claudiokuenzler.com/monitoring-plugins/check_esxi_hardware.php"
 SRC_URI="https://github.com/Napsty/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RDEPEND="<dev-python/pywbem-1.3"
