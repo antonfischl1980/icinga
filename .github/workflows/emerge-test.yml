@@ -42,6 +42,7 @@ jobs:
               grep -vf .github/workflows/emerge-test.filter
             else
               grep "${{ github.event.inputs.grep-ebuilds }}"
+            fi
           ) | \
           sort -u > /todo.lst
         cat /todo.lst
