@@ -7,5 +7,9 @@ x11-libs/gdk-pixbuf jpeg
 
 # www-apps/icingaweb2
 www-apps/icingaweb2 apache2 apache2-server
+media-gfx/imagemagick -openmp
+dev-libs/boost context
+dev-lang/php gd pdo sockets xslt intl apache2 curl
+app-eselect/eselect-php apache2
 
 
