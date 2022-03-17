@@ -2,14 +2,16 @@ name: 'emerge test all ebuilds'
 
 on:
   workflow_dispatch:
+    inputs:
+      grep-ebuilds:
+        description: 'Which ebuilds to build'
+        required: true
+        default: 'all'
   schedule:
     - cron: '17 11 * * *'  # @Daily
 
-inputs:
-  grep-ebuilds:
-    description: 'Which ebuilds to build'
-    required: true
-    default: 'all'
+env:
+  DEFAULT_EBUILDS: 'all'
 
 jobs:
   list-all-ebuilds:
@@ -36,7 +38,7 @@ jobs:
       run: |
         equery --no-color l -o "*/*::icinga" -F '=$cpv' | \
           (
-            if [ "${{ github.event.inputs.grep-ebuilds }}" == "all"  ];then
+            if [ "${{ github.event.inputs.grep-ebuilds || env.DEFAULT_EBUILDS }}" == "all"  ];then
               grep -vf .github/workflows/emerge-test.filter
             else
               grep "${{ github.event.inputs.grep-ebuilds }}"
