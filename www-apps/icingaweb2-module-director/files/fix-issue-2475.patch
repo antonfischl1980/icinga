@@ -1,0 +1,58 @@
+From ccd6f4266a23fbee8f33b1310e58cd72ddd77c45 Mon Sep 17 00:00:00 2001
+From: Thomas Gelf <thomas@gelf.net>
+Date: Thu, 24 Feb 2022 16:36:52 +0100
+Subject: [PATCH] DbObject: exists() must check for UUID column
+
+fixes #2475
+---
+ doc/82-Changelog.md                   | 12 +++++++++++-
+ library/Director/Data/Db/DbObject.php |  4 ++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/doc/82-Changelog.md b/doc/82-Changelog.md
+index 2cd0fcd97..d4362a705 100644
+--- a/doc/82-Changelog.md
++++ b/doc/82-Changelog.md
+@@ -4,9 +4,19 @@
+ Please make sure to always read our [Upgrading](05-Upgrading.md) documentation
+ before switching to a new version.
+ 
+-next (will be 1.9.0)
++next (will be 1.9.1)
+ --------------------
+ 
++### Fixed issues
++* You can find issues and feature requests related to this release on our
++  [roadmap](https://github.com/Icinga/icingaweb2-module-director/milestone/28?closed=1)
++
++### User Interface
++* FIX: DataList-backed fields failed to validate (#2475)
++
++1.9.0
++-----
++
+ ### Breaking Changes
+ * Module dependencies have been raised, [Upgrading](05-Upgrading.md) and
+   [Installation](02-Installation.md) documentations contain related details
+diff --git a/library/Director/Data/Db/DbObject.php b/library/Director/Data/Db/DbObject.php
+index ea8f2b867..00afc3aa0 100644
+--- a/library/Director/Data/Db/DbObject.php
++++ b/library/Director/Data/Db/DbObject.php
+@@ -1371,7 +1371,7 @@ public static function exists($id, DbConnection $connection)
+ 
+         /** @var DbObject $obj */
+         $obj = new static;
+-        if (self::$dbObjectStore !== null) {
++        if (self::$dbObjectStore !== null && $obj->hasUuidColumn()) {
+             $table = $obj->getTableName();
+             assert($connection instanceof Db);
+             $uuid = UuidLookup::findUuidForKey($id, $table, $connection, self::$dbObjectStore->getBranch());
+@@ -1418,7 +1418,7 @@ public static function loadWithUniqueId(UuidInterface $uuid, DbConnection $conne
+         $db = $connection->getDbAdapter();
+         $obj = new static;
+ 
+-        if (self::$dbObjectStore !== null) {
++        if (self::$dbObjectStore !== null && $obj->hasUuidColumn()) {
+             $table = $obj->getTableName();
+             assert($connection instanceof Db);
+             return self::$dbObjectStore->load($table, $uuid);

@@ -17,6 +17,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+PATCHES=$(
+	# patch only needed in 1.9.0, will be fixed in 1.9.1
+	# see https://github.com/Icinga/icingaweb2-module-director/issues/2475
+	${FILESDIR}/fix-issue-2475.patch
+)
+
 # Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
 DEPEND=">=net-analyzer/icinga2-2.6.0
 	>=www-apps/icingaweb2-2.6.0
@@ -40,4 +46,23 @@ src_install() {
 	doexe "${FILESDIR}/icinga-director.sh"
 
 	doinitd "${FILESDIR}/director"
+}
+
+pkg_postinst() {
+	# According to PMS this can be a space-separated list of version
+	# numbers, even though in practice it is typically just one.
+	local oldver
+	for oldver in ${REPLACING_VERSIONS}; do
+		if ver_test ${oldver} -lt "1.9.0"; then
+			ewarn "You are upgrading from $oldver to ${PVR}"
+			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.9.x"
+			ewarn "for breaking changes"
+			ewarn ""
+			ewarn "Also, don't forget to upgrade database schema."
+			ewarn "Otherwise icingaweb2-module-director will not work!"
+			ewarn "(Web GUI => Configuration => Modules => director => Configuration)"
+			ewarn ""
+			break
+		fi
+	done
 }
