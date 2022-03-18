@@ -119,4 +119,5 @@ jobs:
     - name: binpkgs
       run: |
         find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -la
+        eclean packages -p
 
