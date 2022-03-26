@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Icinga Web 2 - ReactPHP-based 3rd party libraries"
+DESCRIPTION="Module for displaying Graphite data directly in Icinga Web 2"
 HOMEPAGE="https://github.com/Icinga/icingaweb2-module-graphite/"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
