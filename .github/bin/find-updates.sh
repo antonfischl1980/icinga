@@ -30,7 +30,7 @@ while read -r PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="github"' ./*/*/metadata.xml|xargs dirname)
+done < <(grep -l 'remote-id type="github"' -- */*/metadata.xml|xargs dirname)
 
 #consol
 while read -r PLUGIN;do 
@@ -57,7 +57,7 @@ while read -r PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="github".*lausser' ./*/*/metadata.xml|xargs dirname|grep -v "dev-perl/GLPlugin")
+done < <(grep -l 'remote-id type="github".*lausser' -- */*/metadata.xml|xargs dirname|grep -v "dev-perl/GLPlugin")
 
 
 # dev-perl/GLPlugin
@@ -108,6 +108,6 @@ while read -r PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="cpan"' ./*/*/metadata.xml|xargs dirname)
+done < <(grep -l 'remote-id type="cpan"' -- */*/metadata.xml|xargs dirname)
 
 # END CPAN
