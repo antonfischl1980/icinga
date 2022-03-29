@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # only to be run via .github/workflows/bump-ebuilds.yml
+# shellcheck disable=SC2016
 
 # check packages hosted on Github
-while read PLUGIN;do
+while read -r PLUGIN;do
 	echo "xxxxxxxxxxxxxxxxxxxxx"
 	echo "Checking ${PLUGIN}"
 
@@ -29,10 +30,10 @@ while read PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="github"' */*/metadata.xml|xargs dirname)
+done < <(grep -l 'remote-id type="github"' ./*/*/metadata.xml|xargs dirname)
 
 #consol
-while read PLUGIN;do 
+while read -r PLUGIN;do 
 	echo "xxxxxxxxxxxxxxxxxxxxx"
 	echo "Checking ${PLUGIN}"
 
@@ -40,7 +41,7 @@ while read PLUGIN;do
 	REMOTE_NAME="${REMOTE_NAME##nagios-}"
 	echo "REMOTE_NAME: ${REMOTE_NAME}"
 
-	REMOTE_VERSION="$(wget https://labs.consol.de/nagios/${REMOTE_NAME}/ -qO -|grep -Eoi '<a [^>]+>'|grep -Eo "/${REMOTE_NAME}-[0-9\.]+.tar.gz"|sed "s#^/##g;s#.tar.gz##g;s#${REMOTE_NAME}-##g")"
+	REMOTE_VERSION="$(wget https://labs.consol.de/nagios/"${REMOTE_NAME}"/ -qO -|grep -Eoi '<a [^>]+>'|grep -Eo "/${REMOTE_NAME}-[0-9\.]+.tar.gz"|sed "s#^/##g;s#.tar.gz##g;s#${REMOTE_NAME}-##g")"
 	if [ -z "$REMOTE_VERSION" ]; then
 		echo "Keine Remote-Version"
 		continue
@@ -56,7 +57,7 @@ while read PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="github".*lausser' */*/metadata.xml|xargs dirname|grep -v "dev-perl/GLPlugin")
+done < <(grep -l 'remote-id type="github".*lausser' ./*/*/metadata.xml|xargs dirname|grep -v "dev-perl/GLPlugin")
 
 
 # dev-perl/GLPlugin
@@ -80,7 +81,7 @@ echo "dev-perl/GLPlugin" >>/checked.lst
 # CPAN
 # initialize cpan
 cpan </dev/null >/dev/null 2>&1
-while read PLUGIN;do 
+while read -r PLUGIN;do 
 	echo "xxxxxxxxxxxxxxxxxxxxx"
 	echo "Checking ${PLUGIN}"
 
@@ -88,17 +89,15 @@ while read PLUGIN;do
 	echo "REMOTE_NAME: ${REMOTE_NAME}"
 
 	REMOTE_VERSION="$(cpan -D "${REMOTE_NAME}"|awk '/CPAN:/{print $2}'|head -1)"
-	echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'
-	if [ $? -ne 0 ];then
+	if echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
 		echo "Keine Remote-Version (${REMOTE_VERSION})"
 		continue
 	fi
 	echo "${REMOTE_VERSION} (version upstream)"
 
 	LATEST_EBUILD="$(equery l -o "$PLUGIN::icinga" --format='$category/$name/$name-$fullversion.ebuild'|tail -1)"
-	LOCAL_VERSION="$(cat $LATEST_EBUILD |grep ^DIST_VERSION|sed -E 's#^.+=[^0-9]?(([0-9]+\.)[0-9]+).?#\1#')"
-	echo "${LOCAL_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'
-	if [ $? -ne 0 ];then
+	LOCAL_VERSION="$(grep ^DIST_VERSION "$LATEST_EBUILD" |sed -E 's#^.+=[^0-9]?(([0-9]+\.)[0-9]+).?#\1#')"
+	if echo "${LOCAL_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
 		LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
 	fi
 	echo "${LOCAL_VERSION} (version local)"
@@ -109,6 +108,6 @@ while read PLUGIN;do
 	fi
 
 	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="cpan"' */*/metadata.xml|xargs dirname)
+done < <(grep -l 'remote-id type="cpan"' ./*/*/metadata.xml|xargs dirname)
 
 # END CPAN
