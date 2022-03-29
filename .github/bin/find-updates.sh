@@ -89,7 +89,7 @@ while read -r PLUGIN;do
 	echo "REMOTE_NAME: ${REMOTE_NAME}"
 
 	REMOTE_VERSION="$(cpan -D "${REMOTE_NAME}"|awk '/CPAN:/{print $2}'|head -1)"
-	if echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
+	if ! echo "${REMOTE_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
 		echo "Keine Remote-Version (${REMOTE_VERSION})"
 		continue
 	fi
@@ -97,7 +97,7 @@ while read -r PLUGIN;do
 
 	LATEST_EBUILD="$(equery l -o "$PLUGIN::icinga" --format='$category/$name/$name-$fullversion.ebuild'|tail -1)"
 	LOCAL_VERSION="$(grep ^DIST_VERSION "$LATEST_EBUILD" |sed -E 's#^.+=[^0-9]?(([0-9]+\.)[0-9]+).?#\1#')"
-	if echo "${LOCAL_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
+	if ! echo "${LOCAL_VERSION}"|grep -qE '^(([0-9]+\.)+[0-9]+)$'; then
 		LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
 	fi
 	echo "${LOCAL_VERSION} (version local)"
