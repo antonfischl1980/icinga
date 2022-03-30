@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.2.0 >=dev-libs/icinga-php-library-0.8.0 >=dev-libs/icinga-php-thirdparty-0.10.0 || ( dev-lang/php:7.4[curl] dev-lang/php:8.0[curl] dev-lang/php:8.1[curl] )
+DEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.8.0 >=dev-libs/icinga-php-thirdparty-0.10.0 || ( dev-lang/php:7.4[curl] dev-lang/php:8.0[curl] dev-lang/php:8.1[curl] )
 DESCRIPTION=Module for displaying Graphite data directly in Icinga Web 2
 EAPI=8
 HOMEPAGE=https://github.com/Icinga/icingaweb2-module-graphite/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.2.0 >=dev-libs/icinga-php-library-0.8.0 >=dev-libs/icinga-php-thirdparty-0.10.0 || ( dev-lang/php:7.4[curl] dev-lang/php:8.0[curl] dev-lang/php:8.1[curl] )
+RDEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.8.0 >=dev-libs/icinga-php-thirdparty-0.10.0 || ( dev-lang/php:7.4[curl] dev-lang/php:8.0[curl] dev-lang/php:8.1[curl] )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-graphite/tar.gz/v1.2.0 -> icingaweb2-module-graphite-1.2.0.tar.gz
-_md5_=0c23662eb946e5026d5aa14a8cdb1606
+_md5_=3d1f036325a93d14eecc84ee8a45a144
