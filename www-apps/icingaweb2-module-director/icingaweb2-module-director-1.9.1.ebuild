@@ -17,12 +17,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-PATCHES=$(
-	# patch only needed in 1.9.0, will be fixed in 1.9.1
-	# see https://github.com/Icinga/icingaweb2-module-director/issues/2475
-	${FILESDIR}/fix-issue-2475.patch
-)
-
 # Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
 DEPEND=">=net-analyzer/icinga2-2.6.0
 	>=www-apps/icingaweb2-2.6.0
