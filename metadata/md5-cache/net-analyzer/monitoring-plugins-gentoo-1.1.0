@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=icinga/nagios check plugins specific for gentoo
+EAPI=8
+HOMEPAGE=https://github.com/antonfischl1980/monitoring-plugins-gentoo/
+KEYWORDS=amd64 ~hppa sparc x86
+LICENSE=MIT
+RDEPEND=dev-perl/Time-Duration dev-perl/TimeDate dev-perl/Monitoring-Plugin
+SLOT=0
+SRC_URI=https://github.com/antonfischl1980/monitoring-plugins-gentoo/releases/download/v1.1.0/monitoring-plugins-gentoo-1.1.0.tar.xz
+_md5_=8d5415cc345dfcb12a90b07f21559c30
