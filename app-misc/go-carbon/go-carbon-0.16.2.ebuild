@@ -36,7 +36,7 @@ src_install(){
 }
 
 pkg_config(){
-	cd "${ROOT}"/etc/go-carbon/
+	cd "${ROOT}"/etc/go-carbon/ || die
 	if [ ! -f "${ROOT}"/etc/go-carbon/go-carbon.conf ];then
 		unpack "${ROOT}"/usr/share/doc/"${PF}"/go-carbon.conf.example.bz2
 		mv go-carbon.conf.sample go-carbon.conf

@@ -40,7 +40,7 @@ src_install(){
 	insinto "${my_vendorlib}"/auto/Monitoring/GLPlugin/SNMP/
 	doins autosplit.ix
 
-	pushd lib/Monitoring
+	pushd lib/Monitoring || die
 	perl_domodule -C Monitoring -r .
-	popd
+	popd || die
 }

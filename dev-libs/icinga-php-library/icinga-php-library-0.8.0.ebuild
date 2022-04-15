@@ -18,6 +18,6 @@ BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icinga-php/ipl"
-	cd "${S}"
+	cd "${S}" || die
 	doins -r *
 }
