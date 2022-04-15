@@ -23,8 +23,8 @@ src_install(){
 	default
 
 	exeinto /usr/lib64/nagios/plugins/
-	doexe *.pl
+	doexe ./*.pl
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins *.conf
+	doins ./*.conf
 }

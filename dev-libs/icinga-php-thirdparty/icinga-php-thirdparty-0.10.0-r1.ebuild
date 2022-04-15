@@ -18,5 +18,5 @@ BDEPEND=""
 src_install() {
 	insinto "/usr/share/icinga-php/vendor"
 	cd "${S}" || die
-	doins -r *
+	doins -r ./*
 }
