@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
   pull_request:
+  schedule:
+      - cron: '11 12 * * 5' # Weekly
 
 jobs:
   ShellCheck:
@@ -14,5 +16,5 @@ jobs:
       - name: Run ShellCheck
         uses: azohra/shell-linter@latest
         with:
-          path: "www-apps/icingaweb2-module-director/files/icinga-director.sh,.github/bin/find-updates.sh"
+          path: "*/*/files/*.sh"
 
