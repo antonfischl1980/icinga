@@ -2,6 +2,7 @@
 QA-Status:
 [![repoman](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml)
 [![pkgcheck](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml)
+[![ShellCheck](https://github.com/antonfischl1980/icinga/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/shellcheck.yml)
 
 ## Intro
 in its current form this repo hosts ebuilds for a handful of icinga2 check plugins (and, if necessary, their dependencies) that I found useful for myself.
