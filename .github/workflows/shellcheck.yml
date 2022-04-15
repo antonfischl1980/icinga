@@ -16,6 +16,7 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
+          
           severity: style
-          additional_files: '*.initd'
+          additional_files: '*.initd *.ebuild'
 
