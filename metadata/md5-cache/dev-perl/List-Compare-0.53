@@ -11,4 +11,4 @@ RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JK/JKEENAN/List-Compare-0.53.tar.gz
 _eclasses_=multiprocessing	61c959fc55c15c00bbb1079d6a71370b	perl-functions	fea344a91ebf37efadf172c6a3de5a72	perl-module	8eed4e2982026c684ff7c19cd4c88ed0
-_md5_=685023c84fd0a1d959215992d68d53c9
+_md5_=70c80a030c69bf38784c1cfe9bdf1ae0
