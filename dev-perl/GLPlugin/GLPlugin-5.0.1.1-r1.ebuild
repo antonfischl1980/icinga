@@ -35,9 +35,9 @@ src_install(){
 
 	my_vendorlib="$(perl_get_vendorlib)"
 
-	insinto ${my_vendorlib}/auto/Monitoring/GLPlugin/UPNP/
+	insinto "${my_vendorlib}"/auto/Monitoring/GLPlugin/UPNP/
 	doins autosplit.ix
-	insinto ${my_vendorlib}/auto/Monitoring/GLPlugin/SNMP/
+	insinto "${my_vendorlib}"/auto/Monitoring/GLPlugin/SNMP/
 	doins autosplit.ix
 
 	pushd lib/Monitoring

@@ -69,5 +69,5 @@ src_install(){
 	use x86 && newexe "build/${PN}-i386" "${PN}"
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	newins icinga2.conf ${PN}.conf
+	newins icinga2.conf "${PN}".conf
 }
