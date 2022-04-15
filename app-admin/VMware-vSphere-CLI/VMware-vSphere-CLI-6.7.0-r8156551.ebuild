@@ -47,9 +47,9 @@ src_unpack() {
 src_install() {
 	default
 	dobin bin/[r-z]*
-	cd "${D}/usr/bin"
+	cd "${D}/usr/bin" || die
 	for i in vicfg-*;do
-		ln -s "$i" "$(echo "$i"|sed "s/vicfg-/esxcfg-/")"
+		ln -s "$i" "${i//vicfg-/esxcfg-}"
 	done
 	keepdir "/usr/share/doc/${PF}/"
 	mv "${D}/usr/doc/"* "${D}/usr/share/doc/${PF}/"

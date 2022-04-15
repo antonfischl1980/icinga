@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
   pull_request:
+  schedule:
+      - cron: '11 12 * * 5' # Weekly
 
 jobs:
   ShellCheck:
@@ -12,7 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Run ShellCheck
-        uses: azohra/shell-linter@latest
+        uses: ludeeus/action-shellcheck@master
         with:
-          path: "www-apps/icingaweb2-module-director/files/icinga-director.sh,.github/bin/find-updates.sh"
+          
+          severity: style
+          additional_files: '*.initd *.ebuild'
 

@@ -1,5 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+# shellcheck disable=SC2207
 
 EAPI=7
 
@@ -86,13 +87,13 @@ src_configure() {
 	fi
 
 	econf \
-		$(use_with curl libcurl) \
-		$(use_with curl uriparser) \
-		$(use_with mysql) \
-		$(use_with ipv6) \
-		$(use_with ldap) \
-		$(use_with postgres pgsql /usr) \
-		$(use_with radius) \
+		"$(use_with curl libcurl)" \
+		"$(use_with curl uriparser)" \
+		"$(use_with mysql)" \
+		"$(use_with ipv6)" \
+		"$(use_with ldap)" \
+		"$(use_with postgres pgsql /usr)" \
+		"$(use_with radius)" \
 		"${myconf[@]}" \
 		--libexecdir="/usr/$(get_libdir)/nagios/plugins" \
 		--sysconfdir="/etc/nagios"

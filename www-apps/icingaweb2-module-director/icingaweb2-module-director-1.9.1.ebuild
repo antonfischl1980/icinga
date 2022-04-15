@@ -47,7 +47,7 @@ pkg_postinst() {
 	# numbers, even though in practice it is typically just one.
 	local oldver
 	for oldver in ${REPLACING_VERSIONS}; do
-		if ver_test ${oldver} -lt "1.9.0"; then
+		if ver_test "${oldver}" -lt "1.9.0"; then
 			ewarn "You are upgrading from $oldver to ${PVR}"
 			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.9.x"
 			ewarn "for breaking changes"

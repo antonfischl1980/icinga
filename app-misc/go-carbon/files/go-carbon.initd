@@ -20,7 +20,7 @@ depend() {
 }
 
 start_pre() {
-	checkpath -d -m 0755 -o "${command_user}" $(dirname ${output_log})
+	checkpath -d -m 0755 -o "${command_user}" "$(dirname "${output_log}")"
 }
 
 reload() {

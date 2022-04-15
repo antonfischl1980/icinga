@@ -23,11 +23,11 @@ src_install(){
 	default
 
 	exeinto /usr/lib64/nagios/plugins/contrib/
-	doexe ${PN}.sh
+	doexe "${PN}".sh
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	doins ${PN}.conf
+	doins "${PN}".conf
 
 	insinto /usr/share/icingaweb2/modules/graphite/templates/
-	doins ${PN}.ini
+	doins "${PN}".ini
 }

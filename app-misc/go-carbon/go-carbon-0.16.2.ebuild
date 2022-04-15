@@ -36,17 +36,17 @@ src_install(){
 }
 
 pkg_config(){
-	cd "${ROOT}"/etc/go-carbon/
+	cd "${ROOT}"/etc/go-carbon/ || die
 	if [ ! -f "${ROOT}"/etc/go-carbon/go-carbon.conf ];then
-		unpack "${ROOT}"/usr/share/doc/${PF}/go-carbon.conf.example.bz2
+		unpack "${ROOT}"/usr/share/doc/"${PF}"/go-carbon.conf.example.bz2
 		mv go-carbon.conf.sample go-carbon.conf
 	fi
 	if [ ! -f "${ROOT}"/etc/go-carbon/storage-aggregation.conf ];then
-		unpack "${ROOT}"/usr/share/doc/${PF}/storage-aggregation.conf.sample.bz2
+		unpack "${ROOT}"/usr/share/doc/"${PF}"/storage-aggregation.conf.sample.bz2
 		mv storage-aggregation.conf.sample storage-aggregation.conf
 	fi
 	if [ ! -f "${ROOT}"/etc/go-carbon/storage-schemas.conf ];then
-		unpack "${ROOT}"/usr/share/doc/${PF}/storage-schemas.conf.sample.bz2
+		unpack "${ROOT}"/usr/share/doc/"${PF}"/storage-schemas.conf.sample.bz2
 		mv storage-schemas.conf.sample storage-schemas.conf
 	fi
 }

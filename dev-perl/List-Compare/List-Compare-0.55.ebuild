@@ -15,4 +15,4 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-SRC_TEST=do
+SRC_TEST="do"
