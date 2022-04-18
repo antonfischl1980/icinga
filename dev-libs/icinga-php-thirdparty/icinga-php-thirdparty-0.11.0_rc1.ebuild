@@ -5,7 +5,9 @@ EAPI=8
 
 DESCRIPTION="Icinga PHP libraries for Icinga Web 2"
 HOMEPAGE="https://github.com/Icinga/icinga-php-thirdparty"
-SRC_URI="https://github.com/Icinga/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+# temporary measure until upstream releases 0.11.0
+SRC_URI="https://nextcloud.fischl-online.de/s/RB4pePgBL9YCtZB/download/icinga-php-thirdparty-0.11.0_rc1.tar.gz"
+S="${WORKDIR}/icinga-php-thirdparty-snapshot-nightly"
 
 LICENSE="MIT"
 SLOT="0"
