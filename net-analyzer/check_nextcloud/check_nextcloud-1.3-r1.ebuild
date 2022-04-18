@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT="b7e57558ead1511bab83922a97180a7f27760fef"
+COMMIT="032a3abc3f6bb3b673d3cd149402a0a28a906a73"
 DESCRIPTION="Nagios/Centreon/Icinga plugin for nextcloud serverinfo API"
 HOMEPAGE="https://github.com/BornToBeRoot/check_nextcloud"
 SRC_URI="https://github.com/BornToBeRoot/check_nextcloud/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -16,6 +16,10 @@ KEYWORDS="amd64 x86"
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/pr19-python3-support.patch"
+)
 
 src_install(){
 	default
