@@ -21,10 +21,7 @@ while read -r PLUGIN;do
 	fi
 	echo "${REMOTE_VERSION} (version upstream)"
 
-	LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
-	echo "${LOCAL_VERSION} (version local)"
-
-	if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ];then
+	if ! equery l -o "$PLUGIN::icinga" --format='$version'|grep "${REMOTE_VERSION}";then
 		echo "bump needed"
 		echo "$PLUGIN-$REMOTE_VERSION" >> /todo.lst
 	fi
