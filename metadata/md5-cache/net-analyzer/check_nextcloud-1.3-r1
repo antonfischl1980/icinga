@@ -5,5 +5,5 @@ HOMEPAGE=https://github.com/BornToBeRoot/check_nextcloud
 KEYWORDS=amd64 x86
 LICENSE=AGPL-3
 SLOT=0
-SRC_URI=https://github.com/BornToBeRoot/check_nextcloud/archive/b7e57558ead1511bab83922a97180a7f27760fef.tar.gz -> check_nextcloud-2.0_rc2.tar.gz
-_md5_=984488279f3e0f5268f61bf05a7737cf
+SRC_URI=https://github.com/BornToBeRoot/check_nextcloud/archive/032a3abc3f6bb3b673d3cd149402a0a28a906a73.tar.gz -> check_nextcloud-1.3.tar.gz
+_md5_=876da10894e25fc59f1f89a562a0ee95
