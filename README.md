@@ -14,7 +14,46 @@ There are also a few icingaweb2-modules in category www-apps.
 
 I try to have these ebuilds as current to upstream as possible. ~~In the near future I want to have a bot doing most of the maintenance stuff (like bumping ebuilds on new releases)~~ For this, I have build a bot that does most of the (unstable) version bumping
 
-If you think there is an check plugin missing, please file an Issue or (much more appreciated) a pull request at [Github](https://github.com/antonfischl1980/icinga). 
+If you think there is an check plugin missing, please file an Issue or (much more appreciated) a pull request at [Github](https://github.com/antonfischl1980/icinga).
+
+## using the profile
+
+This repo provides profiles selectable via "eselect profile" for default USE-Flags and masking/unmasking different packages.
+Take a look at ``profiles/icinga/ `` for details.
+``` sh
+eselect profile list
+...
+[xx]  icinga:default/linux/amd64/17.1/icinga (stable)
+
+eselect profile select icinga:default/linux/amd64/17.1/icinga
+```
+
+You can also use this profile as basis for your own profile.
+``` sh
+# make new repository
+eselect repository create <repo_name>
+
+# we must use 'portage-2' format so 'parent' can be easily set to other repos
+echo "profile-formats = portage-2" >> /var/db/repos/<repo_name>/metadata/layout.conf
+
+# create new profile
+mkdir /var/db/repos/<repo_name>/profiles/<profile_name>
+echo 7 > /var/db/repos/<repo_name>/profiles/<profile_name>/eapi
+
+# set parent to mix and match your needs
+echo "gentoo:default/linux/amd64/17.1" >/var/db/repos/<repo_name>/profiles/<profile_name>/parent
+# include icinga defaults
+echo "icinga:icinga" >> /var/db/repos/<repo_name>/profiles/<profile_name>/parent
+
+# make it known to 'eselect profile'
+echo -e "amd64\t<profile_name>\tstable" >> /var/db/repos/<repo_name>/profiles/profiles.desc
+
+# select the new profile
+eselect profile list
+eselect profile set '<repo_name>:<profile_name>'
+
+# don't forget to 'emerge world' for the changed USE-Flags
+```
 
 ## Adding the overlay
 
