@@ -1,3 +1,5 @@
+acct-group/graphite-web 0: Group for net-analyzer/graphite-web(-gunicorn)
+acct-user/graphite-web 0: System user: graphite-web
 app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interface 6.7
 app-misc/go-carbon 0.16.2: Golang implementation of Graphite/Carbon server with classic architecture
 dev-libs/icinga-php-library 0.8.0 0.8.1: Icinga PHP libraries for Icinga Web 2
@@ -35,6 +37,7 @@ net-analyzer/check_storage_health 1.3.2: nagios plugin for checking storage syst
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
 net-analyzer/check_ups_health 3.0.2 3.0.3: A nagios plugin for checking USV health
 net-analyzer/check_vmware_esx 1.2.3: check_vmware_esx for VMware Monitoring
+net-analyzer/graphite-web-gunicorn 1.0.0: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins 2.3.1-r2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.0.1.2 4.0.1.3 4.0.1.5: A nagios plugin for checking logfiles

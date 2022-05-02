@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst preinst unpack
+DEPEND=acct-user/graphite-web net-analyzer/graphite-web[sqlite] www-servers/gunicorn
+DESCRIPTION=meta package for installing graphite-web and running it with gunicorn
+EAPI=8
+HOMEPAGE=https://github.com/antonfischl1980/icinga
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=acct-user/graphite-web net-analyzer/graphite-web[sqlite] www-servers/gunicorn
+SLOT=0
+_md5_=d490c693ffdb8c550304b414f508680f
