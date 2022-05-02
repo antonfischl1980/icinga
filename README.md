@@ -16,6 +16,26 @@ I try to have these ebuilds as current to upstream as possible. ~~In the near fu
 
 If you think there is an check plugin missing, please file an Issue or (much more appreciated) a pull request at [Github](https://github.com/antonfischl1980/icinga).
 
+## Adding the overlay
+
+### Official list
+
+#### Layman
+
+If you are using [Layman](https://wiki.gentoo.org/wiki/Layman), execute:
+
+``` sh
+layman -a icinga
+```
+
+#### eselect-repository
+
+If you are using [eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository), execute:
+
+``` sh
+eselect repository enable icinga
+```
+
 ## using the profile
 
 This repo provides profiles selectable via "eselect profile" for default USE-Flags and masking/unmasking different packages.
@@ -53,26 +73,6 @@ eselect profile list
 eselect profile set '<repo_name>:<profile_name>'
 
 # don't forget to 'emerge world' for the changed USE-Flags
-```
-
-## Adding the overlay
-
-### Official list
-
-#### Layman
-
-If you are using [Layman](https://wiki.gentoo.org/wiki/Layman), execute:
-
-``` sh
-layman -a icinga
-```
-
-#### eselect-repository
-
-If you are using [eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository), execute:
-
-``` sh
-eselect repository enable icinga
 ```
 
 ## Submitting an Issue
