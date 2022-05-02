@@ -1,0 +1,6 @@
+# IP-Address and Port to bind to
+GRAPHITE_WEB_PORT="127.0.0.1:8081"
+
+# Number of Workers
+GRAPHITE_WEB_WORKERS="1"
+
