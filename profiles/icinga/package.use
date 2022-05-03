@@ -3,3 +3,13 @@
 net-analyzer/graphite-web sqlite
 dev-python/django sqlite
 
+# Anton Fischl <github@fischl-online.de> (2022-05-03)
+# whole block is needed for www-apps/icingaweb2
+www-apps/icingaweb2 apache2 apache2-server fpm mysql pdf
+dev-lang/php apache2 cli fpm gd intl mysql nls pdo sockets ssl xslt xml curl pcntl
+app-eselect/eselect-php apache2 fpm
+# for dev-php/pecl-imagick
+media-gfx/imagemagick -openmp png
+# for net-analyzer/icinga2
+dev-libs/boost context
+
