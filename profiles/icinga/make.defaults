@@ -1,0 +1,4 @@
+# Anton Fischl <github@fischl-online.de> (2022-05-03)
+# php8-0 covers everything we need (at this point)
+# no need to install php7-4 (as per current gentoo-default)
+PHP_TARGETS="-* php8-0"
