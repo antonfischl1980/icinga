@@ -2,7 +2,6 @@ acct-group/graphite-web 0: Group for net-analyzer/graphite-web(-gunicorn)
 acct-user/graphite-web 0: System user: graphite-web
 app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interface 6.7
 app-misc/go-carbon 0.16.2: Golang implementation of Graphite/Carbon server with classic architecture
-dev-libs/icinga-php-library 0.8.0 0.8.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/icinga-php-thirdparty 0.10.0-r1 0.11.0_rc1: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.18 1.19: DBI driver for XBase compatible database files
