@@ -14,7 +14,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: emerge-sync
       run: |
@@ -30,4 +30,4 @@ jobs:
 
     - name: repoman
       run: |
-        repoman full -dxv
+        repoman full -dxv -j 4
