@@ -1,0 +1,259 @@
+diff --git a/examples/contacts2csv b/examples/contacts2csv
+index d146700..d6fd143 100755
+--- a/examples/contacts2csv
++++ b/examples/contacts2csv
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/dump_services b/examples/dump_services
+index 12cc438..97b800f 100755
+--- a/examples/dump_services
++++ b/examples/dump_services
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/get_logs b/examples/get_logs
+index 15d8a73..2880564 100755
+--- a/examples/get_logs
++++ b/examples/get_logs
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/list_hosts b/examples/list_hosts
+index 0c7a938..888d914 100755
+--- a/examples/list_hosts
++++ b/examples/list_hosts
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/objectcache2csv b/examples/objectcache2csv
+index 43c4538..b08a593 100755
+--- a/examples/objectcache2csv
++++ b/examples/objectcache2csv
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/query2testobjects b/examples/query2testobjects
+index 77d824d..399bd23 100755
+--- a/examples/query2testobjects
++++ b/examples/query2testobjects
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/remove_duplicates b/examples/remove_duplicates
+index 6bf53b6..4cde510 100755
+--- a/examples/remove_duplicates
++++ b/examples/remove_duplicates
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/examples/trigger_eventhandler_at_downtime_end b/examples/trigger_eventhandler_at_downtime_end
+index fa4c602..09ae736 100755
+--- a/examples/trigger_eventhandler_at_downtime_end
++++ b/examples/trigger_eventhandler_at_downtime_end
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/check_thruk_rest b/script/check_thruk_rest
+index 8e6b728..5648d98 100755
+--- a/script/check_thruk_rest
++++ b/script/check_thruk_rest
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/generate_timeperiod_transitions.pl b/script/generate_timeperiod_transitions.pl
+index 867166f..7581b69 100755
+--- a/script/generate_timeperiod_transitions.pl
++++ b/script/generate_timeperiod_transitions.pl
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/nagexp b/script/nagexp
+index 44ae0b8..e47b2ae 100755
+--- a/script/nagexp
++++ b/script/nagexp
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/nagimp b/script/nagimp
+index 510bf5d..d839177 100755
+--- a/script/nagimp
++++ b/script/nagimp
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/naglint b/script/naglint
+index c807e4c..0cf4e01 100755
+--- a/script/naglint
++++ b/script/naglint
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/reenable_actions b/script/reenable_actions
+index 7b6b164..e5b9476 100755
+--- a/script/reenable_actions
++++ b/script/reenable_actions
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/thruk b/script/thruk
+index dee60a0..6f36726 100755
+--- a/script/thruk
++++ b/script/thruk
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/thruk_auth b/script/thruk_auth
+index dd8b349..e571693 100755
+--- a/script/thruk_auth
++++ b/script/thruk_auth
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/thruk_format_perl_modules b/script/thruk_format_perl_modules
+index b335d5a..76bd56a 100755
+--- a/script/thruk_format_perl_modules
++++ b/script/thruk_format_perl_modules
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/support/convert_old_datafile.pl b/support/convert_old_datafile.pl
+index 8640c7a..a31f67d 100755
+--- a/support/convert_old_datafile.pl
++++ b/support/convert_old_datafile.pl
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/support/standard_script_header b/support/standard_script_header
+index d953191..0d46dfa 100755
+--- a/support/standard_script_header
++++ b/support/standard_script_header
+@@ -24,7 +24,7 @@ else
+   if [ "$THRUK_CONFIG" = "" ]; then export THRUK_CONFIG='@SYSCONFDIR@'; fi
+ fi
+ 
+-eval 'exec perl -x $0 ${1+"$@"} ;'
++eval 'exec perl -Mforks -x $0 ${1+"$@"} ;'
+     if 0;
+ 
+ #! -*- perl -*-
+diff --git a/script/thruk_fastcgi.pl b/script/thruk_fastcgi.pl
+index add0453..7659bf0 100755
+--- a/script/thruk_fastcgi.pl
++++ b/script/thruk_fastcgi.pl
+@@ -2,6 +2,7 @@
+ 
+ use warnings;
+ use strict;
++use forks;
+ 
+ use lib 'lib';
+ 
