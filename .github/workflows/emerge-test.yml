@@ -71,11 +71,10 @@ jobs:
     - name: Get Date
       id: get-date
       run: |
-        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         echo "::set-output name=datetime::$(/bin/date -u "+%Y%m%d-%H%M%S")"
 
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: setup portage
       run: |
@@ -90,20 +89,12 @@ jobs:
         cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
         eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
 
-    - uses: actions/cache@v2
-      name: Cache gentoo-repo
-      id: cache-gentoo-repo
-      with:
-        path: /var/db/repos/gentoo/
-        key: ${{ runner.os }}-repos-gentoo-${{ steps.get-date.outputs.date }}
-
     - name: emerge-sync
-      if: steps.cache-gentoo-repo.outputs.cache-hit != 'true'
       run: |
         sudo -u portage git -C /var/db/repos/gentoo pull
         emerge --sync
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       name: Cache binpkg
       with:
         path: /var/cache/binpkgs/
