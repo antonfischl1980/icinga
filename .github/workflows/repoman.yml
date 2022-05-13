@@ -30,4 +30,4 @@ jobs:
 
     - name: repoman
       run: |
-        repoman full -dxv -j 4
+        repoman full -dxv -j 2
