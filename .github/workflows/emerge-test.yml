@@ -8,7 +8,7 @@ on:
         required: true
         default: 'all'
   schedule:
-    - cron: '17 11 * * *'  # @Daily
+    - cron: '17 20 * * *'  # @Daily
 
 env:
   DEFAULT_EBUILDS: 'all'
