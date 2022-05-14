@@ -111,6 +111,7 @@ jobs:
 
   eclean-packages:
     needs: emerge-ebuild
+    if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
