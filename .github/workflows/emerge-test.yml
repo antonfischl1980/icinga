@@ -107,8 +107,58 @@ jobs:
         echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST
         emerge -t1v --jobs=4 "${{ matrix.ebuild }}"
 
-    - name: binpkgs
+
+
+  eclean-packages:
+    needs: emerge-ebuild
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+      options: --privileged
+    steps:
+
+    - name: Get Date
+      id: get-date
+      run: |
+        echo "::set-output name=datetime::$(/bin/date -u "+%Y%m%d-%H%M%S")"
+    
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: setup portage
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+        echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
+        echo "make.conf:"
+        cat /etc/portage/make.conf
+        mkdir -p /etc/portage/package.license
+        cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
+        eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
+
+    - name: emerge-sync
+      run: |
+        sudo -u portage git -C /var/db/repos/gentoo pull
+        emerge --sync
+
+    - uses: actions/cache@v3
+      name: Cache binpkg
+      with:
+        path: /var/cache/binpkgs/
+        key: ${{ runner.os }}-binpkg-${{ steps.get-date.outputs.datetime }}
+        restore-keys: |
+          ${{ runner.os }}-binpkg-
+    
+    - name: list binpkgs alphabetically
       run: |
         find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -la
-        eclean packages
-
+    
+    - name: list binpkgs by modtime
+      run: |
+        find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -latr
+    
+    - name: eclean packages
+      run: |
+        eclean -v packages
