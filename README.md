@@ -48,7 +48,7 @@ eselect profile list
 eselect profile select icinga:default/linux/amd64/17.1/icinga
 ```
 
-You can also use this profile as basis for your own profile. (see [wiki.gentoo.org](https://wiki.gentoo.org/wiki/Profile_(Portage)#Creating_custom_profiles)
+You can also use this profile as basis for your own profile. (see [wiki.gentoo.org](https://wiki.gentoo.org/wiki/Profile_(Portage)#Creating_custom_profiles))
 ``` sh
 # make new repository
 eselect repository create <repo_name>
