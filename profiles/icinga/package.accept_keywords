@@ -5,3 +5,6 @@ net-analyzer/graphite-web ~amd64
 dev-python/carbon ~amd64
 dev-python/django-tagging ~amd64
 
+# Anton Fischl <github@fischl-online.de> (2022-05-02)
+# needed for www-apps/Thruk
+dev-perl/forks ~amd64

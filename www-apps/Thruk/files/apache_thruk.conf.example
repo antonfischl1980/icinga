@@ -1,0 +1,52 @@
+<VirtualHost ##TODO: IP:Port##>
+    ServerName ##TODO: FQDN##
+
+    DocumentRoot /usr/share/Thruk/root/
+    ErrorLog /var/log/apache2/##TODO: ErrorLog##
+    CustomLog /var/log/apache2/##TODO: AccessLog## combined
+
+    AddHandler fcgid-script .sh
+    MaxRequestsPerProcess 100
+
+    <Directory /usr/share/Thruk/root/>
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    Alias /thruk/documentation.html /usr/share/Thruk/root/thruk/documentation.html
+    Alias /thruk/startup.html /usr/share/Thruk/root/thruk/startup.html
+    AliasMatch ^/thruk/(.*\.cgi|.*\.html|r/).* /usr/share/Thruk/fcgid_env.sh/thruk/$1
+    AliasMatch ^/thruk/plugins/(.*?)/(.*)$     /usr/share/Thruk/plugins/plugins-enabled/$1/root/$2
+    Alias /thruk/themes/  /usr/share/Thruk/themes/themes-available/
+    Alias /thruk /usr/share/Thruk/root/thruk
+
+    <Location /thruk/>
+        Options ExecCGI FollowSymLinks
+        AuthName "Restricted area"
+        AuthType Basic
+        AuthUserFile /etc/Thruk/htpasswd
+        require valid-user
+    </Location>
+
+    # cookie based authentication
+    RewriteEngine On
+
+    RewriteRule ^/thruk$              /thruk/ [R=302,L]
+
+    RewriteMap  thruk_users              prg:/usr/share/Thruk/thruk_auth
+    RewriteCond %{REQUEST_URI}           !^/thruk/cgi-bin/restricted.cgi
+    RewriteCond %{REQUEST_URI}           ^/thruk
+    RewriteCond %{HTTP_COOKIE}           (thruk_auth=[^;]+|$)  [NC]
+    RewriteRule ^/(.*)$                  /%1/%{REMOTE_ADDR}~~%{HTTP:Authorization}~~%{HTTP:X-Thruk-Auth-Key}~~%{HTTP:X-Thruk-Auth-User}/____/$1/____/%{QUERY_STRING} [C,NS]
+    RewriteRule ^(.*)$                   ${thruk_users:$1|/loginbad/} [C,NS]
+    RewriteRule ^/pass/(.*)$             /$1 [NS,PT,L,E=!REMOTE_USER]
+    RewriteRule ^/redirect/(.*)$         /$1 [NS,L,R=302]
+    RewriteRule ^/loginok/([^/]+)/(.*)$  /$2 [NS,PT,L,E=REMOTE_USER:$1]
+
+    # finally exclude everything from basic auth, except the restricted.cgi
+    <LocationMatch ^/thruk(?!/cgi-bin/restricted.cgi)>
+        Require all granted
+    </LocationMatch>
+
+</VirtualHost>

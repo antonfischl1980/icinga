@@ -1,0 +1,7 @@
+/var/log/Thruk/thruk.log /usr/share/Thruk/tmp//*.log {
+    missingok
+    compress
+    delaycompress
+    notifempty
+    create 0644 apache apache
+}
