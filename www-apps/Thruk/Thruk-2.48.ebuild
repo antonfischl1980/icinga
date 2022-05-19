@@ -45,7 +45,7 @@ src_configure() {
 src_install() {
 	default
 
-	rm "${D}/etc/Thruk/thruk_local.conf"
+	mv "${D}/etc/Thruk/thruk_local.conf" "${D}/etc/Thruk/thruk_local.conf.example"
 
 	insinto /etc/apache2/vhosts.d/
 	newins "${FILESDIR}/apache_thruk.conf.example" thruk.conf.example
@@ -53,7 +53,6 @@ src_install() {
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}/thruk-base.lograte" thruk-base
 
-	keepdir "${EPREFIX}"/var/lib/"${PN}"
 	keepdir /var/log/"${PN}"
 	fowners apache:apache /var/log/Thruk/
 	keepdir /usr/share/"${PN}"/var/
@@ -89,7 +88,6 @@ pkg_preinst(){
 
 	if [ ! -r "${EROOT}/etc/Thruk/thruk_local.conf" ]; then
 		# Probably the first time we are installed
-		cp -v "${S}/support/thruk_local.conf.example" "${D}/etc/Thruk/thruk_local.conf"
+		cp "${D}/etc/Thruk/thruk_local.conf.example" "${D}/etc/Thruk/thruk_local.conf"
 	fi
 }
-
