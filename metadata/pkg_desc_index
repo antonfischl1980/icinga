@@ -9,6 +9,8 @@ dev-perl/GLPlugin 5.0.1.1 5.0.1.1-r1 5.0.2 5.0.3: Perl modules providing the bas
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.280.0: Perl extension for using UUID interfaces as defined in e2fsprogs
+dev-perl/forks 0.360.0-r2: Emulate threads with fork
+dev-perl/thruk_libs 2.48: easy build thruk perl dependencies
 dev-python/graphite-api 1.1.3-r4: Graphite-web, without the interface. Just the rendering HTTP API.
 dev-python/pywbem 1.2.0 1.3.0 1.4.0 1.4.1: pywbem - A WBEM client
 dev-python/structlog 20.1.0-r2 21.5.0-r1: Structured Logging for Python
@@ -40,6 +42,7 @@ net-analyzer/graphite-web-gunicorn 1.0.0: meta package for installing graphite-w
 net-analyzer/monitoring-plugins 2.3.1-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.0.1.2 4.0.1.3 4.0.1.5: A nagios plugin for checking logfiles
+www-apps/Thruk 2.48: multibackend monitoring webinterface for Nagios/Icinga and others
 www-apps/icingaweb2-module-businessprocess 2.3.1 2.4.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.1.1 1.2.0: Drill-down view for Icinga web 2 based on custom variables.
 www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and displays realtime status of Icinga 2 Networks
@@ -50,3 +53,4 @@ www-apps/icingaweb2-module-incubator 0.14.0 0.15.0 0.16.0 0.16.1: Bleeding edge 
 www-apps/icingaweb2-module-ipl 0.5.0: This module ships the new Icinga PHP library.
 www-apps/icingaweb2-module-map 1.1.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-reactbundle 0.8.0 0.9.0: Icinga Web 2 - ReactPHP-based 3rd party libraries
+www-client/phantomjs-bin 2.1.1: A headless WebKit scriptable with a JavaScript API
