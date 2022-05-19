@@ -20,8 +20,9 @@ DEPEND="
 	dev-perl/Date-Calc
 	dev-perl/forks
 	dev-perl/thruk_libs
-	www-servers/apache
 	www-apache/mod_fcgid
+	www-client/phantomjs-bin
+	www-servers/apache
 	"
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -80,7 +81,7 @@ pkg_preinst(){
 		# Probably the first time we are installed
 		# set some more sane default settings in /etc/conf.d/apache2
 
-		mkdir -p ${D}/etc/conf.d/ 
+		mkdir -p "${D}/etc/conf.d/"
 		sed -E '
 			s#^(APACHE2_OPTS\s*=\s*")([^"]+)(")#\1\2 -D FCGID\3#
 		' < "${EROOT}/etc/conf.d/apache2" > "${D}/etc/conf.d/apache2"
