@@ -49,7 +49,7 @@ jobs:
         fi
         echo -n "::set-output name=checked::"
         jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /checked.lst
-        equery l -o "*::icinga" --format='$category/$name'|sort -u >/all.lst
+        equery l -o "*::icinga" --format='$category/$name' | grep -Evf .github/bin/find-updates.dont_check | sort -u >/all.lst
         echo -n "::set-output name=all::"
         jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /all.lst
         if [ -r /GLPlugin.version ]; then
