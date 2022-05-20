@@ -3,7 +3,7 @@ name: 'bump ebuilds'
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 10 * * *'  # @Daily
+    - cron: '17 5 * * *'  # @Daily
 
 jobs:
   find-updates:
@@ -18,7 +18,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     # emerge --sync not needed in this run
 
@@ -80,7 +80,7 @@ jobs:
         echo "bump: ${{ matrix.bump }}"
 
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: repos.conf/icinga
       run: |
