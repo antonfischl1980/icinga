@@ -1,2 +1,4 @@
+acct-group/graphite-web
+acct-user/graphite-web
 app-admin/VMware-vSphere-CLI
 net-analyzer/check_vmware_esx
