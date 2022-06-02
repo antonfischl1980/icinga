@@ -11,5 +11,6 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/ME/MEWP/DBD-Sybase-1.20.tgz
 _eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	perl-functions	fea344a91ebf37efadf172c6a3de5a72	readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55	perl-module	8eed4e2982026c684ff7c19cd4c88ed0
-_md5_=7db715b928ceb88eaaac4b17606f0236
+_md5_=bd8d2a7a5e5df2a6b53f83d680d73817
