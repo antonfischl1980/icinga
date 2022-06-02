@@ -3,7 +3,8 @@
 
 EAPI=8
 
-DIST_AUTHOR=""
+DIST_AUTHOR="MEWP"
+DIST_A_EXT="tgz"
 
 inherit perl-module
 
