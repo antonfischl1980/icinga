@@ -4,7 +4,7 @@ app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interfa
 app-misc/go-carbon 0.16.2: Golang implementation of Graphite/Carbon server with classic architecture
 dev-libs/icinga-php-thirdparty 0.10.0-r1 0.11.0_rc1: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83: Oracle database driver for the DBI module
-dev-perl/DBD-Sybase 1.18 1.19: DBI driver for XBase compatible database files
+dev-perl/DBD-Sybase 1.18 1.19 1.20: DBI driver for XBase compatible database files
 dev-perl/GLPlugin 5.0.1.1-r1 5.0.2 5.0.3: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
