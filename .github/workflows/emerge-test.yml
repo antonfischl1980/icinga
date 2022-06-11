@@ -164,8 +164,7 @@ jobs:
     
     - name: eclean packages
       run: |
-        find /var/cache/binpkgs/ -type f -print0|xargs -r0 stat --printf='%Y %n\0' | sort -z | sed -zn '1,10s/[^ ]\{1,\} //p' | xargs -r0 rm -v
+        find /var/cache/binpkgs/ -type f -printf '%T@ %p\0' | sort -z | sed -zn '1,10s/[^ ]\{1,\} //p' | xargs -r0 rm -v
         cd /var/cache/binpkgs/
         emaint binhost -f
-        popd
         eclean -v packages
