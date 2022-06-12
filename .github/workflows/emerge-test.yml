@@ -87,6 +87,8 @@ jobs:
         cat /etc/portage/make.conf
         mkdir -p /etc/portage/package.license
         cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
+        mkdir -p /etc/portage/package.mask
+        cat .github/workflows/emerge-test/package.mask >> /etc/portage/package.mask/90_SETUP
         eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
 
     - name: emerge-sync
