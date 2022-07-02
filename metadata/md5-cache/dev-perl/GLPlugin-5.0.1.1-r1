@@ -8,5 +8,5 @@ LICENSE=Artistic-2
 RDEPEND=dev-perl/JSON
 SLOT=0
 SRC_URI=https://github.com/lausser/GLPlugin/archive/74176e8ca89192c9c76b80989c5608ba82758dde.tar.gz -> GLPlugin-5.0.1.1.tar.gz
-_eclasses_=perl-functions	fea344a91ebf37efadf172c6a3de5a72
+_eclasses_=perl-functions	95b2df43c5f3057b6e77bd00b4d953da
 _md5_=5f88e9b606cc74844122205539bc2bdb
