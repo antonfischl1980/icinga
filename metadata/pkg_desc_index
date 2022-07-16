@@ -31,7 +31,7 @@ net-analyzer/check_nextcloud 1.3-r1 2.0: Nagios/Centreon/Icinga plugin for nextc
 net-analyzer/check_nextcloud_security 1.1: Monitoring plugin to check the status of nextcloud security scan for a given URL
 net-analyzer/check_nwc_health 10.1 10.1.0.1 10.1.0.3: plugin which checks the health of network components and interfaces.
 net-analyzer/check_openvpn 0.0.1: Nagios/Icinga check for OpenVPN availability monitoring
-net-analyzer/check_oracle_health 3.1.2.2 3.2.1.6 3.2.1.8 3.2.1.9: A nagios plugin for checking Oracle server health
+net-analyzer/check_oracle_health 3.2.1.6 3.2.1.8 3.2.1.9: A nagios plugin for checking Oracle server health
 net-analyzer/check_poe_consumption_snmp 1.0.0 1.0.1: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
 net-analyzer/check_storage_health 1.3.2: nagios plugin for checking storage systems like HP Lefthand, Netapp
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
@@ -48,7 +48,7 @@ www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and 
 www-apps/icingaweb2-module-director 1.8.1 1.9.0-r1 1.9.1: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-fileshipper 1.2.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-graphite 1.1.0 1.2.0 1.2.1: Module for displaying Graphite data directly in Icinga Web 2
-www-apps/icingaweb2-module-incubator 0.15.0 0.16.0 0.16.1 0.17.0: Bleeding edge Icinga Web 2 libraries
+www-apps/icingaweb2-module-incubator 0.16.0 0.16.1 0.17.0: Bleeding edge Icinga Web 2 libraries
 www-apps/icingaweb2-module-ipl 0.5.0: This module ships the new Icinga PHP library.
 www-apps/icingaweb2-module-map 1.1.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-reactbundle 0.8.0 0.9.0: Icinga Web 2 - ReactPHP-based 3rd party libraries
