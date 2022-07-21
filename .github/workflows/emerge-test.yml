@@ -167,6 +167,7 @@ jobs:
     - name: eclean packages
       run: |
         find /var/cache/binpkgs/ -type f -printf '%T@ %p\0' | sort -z | sed -zn '1,10s/[^ ]\{1,\} //p' | xargs -r0 rm -v
+        rm -Rv /var/cache/binpkgs/dev-lang/go*
         cd /var/cache/binpkgs/
         emaint binhost -f
         eclean -v packages
