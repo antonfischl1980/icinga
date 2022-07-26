@@ -107,7 +107,7 @@ jobs:
     - name: emerge ${{ matrix.ebuild }}
       run: |
         echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST
-        emerge -t1v --jobs=4 "${{ matrix.ebuild }}"
+        emerge -t1v --jobs=4 --buildpkg-exclude="dev-lang/rust-bin" "${{ matrix.ebuild }}"
 
 
 
@@ -167,7 +167,7 @@ jobs:
     - name: eclean packages
       run: |
         find /var/cache/binpkgs/ -type f -printf '%T@ %p\0' | sort -z | sed -zn '1,10s/[^ ]\{1,\} //p' | xargs -r0 rm -v
-        find /var/cache/binpkgs/dev-lang/go* -type d -print0 | xargs -r0 rm -Rv
+        find /var/cache/binpkgs/dev-lang/go* /var/cache/binpkgs/dev-lang/rust-bin* -type d -print0 | xargs -r0 rm -Rv
         cd /var/cache/binpkgs/
         emaint binhost -f
         eclean -v packages
