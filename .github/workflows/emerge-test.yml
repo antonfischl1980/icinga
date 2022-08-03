@@ -16,7 +16,8 @@ env:
 jobs:
   list-all-ebuilds:
     outputs:
-      matrix: ${{ steps.list-all-ebuilds.outputs.matrix }}
+      matrix-first: ${{ steps.list-all-ebuilds.outputs.matrix-first }}
+      matrix-other: ${{ steps.list-all-ebuilds.outputs.matrix-other }}
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
@@ -36,7 +37,7 @@ jobs:
     - name: list-all-ebuilds
       id: list-all-ebuilds
       run: |
-        equery --no-color l -o "*/*::icinga" -F '=$cpv' | \
+        equery --no-color l -o "*/*::icinga" -F '$cp =$cpv' | \
           (
             if [ "${{ github.event.inputs.grep-ebuilds || env.DEFAULT_EBUILDS }}" == "all"  ];then
               grep -vf .github/workflows/emerge-test.filter
@@ -44,39 +45,112 @@ jobs:
               grep "${{ github.event.inputs.grep-ebuilds }}"
             fi
           ) | \
-          sort -u > /todo.lst
-        cat /todo.lst
-        echo -n "::set-output name=matrix::"
-        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo.lst
+          sort -u | \
+          awk '
+            {
+              all[$1][$2]=$2;last[$1]=$2;pkg[$1]=$1
+            } 
+            END{
+              asort(pkg);
+              for(p in pkg){
+                print last[pkg[p]] > "/todo-first.lst";
+                for(a in all[pkg[p]]){
+                  if(all[pkg[p]][a]!=last[pkg[p]]){
+                    other=sprintf("%s%s\n",other,all[pkg[p]][a])
+                  }
+                }
+              }
+              print other > "/todo-other.lst"}'
+        ls -la /todo*.lst
+        cat /todo*.lst
+        echo -n "::set-output name=matrix-first::"
+        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo-first.lst
+        echo -n "::set-output name=matrix-other::"
+        jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' /todo-other.lst
 
 
 
-  emerge-ebuild:
+  emerge-ebuild-first:
     needs: list-all-ebuilds
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
       options: --privileged
     strategy:
-      max-parallel: 1
+      max-parallel: 5
       fail-fast: false
       matrix:
-        ebuild: ${{ fromJSON(needs.list-all-ebuilds.outputs.matrix) }}
+        ebuild: ${{ fromJSON(needs.list-all-ebuilds.outputs.matrix-first) }}
+    steps:
+    - name: verify variables
+      run: |
+        echo "ebuild: ${{ matrix.ebuild }}"
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: setup portage
+      env:
+        BINPKG_URL: ${{ secrets.BINPKG_URL }}
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+        echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
+        echo "make.conf:"
+        cat /etc/portage/make.conf
+        mkdir -p /etc/portage/package.license
+        cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
+        mkdir -p /etc/portage/package.mask
+        cat .github/workflows/emerge-test/package.mask >> /etc/portage/package.mask/90_SETUP
+        eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
+        echo "PORTAGE_BINHOST=${BINPKG_URL}" >> /etc/portage/make.conf
+
+    - name: emerge-sync
+      run: |
+        sudo -u portage git -C /var/db/repos/gentoo pull
+        emerge --sync
+
+    - name: emerge ${{ matrix.ebuild }}
+      run: |
+        echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST 
+        LOGNAME="/var/cache/binpkgs/$(date '+%F-%T')-$(echo "${{ matrix.ebuild }}"|sed 's#/#-#g').log"
+        emerge -t1v --jobs=4 --buildpkg-exclude="dev-lang/rust-bin" "${{ matrix.ebuild }}" |& tee "${LOGNAME}"
+
+    - name: Cache binpkg
+      if: ${{ always() && !cancelled() }}
+      env:
+        BINPKG_UPLOAD: ${{ secrets.BINPKG_UPLOAD }}
+        RSYNC_PASSWORD: ${{ secrets.BINPKG_PASSWORD }}
+      run: |
+        rsync-ssl -zaHDPSv --exclude='Packages' /var/cache/binpkgs/ $BINPKG_UPLOAD 
+
+
+
+
+  emerge-ebuild-other:
+    needs: [list-all-ebuilds, emerge-ebuild-first]
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+      options: --privileged
+    strategy:
+      fail-fast: false
+      matrix:
+        ebuild: ${{ fromJSON(needs.list-all-ebuilds.outputs.matrix-other) }}
 
     steps:
     - name: verify variables
       run: |
         echo "ebuild: ${{ matrix.ebuild }}"
 
-    - name: Get Date
-      id: get-date
-      run: |
-        echo "::set-output name=datetime::$(/bin/date -u "+%Y%m%d-%H%M%S")"
-
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: setup portage
+      env:
+        BINPKG_URL: ${{ secrets.BINPKG_URL }}
       run: |
         mkdir -p /etc/portage/repos.conf/
         echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
@@ -90,84 +164,26 @@ jobs:
         mkdir -p /etc/portage/package.mask
         cat .github/workflows/emerge-test/package.mask >> /etc/portage/package.mask/90_SETUP
         eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
+        echo "PORTAGE_BINHOST=${BINPKG_URL}" >> /etc/portage/make.conf
 
     - name: emerge-sync
       run: |
         sudo -u portage git -C /var/db/repos/gentoo pull
         emerge --sync
-
-    - uses: actions/cache@v3
-      name: Cache binpkg
-      with:
-        path: /var/cache/binpkgs/
-        key: ${{ runner.os }}-binpkg-${{ steps.get-date.outputs.datetime }}
-        restore-keys: |
-          ${{ runner.os }}-binpkg-
 
     - name: emerge ${{ matrix.ebuild }}
       run: |
-        echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST
-        emerge -t1v --jobs=4 --buildpkg-exclude="dev-lang/rust-bin" "${{ matrix.ebuild }}"
+        echo "${{ matrix.ebuild }} ~amd64" >/etc/portage/package.accept_keywords/99_TEST 
+        LOGNAME="/var/cache/binpkgs/$(date '+%F-%T')-$(echo "${{ matrix.ebuild }}"|sed 's#/#-#g').log"
+        emerge -t1v --jobs=4 --buildpkg-exclude="dev-lang/rust-bin" "${{ matrix.ebuild }}" |& tee "${LOGNAME}"
+
+    - name: Cache binpkg
+      if: ${{ always() && !cancelled() }}
+      env:
+        BINPKG_UPLOAD: ${{ secrets.BINPKG_UPLOAD }}
+        RSYNC_PASSWORD: ${{ secrets.BINPKG_PASSWORD }}
+      run: |
+        rsync-ssl -zaHDPSv --exclude='Packages' /var/cache/binpkgs/ $BINPKG_UPLOAD 
 
 
 
-  eclean-packages:
-    needs: emerge-ebuild
-    if: ${{ always() && !cancelled() }}
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/antonfischl1980/gentoo-ci:main
-      options: --privileged
-    steps:
-
-    - name: Get Date
-      id: get-date
-      run: |
-        echo "::set-output name=datetime::$(/bin/date -u "+%Y%m%d-%H%M%S")"
-    
-    - name: Checkout code
-      uses: actions/checkout@v3
-    
-    - name: setup portage
-      run: |
-        mkdir -p /etc/portage/repos.conf/
-        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
-        pwd -P >> /etc/portage/repos.conf/icinga.conf
-        cat /etc/portage/repos.conf/*.conf
-        echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
-        echo "make.conf:"
-        cat /etc/portage/make.conf
-        mkdir -p /etc/portage/package.license
-        cat .github/workflows/emerge-test/package.license >> /etc/portage/package.license/90_SETUP
-        mkdir -p /etc/portage/package.mask
-        cat .github/workflows/emerge-test/package.mask >> /etc/portage/package.mask/90_SETUP
-        eselect profile set 'icinga:default/linux/amd64/17.1/no-multilib/icinga'
-
-    - name: emerge-sync
-      run: |
-        sudo -u portage git -C /var/db/repos/gentoo pull
-        emerge --sync
-
-    - uses: actions/cache@v3
-      name: Cache binpkg
-      with:
-        path: /var/cache/binpkgs/
-        key: ${{ runner.os }}-binpkg-${{ steps.get-date.outputs.datetime }}
-        restore-keys: |
-          ${{ runner.os }}-binpkg-
-    
-    - name: list binpkgs alphabetically
-      run: |
-        find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -la
-    
-    - name: list binpkgs by modtime
-      run: |
-        find /var/cache/binpkgs/ -type f -print0|xargs -r0 ls -latr
-    
-    - name: eclean packages
-      run: |
-        find /var/cache/binpkgs/ -type f -printf '%T@ %p\0' | sort -z | sed -zn '1,10s/[^ ]\{1,\} //p' | xargs -r0 rm -v
-        find /var/cache/binpkgs/dev-lang/go* /var/cache/binpkgs/dev-lang/rust-bin* -type d -print0 | xargs -r0 rm -Rv
-        cd /var/cache/binpkgs/
-        emaint binhost -f
-        eclean -v packages
