@@ -19,7 +19,7 @@ jobs:
 
     - name: Check if gentoo-repo has changed
       id: skip-regen
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         key: ${{ steps.gentoo.outputs.last-commit }} 
         path: gentoo-last-commit
