@@ -17,13 +17,15 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+IUSE="php_targets_php7-4 php_targets_php8-0"
+PHP_DEPEND="
+	php_targets_php7-4? ( dev-lang/php:7.4[curl] )
+	php_targets_php8-0? ( dev-lang/php:8.0[curl] )
+"
 DEPEND=">=net-analyzer/icinga2-2.4.3
 	>=www-apps/icingaweb2-2.2.0
-	|| (
-		dev-lang/php:7.3[curl]
-		dev-lang/php:7.4[curl]
-		dev-lang/php:8.0[curl]
-	)"
+	${PHP_DEPEND}
+	"
 RDEPEND="${DEPEND}"
 
 src_install() {
