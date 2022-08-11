@@ -17,16 +17,17 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1"
+PHP_DEPEND="
+	php_targets_php7-4? ( dev-lang/php:7.4[curl] )
+	php_targets_php8-0? ( dev-lang/php:8.0[curl] )
+	php_targets_php8-1? ( dev-lang/php:8.1[curl] )
+"
 DEPEND="
 	>=www-apps/icingaweb2-2.9.0
-	|| (
-		dev-lang/php:7.3[curl]
-		dev-lang/php:7.4[curl]
-		dev-lang/php:8.0[curl]
-		dev-lang/php:8.1[curl]
-	)
 	>=dev-libs/icinga-php-library-0.8.0
 	>=dev-libs/icinga-php-thirdparty-0.11.0_rc1
+	${PHP_DEPEND}
 	"
 RDEPEND="${DEPEND}"
 
