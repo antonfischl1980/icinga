@@ -8,7 +8,7 @@ x11-libs/gdk-pixbuf jpeg
 # Anton Fischl <github@fischl-online.de> (2022-05-03)
 # whole block is needed for www-apps/icingaweb2
 www-apps/icingaweb2 apache2 apache2-server fpm mysql pdf
-dev-lang/php apache2 cli fpm gd intl mysql nls pdo sockets ssl xslt xml curl pcntl
+dev-lang/php apache2 cli fpm gd intl mysql nls pdo sockets ssl xslt xml curl pcntl zip
 app-eselect/eselect-php apache2 fpm
 # for dev-php/pecl-imagick
 media-gfx/imagemagick -openmp png

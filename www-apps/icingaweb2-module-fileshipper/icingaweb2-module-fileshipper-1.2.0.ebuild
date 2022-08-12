@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Create top-level views of your applications in a graphical editor."
 HOMEPAGE="https://github.com/Icinga/icingaweb2-module-fileshipper"
@@ -17,14 +17,29 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-analyzer/icinga2-2.4.3
-	>=www-apps/icingaweb2-2.2.0
-	|| (
-		dev-lang/php:7.3[curl]
-		dev-lang/php:7.4[curl]
-		dev-lang/php:8.0[curl]
-	)"
-RDEPEND="${DEPEND}"
+IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1 yaml xlsx xml"
+PHP_DEPEND="
+	php_targets_php7-4? (
+		yaml? ( dev-php/pecl-yaml )
+		xlsx? ( dev-lang/php:7.4[zip] )
+		dev-lang/php:7.4[xml?]
+	)
+	php_targets_php8-0? (
+		yaml? ( dev-php/pecl-yaml )
+		xlsx? ( dev-lang/php:8.0[zip] )
+		dev-lang/php:8.0[xml?]
+	)
+	php_targets_php8-1? (
+		yaml? ( dev-php/pecl-yaml )
+		xlsx? ( dev-lang/php:8.1[zip] )
+		dev-lang/php:8.1[xml?]
+	)
+"
+RDEPEND="
+	www-apps/icingaweb2-module-director
+	${PHP_DEPEND}
+	"
+BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
