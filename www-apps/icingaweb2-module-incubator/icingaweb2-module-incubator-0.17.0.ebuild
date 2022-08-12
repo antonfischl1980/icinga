@@ -17,15 +17,21 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-analyzer/icinga2-2.13
+IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1"
+PHP_DEPEND="
+	php_targets_php7-4? ( dev-lang/php:7.4[curl] )
+	php_targets_php8-0? ( dev-lang/php:8.0[curl] )
+	php_targets_php8-1? ( dev-lang/php:8.1[curl] )
+"
+RDEPEND="
+	${PHP_DEPEND}
 	>=www-apps/icingaweb2-2.9.0
-	dev-lang/php:*[curl]
 	|| (
 		>=dev-libs/icinga-php-thirdparty-0.5.0
 		>=www-apps/icingaweb2-module-ipl-0.5.0
 	)
 	>=www-apps/icingaweb2-module-reactbundle-0.8.0"
-RDEPEND="${DEPEND}"
+BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
