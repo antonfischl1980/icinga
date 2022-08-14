@@ -24,7 +24,7 @@ RDEPEND="
 		dev-lang/php:8.0[curl]
 		dev-lang/php:8.1[curl]
 	)"
-DEPEND="${DEPEND}"
+DEPEND=""
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
