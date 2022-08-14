@@ -42,6 +42,7 @@ net-analyzer/monitoring-plugins 2.3.1-r4: 50+ standard plugins for Icinga, Naemo
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.0.1.7 4.1 4.1.0.1: A nagios plugin for checking logfiles
 www-apps/Thruk 2.48 2.48.2: multibackend monitoring webinterface for Nagios/Icinga and others
+www-apps/icingaweb2 2.11.1: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.3.1 2.4.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.1.1 1.2.0 1.2.1: Drill-down view for Icinga web 2 based on custom variables.
 www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and displays realtime status of Icinga 2 Networks
