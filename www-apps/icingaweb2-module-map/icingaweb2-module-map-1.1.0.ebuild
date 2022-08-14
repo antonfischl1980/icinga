@@ -17,14 +17,14 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-analyzer/icinga2-2.4.3
-	>=www-apps/icingaweb2-2.2.0
+RDEPEND="
+	>=www-apps/icingaweb2-2.9.0
 	|| (
-		dev-lang/php:7.3[curl]
 		dev-lang/php:7.4[curl]
 		dev-lang/php:8.0[curl]
+		dev-lang/php:8.1[curl]
 	)"
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}"
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
