@@ -33,7 +33,7 @@ RDEPEND="
 	)
 	>=www-apps/icingaweb2-module-incubator-0.12.0
 	"
-DEPEND="${DEPEND}"
+DEPEND=""
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
