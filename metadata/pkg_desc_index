@@ -49,7 +49,5 @@ www-apps/icingaweb2-module-director 1.9.0-r1 1.9.1: Icinga Web 2 plugin for conf
 www-apps/icingaweb2-module-fileshipper 1.2.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-graphite 1.1.0 1.2.0 1.2.1: Module for displaying Graphite data directly in Icinga Web 2
 www-apps/icingaweb2-module-incubator 0.16.0 0.16.1 0.17.0: Bleeding edge Icinga Web 2 libraries
-www-apps/icingaweb2-module-ipl 0.5.0: This module ships the new Icinga PHP library.
 www-apps/icingaweb2-module-map 1.1.0: Create top-level views of your applications in a graphical editor.
-www-apps/icingaweb2-module-reactbundle 0.8.0 0.9.0: Icinga Web 2 - ReactPHP-based 3rd party libraries
 www-client/phantomjs-bin 2.1.1: A headless WebKit scriptable with a JavaScript API
