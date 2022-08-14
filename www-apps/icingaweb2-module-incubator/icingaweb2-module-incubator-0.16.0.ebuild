@@ -26,10 +26,8 @@ PHP_DEPEND="
 RDEPEND="
 	${PHP_DEPEND}
 	>=www-apps/icingaweb2-2.9.0
-	|| (
-		>=dev-libs/icinga-php-thirdparty-0.5.0
-		>=www-apps/icingaweb2-module-ipl-0.5.0
-	)
+	>=dev-libs/icinga-php-thirdparty-0.8.0
+	>=dev-libs/icinga-php-library-0.5.0
 	"
 BDEPEND=""
 
