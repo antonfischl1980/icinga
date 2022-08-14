@@ -55,16 +55,16 @@ pkg_config() {
 	else
 		einfo "Running first time setup ..."
 		einfo "Creating configuration directory ..."
-		/usr/share/${PN}/bin/icingacli setup config directory
+		/usr/share/"${PN}"/bin/icingacli setup config directory
 		einfo "Creating authentication token for web setup ..."
-		/usr/share/${PN}/bin/icingacli setup token create
+		/usr/share/"${PN}"/bin/icingacli setup token create
 		if use apache2 ; then
 			einfo "The following might be useful for your Apache2 configuration:"
-			/usr/share/${PN}/bin/icingacli setup config webserver apache --document-root /usr/share/${PN}/public
+			/usr/share/"${PN}"/bin/icingacli setup config webserver apache --document-root /usr/share/"${PN}"/public
 		fi
 		if use nginx ; then
 			einfo "The following might be useful for your NGinx configuration:"
-			/usr/share/${PN}/bin/icingacli setup config webserver nginx --document-root /usr/share/${PN}/public
+			/usr/share/"${PN}"/bin/icingacli setup config webserver nginx --document-root /usr/share/"${PN}"/public
 		fi
 	fi
 	einfo "All done."
