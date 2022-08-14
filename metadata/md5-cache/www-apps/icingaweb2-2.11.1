@@ -3,7 +3,7 @@ DEPEND=>=net-analyzer/icinga2-2.1.1 dev-php/pecl-imagick pdf? ( media-gfx/imagem
 DESCRIPTION=Icinga Web 2 - Frontend for icinga2
 EAPI=7
 HOMEPAGE=http://www.icinga.org/
-INHERIT=depend.apache multilib
+INHERIT=depend.apache
 IUSE=apache2 apache2-server fpm ldap mysql nginx pdf postgres php_targets_php7-4 php_targets_php8-0 php_targets_php8-1 apache2
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -11,5 +11,5 @@ RDEPEND=>=net-analyzer/icinga2-2.1.1 dev-php/pecl-imagick pdf? ( media-gfx/image
 REQUIRED_USE=( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2/tar.gz/v2.11.1 -> icingaweb2-2.11.1.tar.gz
-_eclasses_=depend.apache	416d1c5005c5f4594e79812fb7323f0d	multilib	5ca4e49abed8e3a2f7b56920eadee157	toolchain-funcs	1542e649be915f43f6908a9e93909961
-_md5_=5c6516667b8062287efe6b2c1a933706
+_eclasses_=depend.apache	416d1c5005c5f4594e79812fb7323f0d
+_md5_=bdb7fb50ee002689d87c1815f6e13ce0
