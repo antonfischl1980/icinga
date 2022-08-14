@@ -30,7 +30,7 @@ RDEPEND="
 		>=dev-libs/icinga-php-thirdparty-0.5.0
 		>=www-apps/icingaweb2-module-ipl-0.5.0
 	)
-	>=www-apps/icingaweb2-module-reactbundle-0.8.0"
+	"
 BDEPEND=""
 
 src_install() {
