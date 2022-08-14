@@ -17,7 +17,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-analyzer/icinga2-2.4.3
+RDEPEND="
 	>=www-apps/icingaweb2-2.9.0
 	>=dev-libs/icinga-php-library-0.8.0
 	>=dev-libs/icinga-php-thirdparty-0.10.0
@@ -28,7 +28,7 @@ DEPEND=">=net-analyzer/icinga2-2.4.3
 	)
 	!!dev-python/graphite-api
 	"
-RDEPEND="${DEPEND}"
+DEPEND=""
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
