@@ -24,19 +24,16 @@ PATCHES=$(
 )
 
 # Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
-DEPEND=">=net-analyzer/icinga2-2.6.0
-	>=www-apps/icingaweb2-2.6.0
+RDEPEND="
+	>=www-apps/icingaweb2-2.9.0
 	|| (
-		dev-lang/php:7.3[curl,iconv,pcntl,posix,sockets,json]
 		dev-lang/php:7.4[curl,iconv,pcntl,posix,sockets,json]
 		dev-lang/php:8.0[curl,iconv,pcntl,posix,sockets]
 		dev-lang/php:8.1[curl,iconv,pcntl,posix,sockets]
 	)
-	>=www-apps/icingaweb2-module-reactbundle-0.9.0
 	>=www-apps/icingaweb2-module-incubator-0.12.0
-	>=www-apps/icingaweb2-module-ipl-0.5.0
 	"
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}"
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
