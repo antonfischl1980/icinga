@@ -11,6 +11,6 @@
 		<flag name="fpm">Adds FPM support to php</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">Icinga/icingaweb2-module-cube</remote-id>
+		<remote-id type="github">Icinga/icingaweb2</remote-id>
 	</upstream>
 </pkgmetadata>
