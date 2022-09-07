@@ -15,7 +15,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # emerge --sync not needed for this workflow
 
