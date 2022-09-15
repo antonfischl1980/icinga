@@ -1,6 +1,5 @@
 # Gentoo Overlay Repository for Icinga2 related stuff (mainly check plugins)
 QA-Status:
-[![repoman](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/repoman.yml)
 [![pkgcheck](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/pkgcheck.yml)
 [![ShellCheck](https://github.com/antonfischl1980/icinga/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/antonfischl1980/icinga/actions/workflows/shellcheck.yml)
 
