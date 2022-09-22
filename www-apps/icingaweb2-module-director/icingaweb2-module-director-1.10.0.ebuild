@@ -20,13 +20,13 @@ SLOT="0"
 # Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
 IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1"
 PHP_DEPEND="
-	php_targets_php7-4? ( dev-lang/php:7.4[curl] )
-	php_targets_php8-0? ( dev-lang/php:8.0[curl] )
-	php_targets_php8-1? ( dev-lang/php:8.1[curl] )
+	php_targets_php7-4? ( dev-lang/php:7.4[curl,iconv,pcntl,posix,sockets] )
+	php_targets_php8-0? ( dev-lang/php:8.0[curl,iconv,pcntl,posix,sockets] )
+	php_targets_php8-1? ( dev-lang/php:8.1[curl,iconv,pcntl,posix,sockets] )
 "
 RDEPEND="
 	${PHP_DEPEND}
-	>=www-apps/icingaweb2-module-incubator-0.12.0
+	>=www-apps/icingaweb2-module-incubator-0.18.0
 	>=dev-libs/icinga-php-library-0.5.0
 	>=dev-libs/icinga-php-thirdparty-0.9.0
 	>=www-apps/icingaweb2-2.9.0
@@ -48,9 +48,9 @@ pkg_postinst() {
 	# numbers, even though in practice it is typically just one.
 	local oldver
 	for oldver in ${REPLACING_VERSIONS}; do
-		if ver_test "${oldver}" -lt "1.9.0"; then
+		if ver_test "${oldver}" -lt "1.10.0"; then
 			ewarn "You are upgrading from $oldver to ${PVR}"
-			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.9.x"
+			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.10.x"
 			ewarn "for breaking changes"
 			ewarn ""
 			ewarn "Also, don't forget to upgrade database schema."
