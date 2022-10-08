@@ -49,6 +49,6 @@ www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and 
 www-apps/icingaweb2-module-director 1.9.0-r1 1.9.1 1.10.0: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-fileshipper 1.2.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-graphite 1.2.0 1.2.1: Module for displaying Graphite data directly in Icinga Web 2
-www-apps/icingaweb2-module-incubator 0.16.1 0.17.0 0.18.0: Bleeding edge Icinga Web 2 libraries
+www-apps/icingaweb2-module-incubator 0.16.1 0.17.0 0.18.0 0.19.0: Bleeding edge Icinga Web 2 libraries
 www-apps/icingaweb2-module-map 1.1.0: Create top-level views of your applications in a graphical editor.
 www-client/phantomjs-bin 2.1.1: A headless WebKit scriptable with a JavaScript API
