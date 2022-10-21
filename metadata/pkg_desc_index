@@ -31,7 +31,7 @@ net-analyzer/check_nextcloud 1.3-r1 2.0: Nagios/Centreon/Icinga plugin for nextc
 net-analyzer/check_nextcloud_security 1.1: Monitoring plugin to check the status of nextcloud security scan for a given URL
 net-analyzer/check_nwc_health 10.2 10.2.1 10.3: plugin which checks the health of network components and interfaces.
 net-analyzer/check_openvpn 0.0.1: Nagios/Icinga check for OpenVPN availability monitoring
-net-analyzer/check_oracle_health 3.2.1.6 3.2.1.8 3.2.1.9: A nagios plugin for checking Oracle server health
+net-analyzer/check_oracle_health 3.2.1.6 3.2.1.8 3.2.1.9 3.3: A nagios plugin for checking Oracle server health
 net-analyzer/check_poe_consumption_snmp 1.0.0 1.0.1: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
 net-analyzer/check_storage_health 1.3.2: nagios plugin for checking storage systems like HP Lefthand, Netapp
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
