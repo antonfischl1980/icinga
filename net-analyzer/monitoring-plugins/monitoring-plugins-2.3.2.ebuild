@@ -61,8 +61,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/define-own-mysql-port-constant.patch"
-	"${FILESDIR}/01-check_disk.patch"
-	"${FILESDIR}/02-check_snmp-add-multiplier.patch"
+	"${FILESDIR}/pr1524-check_snmp-add-multiplier.patch"
 )
 
 src_configure() {
