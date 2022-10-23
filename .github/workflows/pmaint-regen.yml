@@ -19,6 +19,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
+    # https://github.com/peter-evans/create-pull-request/issues/1170
+    - name: Bug workaround
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
     - name: emerge-sync
       run: |
         sudo -u portage git -C /var/db/repos/gentoo pull
