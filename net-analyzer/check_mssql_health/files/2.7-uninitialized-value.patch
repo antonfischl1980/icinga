@@ -1,0 +1,12 @@
+diff --git a/plugins-scripts/Classes/MSSQL/Component/DatabaseSubsystem.pm b/plugins-scripts/Classes/MSSQL/Component/DatabaseSubsystem.pm
+index d126555..8a73209 100644
+--- a/plugins-scripts/Classes/MSSQL/Component/DatabaseSubsystem.pm
++++ b/plugins-scripts/Classes/MSSQL/Component/DatabaseSubsystem.pm
+@@ -510,6 +510,7 @@ sub is_backup_node {
+ 
+ sub is_restoring_mirror {
+   my $self = shift;
++  $self->{mirroring_role_desc} //="";
+   if (exists $self->{mirroring_role_desc} &&
+       lc $self->{mirroring_role_desc} eq "mirror") {
+     # and state_desc == RESTORING
