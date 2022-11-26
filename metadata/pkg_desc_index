@@ -36,7 +36,7 @@ net-analyzer/check_poe_consumption_snmp 1.0.0 1.0.1: Nagios/Icinga check for PoE
 net-analyzer/check_storage_health 1.3.2 1.5: nagios plugin for checking storage systems like HP Lefthand, Netapp
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
 net-analyzer/check_ups_health 3.0.2 3.0.3 3.0.4.1: A nagios plugin for checking USV health
-net-analyzer/check_vmware_esx 1.2.3: check_vmware_esx for VMware Monitoring
+net-analyzer/check_vmware_esx 1.2.3 1.2.5: check_vmware_esx for VMware Monitoring
 net-analyzer/graphite-web-gunicorn 1.0.0: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins 2.3.1-r4 2.3.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
