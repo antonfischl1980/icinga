@@ -98,6 +98,8 @@ jobs:
         pwd -P >> /etc/portage/repos.conf/icinga.conf
         cat /etc/portage/repos.conf/*.conf
         echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
+        echo 'BINPKG_FORMAT="gpkg"' >> /etc/portage/make.conf
+        echo 'BINPKG_COMPRESS="lzop"' >> /etc/portage/make.conf
         echo "make.conf:"
         cat /etc/portage/make.conf
         mkdir -p /etc/portage/package.license
@@ -159,6 +161,8 @@ jobs:
         pwd -P >> /etc/portage/repos.conf/icinga.conf
         cat /etc/portage/repos.conf/*.conf
         echo 'FEATURES="${FEATURES} buildpkg binpkg-multi-instance getbinpkg"' >> /etc/portage/make.conf
+        echo 'BINPKG_FORMAT="gpkg"' >> /etc/portage/make.conf
+        echo 'BINPKG_COMPRESS="lzop"' >> /etc/portage/make.conf
         echo "make.conf:"
         cat /etc/portage/make.conf
         mkdir -p /etc/portage/package.license
