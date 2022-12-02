@@ -13,9 +13,9 @@ KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}
+	app-alternatives/awk
 	app-shells/bash
 	net-analyzer/net-snmp
-	virtual/awk
 	"
 BDEPEND=""
 
