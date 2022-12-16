@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module
+inherit bash-completion-r1 go-module
 
 DESCRIPTION="A command line tool to interact with Gitea servers"
 HOMEPAGE="https://gitea.com/gitea/tea"
@@ -26,4 +26,9 @@ src_compile(){
 
 src_install(){
 	dobin "${PN}"
+	dodoc ./*.md
+
+	newbashcomp contrib/autocomplete.sh "${PN}"
+	insinto /usr/share/zsh/site-functions
+	newins contrib/autocomplete.zsh "_${PN}"
 }
