@@ -1,0 +1,76 @@
+name: 'stabilise ebuilds'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * 5'  # @Weekly
+
+jobs:
+  find-ebuilds-to-stabilise:
+    runs-on: ubuntu-latest
+    outputs:
+      TODO_JSON: ${{ steps.find-ebuilds.outputs.TODO_JSON }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: find ebuilds to stabilise
+      id: find-ebuilds
+      run: |
+        DATE_BEFORE="$(date +%s --date='28 days ago')"
+        while read -r ebuild;do
+          COMMIT_DATE="$(git log --format='%at' -n 1 "$ebuild")"
+          if [ "$COMMIT_DATE" -lt "$DATE_BEFORE" ];then 
+            echo "$ebuild"|sed -E 's#^\./##;s#/[^/]+/#/#;s#\.ebuild$##' >>.todo.lst
+          fi
+        done < <(find -type f -name "*.ebuild" -print0|xargs -r0 grep -l '^KEYWORDS=.*~amd64')
+        cat .todo.lst
+        TODO_JSON="$(jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' .todo.lst)"
+        echo "TODO_JSON=$TODO_JSON" >> $GITHUB_OUTPUT
+
+  stabilise:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/antonfischl1980/gentoo-ci:main
+    needs:
+      - find-ebuilds-to-stabilise
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.find-ebuilds-to-stabilise.outputs.TODO_JSON) }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # https://github.com/peter-evans/create-pull-request/issues/1170
+    - name: Bug workaround
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+    - name: repos.conf/icinga
+      run: |
+        mkdir -p /etc/portage/repos.conf/
+        echo -en "[icinga]\nlocation = " >/etc/portage/repos.conf/icinga.conf
+        pwd -P >> /etc/portage/repos.conf/icinga.conf
+        cat /etc/portage/repos.conf/*.conf
+
+    - name: stabilise ${{ matrix.package }}
+      run: |
+        echo "${{ matrix.package }}"
+        equery l -o "${{ matrix.package }}" --format='$cp/$name-$fullversion.ebuild'
+        EBUILD_FILE="$(equery -q -C l -o "${{ matrix.package }}" --format='$cp/$name-$fullversion.ebuild')"
+        echo "EBUILD_FILE: $EBUILD_FILE"
+        ekeyword all "$EBUILD_FILE"
+        git diff
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        title: '[ stabilise ] ${{ matrix.package }}'
+        body: 'automated stabilise from .github/workflows/stabilise-ebuild.yml'
+        commit-message: '${{ matrix.package }}: mark stable'
+        branch: ${{ matrix.package }}
+        assignees: antonfischl1980
+        delete-branch: true
+
