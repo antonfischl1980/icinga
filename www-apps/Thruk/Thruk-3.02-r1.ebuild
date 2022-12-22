@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 
 PATCHES=(
 	"${FILESDIR}/01-threads.patch"
+	"${FILESDIR}/3.0-themes-precompiled.patch"
 )
 
 DEPEND="
