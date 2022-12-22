@@ -9,4 +9,4 @@ LICENSE=GPL-1
 RDEPEND=dev-perl/Cpanel-JSON-XS dev-perl/Date-Calc dev-perl/forks dev-perl/thruk_libs www-apache/mod_fcgid www-client/phantomjs-bin www-servers/apache
 SLOT=0
 SRC_URI=https://github.com/sni/Thruk/archive/refs/tags/v3.02.tar.gz -> Thruk-3.02.tar.gz
-_md5_=6ccc0ebf92eea3d83b26816b7518aafe
+_md5_=04cb69cc22120547acccbfc7be660ae2
