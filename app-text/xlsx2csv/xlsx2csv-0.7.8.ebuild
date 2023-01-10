@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="dev-lang/perl"
 
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=( "${FILESDIR}"/"${PN}-0.7.8-tests.patch" )
 
 python_compile_all() {
 	emake -C man
@@ -31,5 +31,5 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	doman man/${PN}.1
+	doman "man/${PN}.1"
 }
