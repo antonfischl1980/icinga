@@ -130,7 +130,7 @@ jobs:
         fi
         ekeyword ~all "$NEW_EBUILD"
         # Update Copyright & EAPI=7 => EAPI=8 (mostly compatible)
-        sed --in-place -E '1s/Copyright [0-9-]+/Copyright 1999-2022/; s/^(EAPI=.*)7(.*)/\18\2/' "$NEW_EBUILD"
+        sed --in-place -E '1s/Copyright [0-9-]+/Copyright 1999-2023/; s/^(EAPI=.*)7(.*)/\18\2/' "$NEW_EBUILD"
         ebuild "$NEW_EBUILD" manifest
 
     - name: Create Pull Request
