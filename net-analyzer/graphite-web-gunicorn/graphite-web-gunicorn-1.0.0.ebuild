@@ -44,7 +44,7 @@ pkg_preinst(){
 
 		sed -E "
 			s/^(#SECRET_KEY = 'UNSAFE_DEFAULT')/\1\nSECRET_KEY = '$(openssl rand -base64 12|tr -d '/')'/
-			s#^(\#TIME_ZONE = 'America/Los_Angeles')#\1\nTIME_ZONE = '$(head -1 /etc/timezone)'#
+			s#^(\#TIME_ZONE = 'America/Los_Angeles')#\1\nTIME_ZONE = '$(head -n 1 /etc/timezone)'#
 			s#^(STORAGE_DIR = '/var/lib/carbon')#\#\1\nSTORAGE_DIR = '/var/lib/graphite'#
 			s#^(WHISPER_DIR = '/var/lib/carbon/whisper')#\#\1\nWHISPER_DIR = '/var/lib/graphite/whisper/'#
 			s#^(RRD_DIR = '/var/lib/carbon/rrd')#\#\1\nRRD_DIR = '/var/lib/graphite/rrd'#
