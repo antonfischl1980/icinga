@@ -5,4 +5,7 @@
     <email>github@fischl-online.de</email>
     <name>Anton Fischl</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">antonfischl1980/icinga</remote-id>
+  </upstream>
 </pkgmetadata>
