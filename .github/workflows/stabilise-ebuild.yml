@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       TODO_JSON: ${{ steps.find-ebuilds.outputs.TODO_JSON }}
+      skip: ${{ steps.find-ebuilds.outputs.skip }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -27,9 +28,16 @@ jobs:
             echo "$ebuild"|sed -E 's#^\./##;s#/[^/]+/#/#;s#\.ebuild$##' >>.todo.lst
           fi
         done < <(find -type f -name "*.ebuild" -print0|xargs -r0 grep -l '^KEYWORDS=.*~amd64')
-        cat .todo.lst
-        TODO_JSON="$(jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' .todo.lst)"
-        echo "TODO_JSON=$TODO_JSON" >> $GITHUB_OUTPUT
+        if [ -r .todo.lst ]; then
+          echo "xxxxxxxxxxxxxxxxxxxxx"
+          echo "Todo:"
+          cat .todo.lst
+          TODO_JSON="$(jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' .todo.lst)"
+          echo "TODO_JSON=$TODO_JSON" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT 
+        else
+          echo "skip=true" >> $GITHUB_OUTPUT 
+        fi
 
   stabilise:
     runs-on: ubuntu-latest
@@ -37,6 +45,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     needs:
       - find-ebuilds-to-stabilise
+    if: ${{ !needs.find-ebuilds-to-stabilise.outputs.skip }}
     strategy:
       fail-fast: false
       matrix:
