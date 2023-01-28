@@ -19,6 +19,7 @@ jobs:
     - name: find ebuilds to stabilise
       id: find-ebuilds
       run: |
+        touch .todo.lst
         DATE_BEFORE="$(date +%s --date='28 days ago')"
         while read -r ebuild;do
           COMMIT_DATE="$(git log --format='%at' -n 1 "$ebuild")"
