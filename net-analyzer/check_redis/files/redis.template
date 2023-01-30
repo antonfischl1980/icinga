@@ -1,0 +1,43 @@
+[redis_response_time.graph]
+check_command = "redis"
+
+[redis_response_time.metrics_filters]
+value = "$service_name_template$.perfdata.response_time.value"
+warn = "$service_name_template$.perfdata.response_time.warn"
+crit = "$service_name_template$.perfdata.response_time.crit"
+
+[redis_response_time.urlparams]
+areaAlpha = "0.5"
+areaMode = "first"
+lineWidth = "2"
+min = "0"
+title = "Response Time (milisec)"
+yUnitSystem = "msec"
+
+[redis_response_time.functions]
+value = "legendValue(alias(color(keepLastValue(scale($metric$,1000)), '#1a7dd7'), '(msec) '), 'last', 'max', 'avg', 'min', 'si')"
+warn = "legendValue(alias(color(keepLastValue(scale($metric$,1000)), '#FFA500'), 'Warning'), 'last', 'si')"
+crit = "legendValue(alias(color(keepLastValue(scale($metric$,1000)), '#ff0000'), 'Critical'), 'last', 'si')"
+
+[redis_hitrate.graph]
+check_command = "redis"
+
+[redis_hitrate.metrics_filters]
+value = "$service_name_template$.perfdata.hitrate.value"
+warn = "$service_name_template$.perfdata.hitrate.warn"
+crit = "$service_name_template$.perfdata.hitrate.crit"
+
+[redis_hitrate.urlparams]
+areaAlpha = "0.5"
+areaMode = "first"
+lineWidth = "2"
+min = "0"
+max = "100"
+title = "Hitrate (%)"
+yUnitSystem = "si"
+
+[redis_hitrate.functions]
+value = "legendValue(alias(color(keepLastValue($metric$), '#1a7dd7'), 'Hitrate (%) '), 'last', 'max', 'avg', 'min', 'si')"
+warn = "legendValue(alias(color(keepLastValue($metric$), '#FFA500'), 'Warning'), 'last', 'si')"
+crit = "legendValue(alias(color(keepLastValue($metric$), '#ff0000'), 'Critical'), 'last', 'si')"
+
