@@ -28,13 +28,12 @@ jobs:
             echo "$ebuild"|sed -E 's#^\./##;s#/[^/]+/#/#;s#\.ebuild$##' >>.todo.lst
           fi
         done < <(find -type f -name "*.ebuild" -print0|xargs -r0 grep -l '^KEYWORDS=.*~amd64')
-        if [ -r .todo.lst ]; then
+        if [ "$( wc -l < .todo.lst )" -gt 0 ]; then
           echo "xxxxxxxxxxxxxxxxxxxxx"
           echo "Todo:"
           cat .todo.lst
           TODO_JSON="$(jq --compact-output --monochrome-output --raw-input --slurp 'split("\n") | map(select(. != ""))' .todo.lst)"
           echo "TODO_JSON=$TODO_JSON" >> $GITHUB_OUTPUT
-          echo "skip=false" >> $GITHUB_OUTPUT 
         else
           echo "skip=true" >> $GITHUB_OUTPUT 
         fi
