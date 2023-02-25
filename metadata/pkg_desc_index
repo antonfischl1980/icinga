@@ -6,7 +6,7 @@ app-text/xlsx2csv 0.7.8 0.8.0: Convert MS Office xlsx files to CSV
 dev-libs/icinga-php-library 0.9.1 0.10.0 0.10.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/icinga-php-thirdparty 0.11.0: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83: Oracle database driver for the DBI module
-dev-perl/DBD-Sybase 1.18 1.19 1.20 1.21 1.22 1.23: DBI driver for XBase compatible database files
+dev-perl/DBD-Sybase 1.19 1.20 1.21 1.22 1.23: DBI driver for XBase compatible database files
 dev-perl/GLPlugin 5.4 5.5 5.6 5.7 5.7.1 5.8 5.9: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
