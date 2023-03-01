@@ -1,0 +1,4 @@
+# 2023-03-01 see https://github.com/BaldMansMojo/check_vmware_esx/issues/202
+# mask Version 1.2.5
+=net-analyzer/check_vmware_esx-1.2.5
+
