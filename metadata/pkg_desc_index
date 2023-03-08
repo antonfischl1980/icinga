@@ -13,7 +13,7 @@ dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handl
 dev-perl/UUID 0.280.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
 dev-perl/thruk_libs 2.48.3 3.00 3.02 3.04: easy build thruk perl dependencies
-dev-php/pecl-yaml 2.2.2: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
+dev-php/pecl-yaml 2.2.2 2.2.3: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-python/pywbem 1.2.0 1.5.0 1.6.0: pywbem - A WBEM client
 dev-python/yamlloader 1.0.0 1.1.0 1.2.2: Ordered YAML loader and dumper for PyYAML.
 dev-util/tea 0.9.0-r1: A command line tool to interact with Gitea servers
