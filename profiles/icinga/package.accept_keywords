@@ -1,3 +1,6 @@
+# Anton Fischl <github@fischl-online.de> (2023-03-11)
+=net-analyzer/monitoring-plugins-2.3.3-r1 ~amd64
+
 # Anton Fischl <github@fischl-online.de> (2022-05-02)
 # needed for net-analyzer/graphite-web-gunicorn
 net-analyzer/graphite-web-gunicorn ~amd64
