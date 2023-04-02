@@ -27,7 +27,7 @@ jobs:
           if [ "$COMMIT_DATE" -lt "$DATE_BEFORE" ];then 
             echo "$ebuild"|sed -E 's#^\./##;s#/[^/]+/#/#;s#\.ebuild$##' >>.todo.lst
           fi
-        done < <(find -type f -name "*.ebuild" -print0|xargs -r0 grep -l '^KEYWORDS=.*~amd64')
+        done < <(find -type f -name "*.ebuild" -print0|xargs -r0 grep -l 'KEYWORDS=.*~amd64')
         if [ "$( wc -l < .todo.lst )" -gt 0 ]; then
           echo "xxxxxxxxxxxxxxxxxxxxx"
           echo "Todo:"
