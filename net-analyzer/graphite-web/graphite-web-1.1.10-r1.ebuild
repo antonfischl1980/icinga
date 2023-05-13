@@ -37,12 +37,12 @@ RDEPEND="
 PATCHES=(
 	# Do not install the configuration and data files. We install them
 	# somewhere sensible by hand.
-	"${FILESDIR}"/${PN}-1.1.7-fhs-paths.patch
+	"${FILESDIR}"/"${PN}"-1.1.7-fhs-paths.patch
 )
 
 python_prepare_all() {
 	# Use a less common name
-	mv bin/build-index bin/${PN}-build-index || die
+	mv bin/build-index bin/"${PN}"-build-index || die
 	# use FHS-style paths
 	export GRAPHITE_NO_PREFIX=yes
 	distutils-r1_python_prepare_all
@@ -53,7 +53,7 @@ python_prepare_all() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	keepdir /var/{lib,log}/${PN}
+	keepdir /var/{lib,log}/"${PN}"
 	docinto examples
 	docompress -x "/usr/share/doc/${PF}/examples"
 	dodoc \
@@ -64,15 +64,15 @@ python_install_all() {
 
 python_install() {
 	distutils-r1_python_install \
-		--install-data="${EPREFIX}"/usr/share/${PN}
+		--install-data="${EPREFIX}"/usr/share/"${PN}"
 
 	# copy the file once, to keep the timestamps correct, #808863
 	if [[ ! -e ${ED}/etc/${PN}/local_settings.py ]] ; then
-		insinto /etc/${PN}
+		insinto /etc/"${PN}"
 		newins webapp/graphite/local_settings.py.example local_settings.py
 	fi
 	pushd "${D}/$(python_get_sitedir)"/graphite > /dev/null || die
-	ln -s ../../../../../etc/${PN}/local_settings.py local_settings.py || die
+	ln -s ../../../../../etc/"${PN}"/local_settings.py local_settings.py || die
 	popd > /dev/null || die
 
 	python_optimize
@@ -81,7 +81,7 @@ python_install() {
 pkg_config() {
 	"${EROOT}"/usr/bin/django-admin.py migrate \
 		--settings=graphite.settings --run-syncdb
-	"${EROOT}"/usr/bin/${PN}-build-index
+	"${EROOT}"/usr/bin/"${PN}"-build-index
 }
 
 pkg_postinst() {
