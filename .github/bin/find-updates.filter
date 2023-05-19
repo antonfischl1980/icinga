@@ -1,1 +1,2 @@
-dev-python/pywbem 	^[0-9]
+dev-python/pywbem 		^[0-9]
+dev-python/django-tagging	^v0\.[5-8]
