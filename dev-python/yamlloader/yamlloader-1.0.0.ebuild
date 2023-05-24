@@ -6,11 +6,10 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517="setuptools"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Ordered YAML loader and dumper for PyYAML."
 HOMEPAGE="https://github.com/Phynix/yamlloader https://pypi.org/project/yamlloader/"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
