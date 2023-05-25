@@ -45,7 +45,7 @@ net-analyzer/graphite-web 1.1.10-r1: Enterprise scalable realtime graphing
 net-analyzer/graphite-web-gunicorn 1.0.0-r1: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
-www-apps/Thruk 2.50 3.02-r1 3.04: multibackend monitoring webinterface for Nagios/Icinga and others
+www-apps/Thruk 2.50 3.02-r1 3.04 3.06: multibackend monitoring webinterface for Nagios/Icinga and others
 www-apps/icingaweb2 2.11.2 2.11.3 2.11.4: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.3.1 2.4.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.2.1 1.2.2 1.3.0: Drill-down view for Icinga web 2 based on custom variables.
