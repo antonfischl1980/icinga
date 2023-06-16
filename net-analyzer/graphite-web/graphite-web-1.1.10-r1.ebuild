@@ -13,7 +13,7 @@ HOMEPAGE="https://graphiteapp.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+carbon ldap mysql memcached postgres +sqlite"
 
 DEPEND=""
