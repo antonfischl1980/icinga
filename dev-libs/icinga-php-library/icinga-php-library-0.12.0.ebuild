@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/refs/tags/v${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="php_targets_php8-0 php_targets_php8-1 php_targets_php8-2"
 PHP_DEPEND="
