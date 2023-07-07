@@ -17,11 +17,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1"
+IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1 php_targets_php8-2"
 PHP_DEPEND="
 	php_targets_php7-4? ( dev-lang/php:7.4[curl] )
 	php_targets_php8-0? ( dev-lang/php:8.0[curl] )
 	php_targets_php8-1? ( dev-lang/php:8.1[curl] )
+	php_targets_php8-2? ( dev-lang/php:8.2[curl] )
 "
 RDEPEND="
 	${PHP_DEPEND}
