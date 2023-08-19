@@ -7,12 +7,12 @@ dev-libs/icinga-php-library 0.11.0 0.11.1 0.12.0: Icinga PHP libraries for Icing
 dev-libs/icinga-php-thirdparty 0.11.0: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.21 1.22 1.23: DBI driver for XBase compatible database files
-dev-perl/GLPlugin 5.11.0.1 5.11.0.2 5.12 5.12.0.1 5.13.0.1 5.13.1.1: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
+dev-perl/GLPlugin 5.11.0.2 5.12 5.12.0.1 5.13.0.1 5.13.1.1: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.280.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
-dev-perl/thruk_libs 3.02 3.04 3.06 3.08.2 3.08.3: easy build thruk perl dependencies
+dev-perl/thruk_libs 3.04 3.06 3.08.2 3.08.3: easy build thruk perl dependencies
 dev-php/pecl-yaml 2.2.2 2.2.3: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-python/django-tagging 0.5.0-r1: Generic tagging application for Django
 dev-python/pywbem 1.5.0 1.6.0 1.6.1: pywbem - A WBEM client
@@ -32,7 +32,7 @@ net-analyzer/check_md_mismatch_cnt 1.0.0 1.0.1: Nagios/Icinga compatible check p
 net-analyzer/check_mssql_health 2.7.2.2 2.7.4 2.7.4-r1: A nagios plugin for checking MS-SQL server health
 net-analyzer/check_nextcloud 1.3-r1 2.0: Nagios/Centreon/Icinga plugin for nextcloud serverinfo API
 net-analyzer/check_nextcloud_security 1.1: Monitoring plugin to check the status of nextcloud security scan for a given URL
-net-analyzer/check_nwc_health 10.12.1.4 10.12.1.6 10.12.1.8 10.13 11.0.1: plugin which checks the health of network components and interfaces.
+net-analyzer/check_nwc_health 10.12.1.6 10.12.1.8 10.13 11.0.1: plugin which checks the health of network components and interfaces.
 net-analyzer/check_openvpn 0.0.1: Nagios/Icinga check for OpenVPN availability monitoring
 net-analyzer/check_oracle_health 3.3.1 3.3.2 3.3.2.1: A nagios plugin for checking Oracle server health
 net-analyzer/check_poe_consumption_snmp 1.0.0-r1 1.0.1-r1: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
@@ -45,10 +45,10 @@ net-analyzer/graphite-web 1.1.10-r1 1.1.10-r2: Enterprise scalable realtime grap
 net-analyzer/graphite-web-gunicorn 1.0.0-r1: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
-www-apps/Thruk 3.04 3.06 3.06.2 3.08.2 3.08.3: multibackend monitoring webinterface for Nagios/Icinga and others
+www-apps/Thruk 3.06 3.06.2 3.08.2 3.08.3: multibackend monitoring webinterface for Nagios/Icinga and others
 www-apps/icingaweb2 2.11.2 2.11.3 2.11.4: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.3.1 2.4.0: Create top-level views of your applications in a graphical editor.
-www-apps/icingaweb2-module-cube 1.2.1 1.2.2 1.3.0 1.3.1: Drill-down view for Icinga web 2 based on custom variables.
+www-apps/icingaweb2-module-cube 1.2.2 1.3.0 1.3.1: Drill-down view for Icinga web 2 based on custom variables.
 www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and displays realtime status of Icinga 2 Networks
 www-apps/icingaweb2-module-director 1.9.1 1.10.1 1.10.2: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-fileshipper 1.2.0: Create top-level views of your applications in a graphical editor.
