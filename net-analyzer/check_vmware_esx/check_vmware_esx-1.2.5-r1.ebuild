@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}-v.${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/"${PN}-1.2.5-pr206.patch" )
