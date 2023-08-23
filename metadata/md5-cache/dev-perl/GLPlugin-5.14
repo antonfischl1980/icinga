@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
+EAPI=8
+HOMEPAGE=https://github.com/lausser/GLPlugin
+INHERIT=perl-functions
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=dev-perl/JSON
+SLOT=0
+SRC_URI=https://github.com/lausser/GLPlugin/archive/de9b844a7eed1cc537a2590c3b54f09fec9db18c.tar.gz -> GLPlugin-5.14.tar.gz
+_eclasses_=perl-functions	c3fca037246e877693badea0df3b0ef8
+_md5_=6724a280faf10bb9fd1200b2d06a8c1f
