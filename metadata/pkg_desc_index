@@ -37,7 +37,7 @@ net-analyzer/check_openvpn 0.0.1: Nagios/Icinga check for OpenVPN availability m
 net-analyzer/check_oracle_health 3.3.1 3.3.2 3.3.2.1: A nagios plugin for checking Oracle server health
 net-analyzer/check_poe_consumption_snmp 1.0.0-r1 1.0.1-r1: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
 net-analyzer/check_redis 0.7.3: Redis Check for Nagios/Icinga2
-net-analyzer/check_storage_health 1.5 1.5.1 1.6: nagios plugin for checking storage systems like HP Lefthand, Netapp
+net-analyzer/check_storage_health 1.5 1.5.1 1.6 2.0: nagios plugin for checking storage systems like HP Lefthand, Netapp
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
 net-analyzer/check_ups_health 3.0.3 3.0.4.1 3.0.5: A nagios plugin for checking USV health
 net-analyzer/check_vmware_esx 1.2.3 1.2.5 1.2.5-r1: check_vmware_esx for VMware Monitoring
