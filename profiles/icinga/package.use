@@ -19,9 +19,3 @@ dev-libs/boost context
 # needed for net-analyzer/check_mssql_health (dev-perl/DBD-Sybase)
 dev-db/freetds mssql
 
-
-# Anton Fischl <github@fischl-online.de> (2023-05-33)
-# needed for net-analyzer/graphite-web-gunicorn (see #206 )
-www-servers/gunicorn python_targets_python3_10
-net-analyzer/graphite-web python_targets_python3_10
-
