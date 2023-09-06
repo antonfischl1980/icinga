@@ -17,7 +17,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     # https://github.com/peter-evans/create-pull-request/issues/1170
     - name: Bug workaround
