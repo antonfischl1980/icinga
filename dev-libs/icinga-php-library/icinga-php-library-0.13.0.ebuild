@@ -12,10 +12,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="php_targets_php8-0 php_targets_php8-1 php_targets_php8-2"
+IUSE="php_targets_php8-1 php_targets_php8-2"
 PHP_DEPEND="
-	php_targets_php8-0? ( dev-lang/php:8.0 )
-	!php_targets_php8-0? ( !dev-lang/php:8.0 )
 	php_targets_php8-1? ( dev-lang/php:8.1 )
 	!php_targets_php8-1? ( !dev-lang/php:8.1 )
 	php_targets_php8-2? ( dev-lang/php:8.2 )
