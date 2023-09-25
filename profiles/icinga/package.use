@@ -10,6 +10,7 @@ x11-libs/gdk-pixbuf jpeg
 www-apps/icingaweb2 apache2 apache2-server fpm mysql pdf
 dev-lang/php apache2 cli fpm gd intl mysql nls pdo sockets ssl xslt xml curl pcntl zip
 app-eselect/eselect-php apache2 fpm
+www-servers/apache apache2_modules_proxy apache2_modules_proxy_fcgi
 # for dev-php/pecl-imagick
 media-gfx/imagemagick -openmp png
 # for net-analyzer/icinga2
