@@ -4,7 +4,7 @@ app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interfa
 app-misc/go-carbon 0.16.2 0.17.1: Golang implementation of Graphite/Carbon server with classic architecture
 app-text/xlsx2csv 0.7.8 0.8.0 0.8.1: Convert MS Office xlsx files to CSV
 dev-libs/icinga-php-library 0.11.0 0.11.1 0.12.0 0.13.0: Icinga PHP libraries for Icinga Web 2
-dev-libs/icinga-php-thirdparty 0.11.0: Icinga PHP libraries for Icinga Web 2
+dev-libs/icinga-php-thirdparty 0.11.0 0.12.0: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.21 1.22 1.23: DBI driver for XBase compatible database files
 dev-perl/GLPlugin 5.12.0.1 5.13.0.1 5.13.1.1 5.14 5.14.0.1 5.15.1.2: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
