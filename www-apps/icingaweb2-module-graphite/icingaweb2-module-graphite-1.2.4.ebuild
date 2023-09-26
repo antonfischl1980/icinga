@@ -24,10 +24,9 @@ PHP_DEPEND="
 "
 RDEPEND="
 	${PHP_DEPEND}
-	>=dev-libs/icinga-php-library-0.9.0
-	>=dev-libs/icinga-php-thirdparty-0.10.0
+	>=dev-libs/icinga-php-library-0.13.0
+	>=dev-libs/icinga-php-thirdparty-0.12.0
 	>=www-apps/icingaweb2-2.9.0
-	!!dev-python/graphite-api
 	"
 DEPEND=""
 
