@@ -1,0 +1,5 @@
+/var/log/icingaweb2/*.log {
+    missingok
+    compress
+    notifempty
+}
