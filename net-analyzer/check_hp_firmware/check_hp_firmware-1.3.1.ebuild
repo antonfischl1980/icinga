@@ -9,7 +9,7 @@ DESCRIPTION="checks if HPE controllers an SSDs are not affected by certain vulne
 HOMEPAGE="https://github.com/NETWAYS/check_hp_firmware"
 
 SRC_URI="https://github.com/NETWAYS/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://nextcloud.fischl-online.de/s/scCEJMbefrmYgr4/download/${P}-deps.tar.xz
+	https://nextcloud.fischl-online.de/s/ZXxMpLJpeyks9xm/download/${P}-vendor.tar.xz
 	"
 
 LICENSE="GPL-2 MIT BSD MPL-2.0"
@@ -23,9 +23,8 @@ BDEPEND=""
 
 src_install(){
 	exeinto /usr/lib64/nagios/plugins/contrib/
-	use amd64 && newexe "build/${PN}-amd64" "${PN}"
-	use x86 && newexe "build/${PN}-i386" "${PN}"
+	doexe "${PN}"
 
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
-	newins icinga2.conf "${PN}".conf
+	newins contrib/icinga2.conf "${PN}".conf
 }
