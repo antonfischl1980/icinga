@@ -11,5 +11,5 @@ RDEPEND=>=net-analyzer/icinga2-2.1.1 dev-php/pecl-imagick pdf? ( media-gfx/image
 REQUIRED_USE=( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2/tar.gz/v2.11.4 -> icingaweb2-2.11.4.tar.gz
-_eclasses_=depend.apache	6420dce9fae406df14eceb29fff90bab	eapi8-dosym	5ac4857ad078256d939c44f7c64197a9
+_eclasses_=depend.apache	1d51223a0def226481583990f380519c	eapi8-dosym	5ac4857ad078256d939c44f7c64197a9
 _md5_=34ed2804e12419317b06dbc920c8cda7
