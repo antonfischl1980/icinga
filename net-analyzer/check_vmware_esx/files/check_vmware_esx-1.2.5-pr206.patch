@@ -2,7 +2,7 @@ diff --git a/modules/host_cpu_info.pm b/modules/host_cpu_info.pm
 index f90453a..bd3c4dc 100644
 --- a/modules/host_cpu_info.pm
 +++ b/modules/host_cpu_info.pm
-@@ -175,7 +175,7 @@ sub host_cpu_info
+@@ -125,7 +125,7 @@ sub host_cpu_info
               }
            else
               {
