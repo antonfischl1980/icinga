@@ -4,7 +4,7 @@ description="Graphite-Web Daemon"
 supervisor=supervise-daemon
 respawn_period="${respawn_period:-30}"
 term_type="${term_type:-linux}"
-command=/usr/bin/python3.10
+command=/usr/bin/python3
 pidfile="/run/${RC_SVCNAME}.pid"
 command_user="graphite-web:graphite-web"
 command_args="/usr/bin/gunicorn graphite.wsgi --pythonpath=/usr/share/graphite-web/webapp/ -w${GRAPHITE_WEB_WORKERS:-1} -b ${GRAPHITE_WEB_PORT:-127.0.0.1:8081}"
