@@ -17,6 +17,8 @@ PHP_DEPEND="
 	!php_targets_php8-1? ( !dev-lang/php:8.1 )
 	php_targets_php8-2? ( dev-lang/php:8.2 )
 	!php_targets_php8-2? ( !dev-lang/php:8.2 )
+	php_targets_php8-3? ( dev-lang/php:8.3 )
+	!php_targets_php8-3? ( !dev-lang/php:8.3 )
 "
 DEPEND="${PHP_DEPEND}"
 RDEPEND="${DEPEND}"
