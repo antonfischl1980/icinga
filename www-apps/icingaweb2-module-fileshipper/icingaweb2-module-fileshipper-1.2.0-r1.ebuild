@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,22 +17,17 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="php_targets_php7-4 php_targets_php8-0 php_targets_php8-1 yaml xlsx xml"
+IUSE="php_targets_php8-1 php_targets_php8-2 yaml xlsx xml"
 PHP_DEPEND="
-	php_targets_php7-4? (
-		yaml? ( dev-php/pecl-yaml )
-		xlsx? ( dev-lang/php:7.4[zip] )
-		dev-lang/php:7.4[xml?]
-	)
-	php_targets_php8-0? (
-		yaml? ( dev-php/pecl-yaml )
-		xlsx? ( dev-lang/php:8.0[zip] )
-		dev-lang/php:8.0[xml?]
-	)
 	php_targets_php8-1? (
 		yaml? ( dev-php/pecl-yaml )
 		xlsx? ( dev-lang/php:8.1[zip] )
 		dev-lang/php:8.1[xml?]
+	)
+	php_targets_php8-2? (
+		yaml? ( dev-php/pecl-yaml )
+		xlsx? ( dev-lang/php:8.2[zip] )
+		dev-lang/php:8.2[xml?]
 	)
 "
 RDEPEND="
