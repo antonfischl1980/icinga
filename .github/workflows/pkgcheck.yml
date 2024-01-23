@@ -14,16 +14,5 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: fix profile path
-      run: |
-        # pkgcheck can't scan for profile parents in portage-2 format (<reponame>:<path>)
-        # so we convert the parent files to either absolute or relative path
-        # to avoid "ProfileError"
-        while read -r p;do
-          path_gentoo="/home/runner/.cache/pkgcore/repos/gentoo/profiles/"
-          path_icinga="$(dirname "$p"|sed -E 's#[^/]+/#../#g; s#[^/]+$#../profiles/#')"
-          sed --in-place -E "s#^gentoo:#$path_gentoo#; s#^icinga:#$path_icinga#" "$p"
-        done < <(find profiles/ -name parent)
-
     - name: Run pkgcheck
       uses: pkgcore/pkgcheck-action@v1
