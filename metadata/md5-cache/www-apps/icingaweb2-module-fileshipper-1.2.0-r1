@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Create top-level views of your applications in a graphical editor.
+EAPI=8
+HOMEPAGE=https://github.com/Icinga/icingaweb2-module-fileshipper
+IUSE=php_targets_php8-1 php_targets_php8-2 yaml xlsx xml
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=www-apps/icingaweb2-module-director php_targets_php8-1? ( yaml? ( dev-php/pecl-yaml ) xlsx? ( dev-lang/php:8.1[zip] ) dev-lang/php:8.1[xml?] ) php_targets_php8-2? ( yaml? ( dev-php/pecl-yaml ) xlsx? ( dev-lang/php:8.2[zip] ) dev-lang/php:8.2[xml?] )
+SLOT=0
+SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-fileshipper/tar.gz/v1.2.0 -> icingaweb2-module-fileshipper-1.2.0.tar.gz
+_md5_=d867011ab67dac4727d33bedbc43d871
