@@ -1,0 +1,16 @@
+BDEPEND=dev-lang/perl test? ( >=virtual/perl-Test-Simple-1 )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Nagios/Icinga plugin for checking status of PostgreSQL databases
+EAPI=8
+HOMEPAGE=http://bucardo.org/wiki/Check_postgres
+INHERIT=perl-module
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/bucardo/check_postgres/archive/refs/tags/2.26.0.tar.gz -> check_postgres-2.26.0.tar.gz
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	perl-functions	c3fca037246e877693badea0df3b0ef8	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	4e37e1004a0a27e41bb7025c0b974676
+_md5_=e43e061cd5594482ff617881fb5d4d10
