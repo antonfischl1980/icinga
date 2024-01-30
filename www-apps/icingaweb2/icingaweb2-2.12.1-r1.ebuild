@@ -24,7 +24,10 @@ REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
 
 IUSE="${IUSE} php_targets_php8-1 php_targets_php8-2 php_targets_php8-3"
 PHP_DEPEND="
-	php_targets_php8-1? ( dev-lang/php:8.1[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml] )
+	php_targets_php8-1? (
+		dev-lang/php:8.1[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+		<dev-lang/php-8.1.25
+	)
 	php_targets_php8-2? ( dev-lang/php:8.2[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml] )
 	php_targets_php8-3? ( dev-lang/php:8.3[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml] )
 "
