@@ -12,7 +12,7 @@ dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.280.0 0.310.0 0.320.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
-dev-perl/thruk_libs 3.08.2 3.08.3 3.10 3.12: easy build thruk perl dependencies
+dev-perl/thruk_libs 3.08.3 3.10 3.12: easy build thruk perl dependencies
 dev-php/pecl-yaml 2.2.3-r1: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-python/django-tagging 0.5.0-r1: Generic tagging application for Django
 dev-python/pywbem 1.5.0 1.6.2: pywbem - A WBEM client
@@ -46,7 +46,7 @@ net-analyzer/graphite-web 1.1.10-r1 1.1.10-r2: Enterprise scalable realtime grap
 net-analyzer/graphite-web-gunicorn 1.0.0-r2: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
-www-apps/Thruk 3.08.2 3.08.3 3.10 3.12: multibackend monitoring webinterface for Nagios/Icinga and others
+www-apps/Thruk 3.08.3 3.10 3.12: multibackend monitoring webinterface for Nagios/Icinga and others
 www-apps/icingaweb2 2.11.4-r1 2.12.0 2.12.1-r1: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.4.1 2.5.0: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.3.2: Drill-down view for Icinga web 2 based on custom variables.
