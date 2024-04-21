@@ -6,11 +6,11 @@ EAPI=8
 HOMEPAGE=https://metacpan.org/release/UUID
 INHERIT=perl-module
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=amd64 arm ppc x86
 LICENSE=Artistic-2
 RDEPEND=sys-apps/util-linux dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JR/JRM/UUID-0.33.tar.gz
 _eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	perl-functions	c3fca037246e877693badea0df3b0ef8	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	4e37e1004a0a27e41bb7025c0b974676
-_md5_=69fc6d966b07199a0b58783f745d38a0
+_md5_=60c4f9426ccc40cc7b7cd0d0c40bdd5e
