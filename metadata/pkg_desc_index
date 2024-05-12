@@ -10,7 +10,7 @@ dev-perl/DBD-Sybase 1.21 1.22 1.23 1.24: DBI driver for XBase compatible databas
 dev-perl/GLPlugin 5.17 5.18 5.19 5.21 5.22: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
-dev-perl/UUID 0.310.0 0.320.0 0.330.0: Perl extension for using UUID interfaces as defined in e2fsprogs
+dev-perl/UUID 0.310.0 0.320.0 0.330.0 0.340.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
 dev-perl/thruk_libs 3.10 3.12 3.14 3.14.2: easy build thruk perl dependencies
 dev-php/pecl-yaml 2.2.3-r1: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
