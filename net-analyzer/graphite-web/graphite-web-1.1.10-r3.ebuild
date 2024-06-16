@@ -38,6 +38,7 @@ PATCHES=(
 	# Do not install the configuration and data files. We install them
 	# somewhere sensible by hand.
 	"${FILESDIR}"/"${PN}"-1.1.7-fhs-paths.patch
+	"${FILESDIR}"/python3.12.patch
 )
 
 python_prepare_all() {

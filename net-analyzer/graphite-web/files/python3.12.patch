@@ -1,0 +1,26 @@
+diff --git a/setup.cfg b/setup.cfg
+index cfffc13..6fdfb33 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -11,7 +11,7 @@ requires = Django => 1.8
+ 	pytz
+ 	pyparsing
+ 	scandir;python_version<"3.5"
+-post-install = distro/redhat/misc/postinstall
++post_install = distro/redhat/misc/postinstall
+ provides = graphite
+ obsoletes = graphite <= 0.9.9
+ 
+diff --git a/setup.py b/setup.py
+index f567f5d..4d0be7a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -30,7 +30,7 @@ except ImportError:
+ with open('setup.cfg', 'r') as f:
+     orig_setup_cfg = f.read()
+ cf = ConfigParser()
+-cf.readfp(StringIO(orig_setup_cfg), 'setup.cfg')
++cf.read_file(StringIO(orig_setup_cfg), 'setup.cfg')
+ 
+ if os.environ.get('GRAPHITE_NO_PREFIX') or os.environ.get('READTHEDOCS'):
+     cf.remove_section('install')
