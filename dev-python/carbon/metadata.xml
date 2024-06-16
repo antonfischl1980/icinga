@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>github@fischl-online.de</email>
+    <name>Anton Fischl</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">carbon</remote-id>
+  </upstream>
+</pkgmetadata>
