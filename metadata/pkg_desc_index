@@ -44,7 +44,7 @@ net-analyzer/check_storage_health 1.5.1 1.6 2.0: nagios plugin for checking stor
 net-analyzer/check_tl_health 1.8.0.1-r2: A nagios plugin for checking tape libraries health
 net-analyzer/check_ups_health 3.0.3 3.0.4.1 3.0.5: A nagios plugin for checking USV health
 net-analyzer/check_vmware_esx 1.2.3 1.2.5 1.2.5-r2: check_vmware_esx for VMware Monitoring
-net-analyzer/graphite-web 1.1.10-r2 1.1.10-r3: Enterprise scalable realtime graphing
+net-analyzer/graphite-web 1.1.10-r2 1.1.10-r4: Enterprise scalable realtime graphing
 net-analyzer/graphite-web-gunicorn 1.0.0-r2: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
