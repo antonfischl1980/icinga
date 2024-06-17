@@ -1,0 +1,94 @@
+diff --git a/webapp/graphite/app_settings.py b/webapp/graphite/app_settings.py
+index a037aa896..493e61b00 100644
+--- a/webapp/graphite/app_settings.py
++++ b/webapp/graphite/app_settings.py
+@@ -53,6 +53,7 @@
+                 'django.template.context_processors.debug',
+                 'django.template.context_processors.i18n',
+                 'django.template.context_processors.media',
++                'django.template.context_processors.request',
+                 'django.template.context_processors.static',
+                 'django.template.context_processors.tz',
+                 'django.contrib.messages.context_processors.messages',
+diff --git a/webapp/graphite/render/glyph.py b/webapp/graphite/render/glyph.py
+index bdf2c514d..0ef5eca30 100644
+--- a/webapp/graphite/render/glyph.py
++++ b/webapp/graphite/render/glyph.py
+@@ -19,7 +19,7 @@
+ 
+ from six.moves import range, zip
+ from six.moves.urllib.parse import unquote_plus
+-from six.moves.configparser import SafeConfigParser
++from six.moves.configparser import ConfigParser
+ from django.conf import settings
+ import pytz
+ import six
+@@ -811,7 +811,7 @@ def encodeHeader(self,text):
+     self.ctx.restore()
+ 
+   def loadTemplate(self,template):
+-    conf = SafeConfigParser()
++    conf = ConfigParser()
+     if conf.read(settings.GRAPHTEMPLATES_CONF):
+       defaults = defaultGraphOptions
+       # If a graphTemplates.conf exists, read in
+diff --git a/webapp/graphite/settings.py b/webapp/graphite/settings.py
+index bbc26e582..dd9124d98 100644
+--- a/webapp/graphite/settings.py
++++ b/webapp/graphite/settings.py
+@@ -166,7 +166,7 @@
+ # Function plugins
+ FUNCTION_PLUGINS = []
+ 
+-
++DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+ MIDDLEWARE = ()
+ if DJANGO_VERSION < (1, 10):
+     MIDDLEWARE_CLASSES = MIDDLEWARE
+diff --git a/setup.cfg b/setup.cfg
+index cfffc13..6fdfb33 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -11,7 +11,7 @@ requires = Django => 1.8
+ 	pytz
+ 	pyparsing
+ 	scandir;python_version<"3.5"
+-post-install = distro/redhat/misc/postinstall
++post_install = distro/redhat/misc/postinstall
+ provides = graphite
+ obsoletes = graphite <= 0.9.9
+ 
+diff --git a/setup.py b/setup.py
+index 13e4d06..92b7ad9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -104,13 +104,11 @@ try:
+         'graphite.whitelist',
+         'graphite.worker_pool',
+       ],
+-      package_data={'graphite' :
+-        ['templates/*', 'local_settings.py.example']},
++      package_data={'graphite' : ['templates/*', 'local_settings.py.example']},
+       scripts=['bin/graphite-web-build-index'],
+       data_files=list(webapp_content.items()),
+-      install_requires=['Django>=1.8,<3.1', 'django-tagging==0.4.3', 'pytz',
+-                        'pyparsing', 'cairocffi', 'urllib3',
+-                        'scandir;python_version<"3.5"', 'six'],
++      install_requires=['Django>=3.2,<4', 'django-tagging==0.4.3', 'pytz',
++                        'pyparsing', 'cairocffi', 'urllib3', 'six'],
+       classifiers=[
+           'Intended Audience :: Developers',
+           'Natural Language :: English',
+diff --git a/setup.py b/setup.py
+index cefd1d6..1daf8ca 100644
+--- a/setup.py
++++ b/setup.py
+@@ -30,7 +30,7 @@ except ImportError:
+ with open('setup.cfg', 'r') as f:
+     orig_setup_cfg = f.read()
+ cf = ConfigParser()
+-cf.readfp(StringIO(orig_setup_cfg), 'setup.cfg')
++cf.read_file(StringIO(orig_setup_cfg), 'setup.cfg')
+ 
+ if os.environ.get('GRAPHITE_NO_PREFIX') or os.environ.get('READTHEDOCS'):
+     cf.remove_section('install')

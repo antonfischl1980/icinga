@@ -1,26 +1,378 @@
-diff --git a/setup.cfg b/setup.cfg
-index cfffc13..6fdfb33 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -11,7 +11,7 @@ requires = Django => 1.8
- 	pytz
- 	pyparsing
- 	scandir;python_version<"3.5"
--post-install = distro/redhat/misc/postinstall
-+post_install = distro/redhat/misc/postinstall
- provides = graphite
- obsoletes = graphite <= 0.9.9
+diff --git a/webapp/graphite/account/urls.py b/webapp/graphite/account/urls.py
+index efe298d9e..3973ead99 100644
+--- a/webapp/graphite/account/urls.py
++++ b/webapp/graphite/account/urls.py
+@@ -12,12 +12,12 @@
+ See the License for the specific language governing permissions and
+ limitations under the License."""
  
-diff --git a/setup.py b/setup.py
-index f567f5d..4d0be7a 100644
---- a/setup.py
-+++ b/setup.py
-@@ -30,7 +30,7 @@ except ImportError:
- with open('setup.cfg', 'r') as f:
-     orig_setup_cfg = f.read()
- cf = ConfigParser()
--cf.readfp(StringIO(orig_setup_cfg), 'setup.cfg')
-+cf.read_file(StringIO(orig_setup_cfg), 'setup.cfg')
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
  
- if os.environ.get('GRAPHITE_NO_PREFIX') or os.environ.get('READTHEDOCS'):
-     cf.remove_section('install')
+ urlpatterns = [
+-    url(r'^/login/?$', views.loginView, name='account_login'),
+-    url(r'^/logout/?$', views.logoutView, name='account_logout'),
+-    url(r'^/edit/?$', views.editProfile, name='account_edit'),
+-    url(r'^/update/?$', views.updateProfile, name='account_update'),
++    re_path(r'^/login/?$', views.loginView, name='account_login'),
++    re_path(r'^/logout/?$', views.logoutView, name='account_logout'),
++    re_path(r'^/edit/?$', views.editProfile, name='account_edit'),
++    re_path(r'^/update/?$', views.updateProfile, name='account_update'),
+ ]
+diff --git a/webapp/graphite/browser/urls.py b/webapp/graphite/browser/urls.py
+index 718e82f9f..cad222f74 100644
+--- a/webapp/graphite/browser/urls.py
++++ b/webapp/graphite/browser/urls.py
+@@ -12,13 +12,13 @@
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/header/?$', views.header, name='browser_header'),
+-    url(r'^/search/?$', views.search, name='browser_search'),
+-    url(r'^/mygraph/?$', views.myGraphLookup, name='browser_my_graph'),
+-    url(r'^/usergraph/?$', views.userGraphLookup, name='browser_usergraph'),
+-    url(r'^/?$', views.browser, name='browser'),
++    re_path(r'^/header/?$', views.header, name='browser_header'),
++    re_path(r'^/search/?$', views.search, name='browser_search'),
++    re_path(r'^/mygraph/?$', views.myGraphLookup, name='browser_my_graph'),
++    re_path(r'^/usergraph/?$', views.userGraphLookup, name='browser_usergraph'),
++    re_path(r'^/?$', views.browser, name='browser'),
+ ]
+diff --git a/webapp/graphite/composer/urls.py b/webapp/graphite/composer/urls.py
+index d3faefea7..15cfac4ed 100644
+--- a/webapp/graphite/composer/urls.py
++++ b/webapp/graphite/composer/urls.py
+@@ -12,10 +12,10 @@
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/mygraph', views.mygraph, name='composer_mygraph'),
+-    url(r'^/?$', views.composer, name='composer'),
++    re_path(r'^/mygraph', views.mygraph, name='composer_mygraph'),
++    re_path(r'^/?$', views.composer, name='composer'),
+ ]
+diff --git a/webapp/graphite/dashboard/urls.py b/webapp/graphite/dashboard/urls.py
+index 61e07085a..f127cd565 100644
+--- a/webapp/graphite/dashboard/urls.py
++++ b/webapp/graphite/dashboard/urls.py
+@@ -1,26 +1,28 @@
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/save/(?P<name>[^/]+)$', views.save, name='dashboard_save'),
+-    url(r'^/save_template/(?P<name>[^/]+)/(?P<key>[^/]+)$', views.save_template,
+-        name='dashboard_save_template'),
+-    url(r'^/load/(?P<name>[^/]+)$', views.load, name='dashboard_load'),
+-    url(r'^/load/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.load_template,
+-        name='dashboard_load_template'),
+-    url(r'^/load_template/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.load_template,
+-        name='dashboard_load_template'),
+-    url(r'^/delete/(?P<name>[^/]+)$', views.delete, name='dashboard_delete'),
+-    url(r'^/create-temporary/?$', views.create_temporary, name='dashboard_create_temporary'),
+-    url(r'^/email$', views.email, name='dashboard_email'),
+-    url(r'^/find/?$', views.find, name='dashboard_find'),
+-    url(r'^/delete_template/(?P<name>[^/]+)$', views.delete_template,
+-        name='dashboard_delete_template'),
+-    url(r'^/find_template/?$', views.find_template, name='dashboard_find_template'),
+-    url(r'^/login/?$', views.user_login, name='dashboard_login'),
+-    url(r'^/logout/?$', views.user_logout, name='dashboard_logout'),
+-    url(r'^/help/?$', views.help, name='dashboard_help'),
+-    url(r'^/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.template, name='dashboard_template'),
+-    url(r'^/(?P<name>[^/]+)$', views.dashboard, name='dashboard'),
+-    url(r'^/?$', views.dashboard, name='dashboard'),
++    re_path(r'^/save/(?P<name>[^/]+)$', views.save, name='dashboard_save'),
++    re_path(r'^/save_template/(?P<name>[^/]+)/(?P<key>[^/]+)$', views.save_template,
++            name='dashboard_save_template'),
++    re_path(r'^/load/(?P<name>[^/]+)$', views.load, name='dashboard_load'),
++    re_path(r'^/load/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.load_template,
++            name='dashboard_load_template'),
++    re_path(r'^/load_template/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.load_template,
++            name='dashboard_load_template'),
++    re_path(r'^/delete/(?P<name>[^/]+)$', views.delete, name='dashboard_delete'),
++    re_path(r'^/create-temporary/?$', views.create_temporary,
++            name='dashboard_create_temporary'),
++    re_path(r'^/email$', views.email, name='dashboard_email'),
++    re_path(r'^/find/?$', views.find, name='dashboard_find'),
++    re_path(r'^/delete_template/(?P<name>[^/]+)$', views.delete_template,
++            name='dashboard_delete_template'),
++    re_path(r'^/find_template/?$', views.find_template, name='dashboard_find_template'),
++    re_path(r'^/login/?$', views.user_login, name='dashboard_login'),
++    re_path(r'^/logout/?$', views.user_logout, name='dashboard_logout'),
++    re_path(r'^/help/?$', views.help, name='dashboard_help'),
++    re_path(r'^/(?P<name>[^/]+)/(?P<val>[^/]+)$', views.template,
++            name='dashboard_template'),
++    re_path(r'^/(?P<name>[^/]+)$', views.dashboard, name='dashboard'),
++    re_path(r'^/?$', views.dashboard, name='dashboard'),
+ ]
+diff --git a/webapp/graphite/events/urls.py b/webapp/graphite/events/urls.py
+index e32811cda..b24e78ff8 100644
+--- a/webapp/graphite/events/urls.py
++++ b/webapp/graphite/events/urls.py
+@@ -12,11 +12,11 @@
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/get_data?$', views.get_data, name='events_get_data'),
+-    url(r'^/(?P<event_id>\d+)/?$', views.detail, name='events_detail'),
+-    url(r'^/?$', views.view_events, name='events'),
++    re_path(r'^/get_data?$', views.get_data, name='events_get_data'),
++    re_path(r'^/(?P<event_id>\d+)/?$', views.detail, name='events_detail'),
++    re_path(r'^/?$', views.view_events, name='events'),
+ ]
+diff --git a/webapp/graphite/functions/__init__.py b/webapp/graphite/functions/__init__.py
+index f98daf7c5..3e0f3e05a 100644
+--- a/webapp/graphite/functions/__init__.py
++++ b/webapp/graphite/functions/__init__.py
+@@ -96,11 +96,11 @@ def PieFunction(name):
+ 
+ 
+ def functionInfo(name, func):
+-    argspec = inspect.getargspec(func)
+-    argformat = inspect.formatargspec(argspec[0][1:], argspec[1], argspec[2], argspec[3])
++    sig = inspect.signature(func)
++    argspec = ', '.join(list(map(str, sig.parameters.values()))[1:])
+     return {
+         'name': name,
+-        'function': name + argformat,
++        'function': f'{name}({argspec})',
+         'description': inspect.getdoc(func),
+         'module': inspect.getmodule(func).__name__,
+         'group': getattr(func, 'group', 'Ungrouped'),
+diff --git a/webapp/graphite/functions/urls.py b/webapp/graphite/functions/urls.py
+index 1f48ac054..201315b0f 100644
+--- a/webapp/graphite/functions/urls.py
++++ b/webapp/graphite/functions/urls.py
+@@ -1,7 +1,7 @@
+-from django.conf.urls import url
++from django.urls import re_path
+ from graphite.functions.views import functionList, functionDetails
+ 
+ urlpatterns = [
+-  url(r'^/(.+)$', functionDetails, name='functionDetails'),
+-  url(r'^/?$', functionList, name='functionList'),
++  re_path(r'^/(.+)$', functionDetails, name='functionDetails'),
++  re_path(r'^/?$', functionList, name='functionList'),
+ ]
+diff --git a/webapp/graphite/metrics/urls.py b/webapp/graphite/metrics/urls.py
+index cc5d55cde..1544c14c2 100644
+--- a/webapp/graphite/metrics/urls.py
++++ b/webapp/graphite/metrics/urls.py
+@@ -12,16 +12,16 @@
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import path, re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/index\.json$', views.index_json, name='metrics_index'),
+-    url(r'^/find/?$', views.find_view, name='metrics_find'),
+-    url(r'^/expand/?$', views.expand_view, name='metrics_expand'),
+-    url(r'^/get-metadata/?$', views.get_metadata_view,
+-        name='metrics_get_metadata'),
+-    url(r'^/set-metadata/?$', views.set_metadata_view,
+-        name='metrics_set_metadata'),
+-    url(r'^/?$', views.find_view, name='metrics'),
++    path('/index.json', views.index_json, name='metrics_index'),
++    re_path(r'^/find/?$', views.find_view, name='metrics_find'),
++    re_path(r'^/expand/?$', views.expand_view, name='metrics_expand'),
++    re_path(r'^/get-metadata/?$', views.get_metadata_view,
++            name='metrics_get_metadata'),
++    re_path(r'^/set-metadata/?$', views.set_metadata_view,
++            name='metrics_set_metadata'),
++    re_path(r'^/?$', views.find_view, name='metrics'),
+ ]
+diff --git a/webapp/graphite/render/urls.py b/webapp/graphite/render/urls.py
+index dccf2c000..b04f13e40 100644
+--- a/webapp/graphite/render/urls.py
++++ b/webapp/graphite/render/urls.py
+@@ -12,12 +12,12 @@
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/local/?$', views.renderLocalView, name='render_local'),
+-    url(r'^/~(?P<username>[^/]+)/(?P<graphName>[^/]+)/?$', views.renderMyGraphView,
+-        name='render_my_graph'),
+-    url(r'^/?$', views.renderView, name='render'),
++    re_path(r'^/local/?$', views.renderLocalView, name='render_local'),
++    re_path(r'^/~(?P<username>[^/]+)/(?P<graphName>[^/]+)/?$', views.renderMyGraphView,
++            name='render_my_graph'),
++    re_path(r'^/?$', views.renderView, name='render'),
+ ]
+diff --git a/webapp/graphite/tags/urls.py b/webapp/graphite/tags/urls.py
+index 9556c3562..8bb7824e4 100644
+--- a/webapp/graphite/tags/urls.py
++++ b/webapp/graphite/tags/urls.py
+@@ -12,16 +12,16 @@
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import path, re_path
+ from . import views
+ 
+ urlpatterns = [
+-  url(r'^/tagSeries$', views.tagSeries, name='tagSeries'),
+-  url(r'^/tagMultiSeries$', views.tagMultiSeries, name='tagMultiSeries'),
+-  url(r'^/delSeries$', views.delSeries, name='delSeries'),
+-  url(r'^/findSeries$', views.findSeries, name='findSeries'),
+-  url(r'^/autoComplete/tags$', views.autoCompleteTags, name='tagAutoCompleteTags'),
+-  url(r'^/autoComplete/values$', views.autoCompleteValues, name='tagAutoCompleteValues'),
+-  url(r'^/(.+)$', views.tagDetails, name='tagDetails'),
+-  url(r'^/?$', views.tagList, name='tagList'),
++  path('/tagSeries', views.tagSeries, name='tagSeries'),
++  path('/tagMultiSeries', views.tagMultiSeries, name='tagMultiSeries'),
++  path('/delSeries', views.delSeries, name='delSeries'),
++  path('/findSeries', views.findSeries, name='findSeries'),
++  path('/autoComplete/tags', views.autoCompleteTags, name='tagAutoCompleteTags'),
++  path('/autoComplete/values', views.autoCompleteValues, name='tagAutoCompleteValues'),
++  re_path(r'^/(.+)$', views.tagDetails, name='tagDetails'),
++  re_path(r'^/?$', views.tagList, name='tagList'),
+ ]
+diff --git a/webapp/graphite/urls.py b/webapp/graphite/urls.py
+index 5bdee3043..bd7f2e1f6 100644
+--- a/webapp/graphite/urls.py
++++ b/webapp/graphite/urls.py
+@@ -12,32 +12,33 @@
+ See the License for the specific language governing permissions and
+ limitations under the License"""
+ from django.conf import settings
+-from django.conf.urls import include, url
+ from django.contrib import admin
++from django.urls import include, path, re_path
+ from graphite.url_shortener.views import shorten, follow
+ from graphite.browser.views import browser
+ 
+ graphite_urls = [
+-    url('^admin/', admin.site.urls),
+-    url('^render', include('graphite.render.urls')),
+-    url('^composer', include('graphite.composer.urls')),
+-    url('^metrics', include('graphite.metrics.urls')),
+-    url('^browser', include('graphite.browser.urls')),
+-    url('^account', include('graphite.account.urls')),
+-    url('^dashboard', include('graphite.dashboard.urls')),
+-    url('^whitelist', include('graphite.whitelist.urls')),
+-    url('^version', include('graphite.version.urls')),
+-    url('^events', include('graphite.events.urls')),
+-    url('^tags', include('graphite.tags.urls')),
+-    url('^functions', include('graphite.functions.urls')),
+-    url('^s/(?P<path>.*)', shorten, name='shorten'),
+-    url('^S/(?P<link_id>[a-zA-Z0-9]+)/?$', follow, name='follow'),
+-    url('^$', browser, name='browser'),
++    path('admin/', admin.site.urls),
++    path('render', include('graphite.render.urls')),
++    path('composer', include('graphite.composer.urls')),
++    path('metrics', include('graphite.metrics.urls')),
++    path('browser', include('graphite.browser.urls')),
++    path('account', include('graphite.account.urls')),
++    path('dashboard', include('graphite.dashboard.urls')),
++    path('whitelist', include('graphite.whitelist.urls')),
++    path('version', include('graphite.version.urls')),
++    path('events', include('graphite.events.urls')),
++    path('tags', include('graphite.tags.urls')),
++    path('functions', include('graphite.functions.urls')),
++    re_path('^s/(?P<path>.*)', shorten, name='shorten'),
++    re_path('^S/(?P<link_id>[a-zA-Z0-9]+)/?$', follow, name='follow'),
++    path('', browser, name='browser'),
+ ]
+ 
+-if settings.URL_PREFIX.strip('/'):
++url_prefix = settings.URL_PREFIX.strip('/')
++if url_prefix:
+     urlpatterns = [
+-        url(r'^{0}/'.format(settings.URL_PREFIX.strip('/')), include(graphite_urls)),
++        re_path(f'^{url_prefix}/', include(graphite_urls)),
+     ]
+ else:
+     urlpatterns = graphite_urls
+diff --git a/webapp/graphite/util.py b/webapp/graphite/util.py
+index 1b5889026..bb46fa16c 100644
+--- a/webapp/graphite/util.py
++++ b/webapp/graphite/util.py
+@@ -12,7 +12,7 @@
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-import imp
++import importlib
+ import io
+ import json as _json
+ import socket
+@@ -145,12 +145,11 @@ def is_unsafe_str(s):
+ 
+ def load_module(module_path, member=None):
+   module_name = splitext(basename(module_path))[0]
+-  try:  # 'U' is default from Python 3.0 and deprecated since 3.9
+-    module_file = open(module_path, 'U')
+-  except ValueError:
+-    module_file = open(module_path, 'rt')
+-  description = ('.py', 'U', imp.PY_SOURCE)
+-  module = imp.load_module(module_name, module_file, module_path, description)
++  spec = importlib.util.spec_from_file_location(module_name, module_path)
++  if spec is None:
++    raise IOError(f'file {module_path} not found')
++  module = importlib.util.module_from_spec(spec)
++  spec.loader.exec_module(module)
+   if member:
+     return getattr(module, member)
+   else:
+diff --git a/webapp/graphite/version/urls.py b/webapp/graphite/version/urls.py
+index 6ed93988d..d47773c0d 100755
+--- a/webapp/graphite/version/urls.py
++++ b/webapp/graphite/version/urls.py
+@@ -12,9 +12,9 @@
+    See the License for the specific language governing permissions and
+    limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/?$', views.index, name='version_index'),
++    re_path(r'^/?$', views.index, name='version_index'),
+ ]
+diff --git a/webapp/graphite/whitelist/urls.py b/webapp/graphite/whitelist/urls.py
+index 0030f29d1..d739f0f3e 100644
+--- a/webapp/graphite/whitelist/urls.py
++++ b/webapp/graphite/whitelist/urls.py
+@@ -12,11 +12,11 @@
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from django.conf.urls import url
++from django.urls import path, re_path
+ from . import views
+ 
+ urlpatterns = [
+-    url(r'^/add$', views.add, name='whitelist_add'),
+-    url(r'^/remove$', views.remove, name='whitelist_remove'),
+-    url(r'^/?$', views.show, name='whitelist_show'),
++    path('/add', views.add, name='whitelist_add'),
++    path('/remove', views.remove, name='whitelist_remove'),
++    re_path(r'^/?$', views.show, name='whitelist_show'),
+ ]
