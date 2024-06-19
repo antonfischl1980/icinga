@@ -1,6 +1,6 @@
-BDEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML || ( >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=] <dev-lang/perl-5.38.2-r3 ) test? ( >=virtual/perl-Test-Simple-1 )
+BDEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=] test? ( >=virtual/perl-Test-Simple-1 )
 DEFINED_PHASES=compile configure install nofetch prepare test unpack
-DEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML || ( >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=] <dev-lang/perl-5.38.2-r3 )
+DEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=]
 DESCRIPTION=VMware vSphere Command Line Interface 6.7
 EAPI=8
 HOMEPAGE=https://my.vmware.com/de/web/vmware/details?downloadGroup=VS-CLI-670&productId=742
@@ -8,9 +8,9 @@ INHERIT=perl-module
 IUSE=perl_features_debug perl_features_ithreads perl_features_quadmath test
 KEYWORDS=amd64 ~x86
 LICENSE=VMware-vSphere-CLI-EULA
-RDEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML || ( >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=] <dev-lang/perl-5.38.2-r3 ) dev-lang/perl:=
+RDEPEND=dev-perl/Archive-Zip dev-perl/HTTP-Date dev-perl/LWP-UserAgent-Cached dev-perl/Text-Template dev-perl/Time-Duration dev-perl/URI dev-perl/UUID dev-perl/XML-LibXML >=dev-lang/perl-5.38.2-r3[perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=] dev-lang/perl:=
 RESTRICT=fetch mirror !test? ( test )
 SLOT=0
 SRC_URI=VMware-vSphere-CLI-6.7.0-8156551.x86_64.tar.gz
-_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	perl-functions	c3fca037246e877693badea0df3b0ef8	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	07f7f317d867e5d5aa30fdeb6e873138
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	perl-functions	c3fca037246e877693badea0df3b0ef8	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	25ca2ff8e7971cb7f817f0bda4be696d
 _md5_=c4ca03d916f69d83c98b8fb23f5a6302
