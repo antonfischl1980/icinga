@@ -54,7 +54,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
+	"${FILESDIR}"/"${PN}"-3.1-bashcomp.patch
 	"${FILESDIR}"/django-3.2.19-py311.patch
 	# needed for Python 3.11
 	"${FILESDIR}"/django-3.2.20-urlsplit.patch
@@ -92,8 +92,8 @@ python_test() {
 }
 
 python_install_all() {
-	newbashcomp extras/django_bash_completion ${PN}-admin
-	bashcomp_alias ${PN}-admin django-admin.py
+	newbashcomp extras/django_bash_completion "${PN}"-admin
+	bashcomp_alias "${PN}"-admin django-admin.py
 
 	distutils-r1_python_install_all
 }
