@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DIST_AUTHOR=""
-DIST_VERSION="dev-perl/UUID-0.36"
+DIST_AUTHOR="JRM"
+DIST_VERSION="0.36"
 inherit perl-module
 
 DESCRIPTION="Perl extension for using UUID interfaces as defined in e2fsprogs"
