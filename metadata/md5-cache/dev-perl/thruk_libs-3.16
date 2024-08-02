@@ -1,0 +1,11 @@
+BDEPEND=dev-db/mysql-connector-c media-libs/gd app-admin/chrpath
+DEFINED_PHASES=-
+DEPEND=dev-db/mysql-connector-c media-libs/gd
+DESCRIPTION=easy build thruk perl dependencies
+EAPI=8
+HOMEPAGE=https://github.com/sni/thruk_libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-1
+SLOT=0
+SRC_URI=https://github.com/sni/thruk_libs/archive/refs/tags/v3.16.tar.gz -> thruk_libs-3.16.tar.gz
+_md5_=c2c1fa1976ce8a5939e1d3b44b498fec
