@@ -3,7 +3,7 @@ acct-user/graphite-web 0: System user: graphite-web
 app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interface 6.7
 app-misc/go-carbon 0.16.2 0.17.1 0.17.3: Golang implementation of Graphite/Carbon server with classic architecture
 app-text/xlsx2csv 0.8.0 0.8.1 0.8.2 0.8.3: Convert MS Office xlsx files to CSV
-dev-libs/icinga-php-library 0.13.1 0.13.2 0.14.0: Icinga PHP libraries for Icinga Web 2
+dev-libs/icinga-php-library 0.13.1 0.13.2 0.14.0 0.14.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/icinga-php-thirdparty 0.12.0 0.12.1: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83 1.90: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.22 1.23 1.24: DBI driver for XBase compatible database files
