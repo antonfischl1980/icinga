@@ -9,7 +9,7 @@ SRC_URI="https://github.com/sni/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="
