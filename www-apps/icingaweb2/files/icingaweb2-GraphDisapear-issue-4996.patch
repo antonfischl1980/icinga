@@ -1,0 +1,177 @@
+From c79b513066360be16c8161e66af484d274a1ce84 Mon Sep 17 00:00:00 2001
+From: Johannes Meyer <johannes.meyer@icinga.com>
+Date: Tue, 6 Feb 2024 10:49:31 +0100
+Subject: [PATCH 1/3] js: Apply render hooks in a defined order
+
+Currently, form first and detach second.
+Any other last. (e.g. grafana's iframe)
+---
+ public/js/icinga.js                 | 22 +++++++++++++++++++---
+ public/js/icinga/behavior/detach.js |  2 ++
+ public/js/icinga/behavior/form.js   |  2 ++
+ public/js/icinga/loader.js          | 18 ++++++++----------
+ 4 files changed, 31 insertions(+), 13 deletions(-)
+
+diff --git a/public/js/icinga.js b/public/js/icinga.js
+index e8b8bccc88..a0e060ecfb 100644
+--- a/public/js/icinga.js
++++ b/public/js/icinga.js
+@@ -64,6 +64,11 @@
+          */
+         this.behaviors = {};
+ 
++        /**
++         * Site behaviors which hook into the rendering process
++         */
++        this.renderHooks = [];
++
+         /**
+          * Loaded modules
+          */
+@@ -94,9 +99,20 @@
+             this.loader     = new Icinga.Loader(this);
+             this.events     = new Icinga.Events(this);
+             this.history    = new Icinga.History(this);
+-            var _this = this;
+-            $.each(Icinga.Behaviors, function(name, Behavior) {
+-                _this.behaviors[name.toLowerCase()] = new Behavior(_this);
++
++            // Initialize all available behaviors
++            for (const name in Icinga.Behaviors) {
++                const behavior = new Icinga.Behaviors[name](this);
++                this.behaviors[name.toLowerCase()] = behavior;
++                if (behavior.renderHook) {
++                    this.renderHooks.push(behavior);
++                }
++            }
++
++            // Sort render hooks by priority
++            this.renderHooks.sort(function (a, b) {
++                // Treats all hooks without a priority as "greater", meaning they will be applied last
++                return (a.priority || 999) - (b.priority || 999);
+             });
+ 
+             this.timezone.initialize();
+diff --git a/public/js/icinga/behavior/detach.js b/public/js/icinga/behavior/detach.js
+index 16fe157fd5..dad74786c8 100644
+--- a/public/js/icinga/behavior/detach.js
++++ b/public/js/icinga/behavior/detach.js
+@@ -11,6 +11,8 @@
+ 
+     function Detach(icinga) {
+         Icinga.EventListener.call(this, icinga);
++
++        this.priority = 2;
+     }
+ 
+     Detach.prototype = new Icinga.EventListener();
+diff --git a/public/js/icinga/behavior/form.js b/public/js/icinga/behavior/form.js
+index ca9db3b70d..e1845d2967 100644
+--- a/public/js/icinga/behavior/form.js
++++ b/public/js/icinga/behavior/form.js
+@@ -13,6 +13,8 @@
+         Icinga.EventListener.call(this, icinga);
+         this.on('rendered', '.container', this.onRendered, this);
+ 
++        this.priority = 1;
++
+         // store the modification state of all input fields
+         this.inputs = new WeakMap();
+     };
+diff --git a/public/js/icinga/loader.js b/public/js/icinga/loader.js
+index 97891a7f2b..29669a9445 100644
+--- a/public/js/icinga/loader.js
++++ b/public/js/icinga/loader.js
+@@ -1267,17 +1267,15 @@
+ 
+             $container.trigger('beforerender', [content, action, autorefresh, scripted, autoSubmit]);
+ 
+-            var discard = false;
+-            $.each(_this.icinga.behaviors, function(name, behavior) {
+-                if (behavior.renderHook) {
+-                    var changed = behavior.renderHook(content, $container, action, autorefresh, autoSubmit);
+-                    if (changed === null) {
+-                        discard = true;
+-                    } else {
+-                        content = changed;
+-                    }
++            let discard = false;
++            for (const hook of _this.icinga.renderHooks) {
++                const changed = hook.renderHook(content, $container, action, autorefresh, autoSubmit);
++                if (changed === null) {
++                    discard = true;
++                } else {
++                    content = changed;
+                 }
+-            });
++            }
+ 
+             $('.container', $container).each(function() {
+                 _this.stopPendingRequestsFor($(this));
+
+From a48a6ebcb5e493c42f7f05ac4d9d7953f7f711e9 Mon Sep 17 00:00:00 2001
+From: Johannes Meyer <johannes.meyer@icinga.com>
+Date: Tue, 6 Feb 2024 10:51:04 +0100
+Subject: [PATCH 2/3] js: Really stop rendering if a hook discards content
+
+This is a potential breaking change for behaviors which
+rely on being able to change content in-place even if
+the response's content is not applied. This is the case
+for grafana's iframe behavior, though that's more a hack
+than a necessity so it doesn't break. I've found no other
+implementations so I guess it's fine including it here.
+---
+ public/js/icinga/loader.js | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/public/js/icinga/loader.js b/public/js/icinga/loader.js
+index 29669a9445..f1d1c53926 100644
+--- a/public/js/icinga/loader.js
++++ b/public/js/icinga/loader.js
+@@ -1272,6 +1272,7 @@
+                 const changed = hook.renderHook(content, $container, action, autorefresh, autoSubmit);
+                 if (changed === null) {
+                     discard = true;
++                    break;
+                 } else {
+                     content = changed;
+                 }
+
+From 6964bd19a2967eb9cc4dbc6a2420e7635a3c665d Mon Sep 17 00:00:00 2001
+From: Johannes Meyer <johannes.meyer@icinga.com>
+Date: Tue, 6 Feb 2024 10:59:20 +0100
+Subject: [PATCH 3/3] js: Improve rejection of autorefresh responses
+
+Don't reject autorefreshes if an autosubmit
+element is focused but not interacted with
+
+fixes #4996
+---
+ public/js/icinga/behavior/form.js | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/public/js/icinga/behavior/form.js b/public/js/icinga/behavior/form.js
+index e1845d2967..5da00c6b6f 100644
+--- a/public/js/icinga/behavior/form.js
++++ b/public/js/icinga/behavior/form.js
+@@ -78,13 +78,13 @@
+             return null;
+         }
+ 
+-        var origFocus = document.activeElement;
+-        var containerId = $container.attr('id');
+-        if ($container.has(origFocus).length
+-            && $(origFocus).length
+-            && ! $(origFocus).hasClass('autofocus')
+-            && $(origFocus).closest('form').length
+-            && $(origFocus).not(':input[type=button], :input[type=submit], :input[type=reset]').length
++        const origFocus = document.activeElement;
++        const containerId = $container.attr('id');
++        if ($container[0].contains(origFocus)
++            && origFocus.form
++            && ! origFocus.matches(
++                'input[type=submit], input[type=reset], input[type=button], .autofocus, .autosubmit:not(:hover)'
++            )
+         ) {
+             this.icinga.logger.debug('Not changing content for ' + containerId + ' form has focus');
+             return null;
