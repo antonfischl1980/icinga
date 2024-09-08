@@ -1,0 +1,11 @@
+--- a/application/forms/TimeRangePicker/CommonForm.php      2023-09-21 14:41:07.000000000 +0300
++++ b/application/forms/TimeRangePicker/CommonForm.php   2024-02-05 09:22:30.733709599 +0200
+@@ -134,6 +134,8 @@
+             'Zend_Form_Decorator_ViewHelper'    => $decorators['Zend_Form_Decorator_ViewHelper']
+         ]);
+
++        $element->setAttrib('onchange','$(".timerangepicker-container").load(window.location.href + " .timerangepicker-container")');
++
+         return $element;
+     }
+
