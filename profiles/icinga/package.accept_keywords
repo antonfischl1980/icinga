@@ -13,3 +13,8 @@ dev-python/whisper ~amd64
 # needed for www-apps/Thruk
 dev-perl/forks ~amd64
 
+# Anton Fischl <github@fischl-online.de> (2024-10-10)
+# needed for www-apps/icingaweb2-module-fileshipper
+dev-php/pecl-yaml ~amd64
+
+
