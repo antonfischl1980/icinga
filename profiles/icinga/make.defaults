@@ -1,3 +1,3 @@
-# Anton Fischl <github@fischl-online.de> (2023-08-19)
-# php8-1 covers everything we need (at this point)
-PHP_TARGETS="-* php8-1"
+# Anton Fischl <github@fischl-online.de> (2024-11-14)
+# php8-2 covers everything we need (at this point)
+PHP_TARGETS="-* php8-2"
