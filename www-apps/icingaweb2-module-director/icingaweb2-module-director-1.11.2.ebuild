@@ -26,10 +26,10 @@ PHP_DEPEND="
 "
 RDEPEND="
 	${PHP_DEPEND}
-	>=www-apps/icingaweb2-module-incubator-0.20.0
-	>=dev-libs/icinga-php-library-0.5.0
-	>=dev-libs/icinga-php-thirdparty-0.9.0
-	>=www-apps/icingaweb2-2.9.0
+	>=www-apps/icingaweb2-module-incubator-0.22.0
+	>=dev-libs/icinga-php-library-0.14.1
+	>=dev-libs/icinga-php-thirdparty-0.12.1
+	>=www-apps/icingaweb2-2.12.1
 	"
 DEPEND=""
 
