@@ -2,7 +2,7 @@ acct-group/graphite-web 0: Group for net-analyzer/graphite-web(-gunicorn)
 acct-user/graphite-web 0: System user: graphite-web
 app-admin/VMware-vSphere-CLI 6.7.0-r8156551: VMware vSphere Command Line Interface 6.7
 app-misc/go-carbon 0.17.1 0.17.3 0.18.0: Golang implementation of Graphite/Carbon server with classic architecture
-app-text/xlsx2csv 0.8.1 0.8.2 0.8.3 0.8.4: Convert MS Office xlsx files to CSV
+app-text/xlsx2csv 0.8.2 0.8.3 0.8.4: Convert MS Office xlsx files to CSV
 dev-libs/icinga-php-library 0.13.2 0.14.0 0.14.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/icinga-php-thirdparty 0.12.0 0.12.1: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83 1.90: Oracle database driver for the DBI module
@@ -12,7 +12,7 @@ dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.340.0 0.350.0 0.360.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
-dev-perl/thruk_libs 3.14.2 3.16 3.18 3.20 3.20.2: easy build thruk perl dependencies
+dev-perl/thruk_libs 3.16 3.18 3.20 3.20.2: easy build thruk perl dependencies
 dev-python/carbon 1.1.10-r1: Backend data caching and persistence daemon for Graphite
 dev-python/django 3.2.25: High-level Python web framework
 dev-python/django-tagging 0.5.0-r1: Generic tagging application for Django
@@ -46,7 +46,7 @@ net-analyzer/graphite-web 1.1.10-r2 1.1.10-r4: Enterprise scalable realtime grap
 net-analyzer/graphite-web-gunicorn 1.0.0-r2: meta package for installing graphite-web and running it with gunicorn
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
-www-apps/Thruk 3.14.2 3.16 3.18 3.20 3.20.2: multibackend monitoring webinterface for Nagios/Icinga and others
+www-apps/Thruk 3.16 3.18 3.20 3.20.2: multibackend monitoring webinterface for Nagios/Icinga and others
 www-apps/icingaweb2 2.12.1-r1 2.12.1-r2 2.12.1-r3: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.4.1 2.5.0 2.5.1: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.3.2 1.3.3: Drill-down view for Icinga web 2 based on custom variables.
