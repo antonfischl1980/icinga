@@ -20,3 +20,8 @@ dev-libs/boost context
 # needed for net-analyzer/check_mssql_health (dev-perl/DBD-Sybase)
 dev-db/freetds mssql
 
+# Anton Fischl <github@fischl-online.de> (2025-01-04)
+# needed for www-apps/icingaweb2
+acct-user/apache icingaweb2
+acct-user/nginx icingaweb2 
+

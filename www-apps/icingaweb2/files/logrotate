@@ -1,4 +1,5 @@
 /var/log/icingaweb2/*.log {
+    su nobody icingaweb2
     missingok
     compress
     notifempty
