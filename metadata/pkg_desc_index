@@ -17,7 +17,7 @@ dev-python/carbon 1.1.10-r1: Backend data caching and persistence daemon for Gra
 dev-python/django 3.2.25: High-level Python web framework
 dev-python/django-tagging 0.5.0-r1: Generic tagging application for Django
 dev-python/pywbem 1.5.0 1.6.3 1.7.2: pywbem - A WBEM client
-dev-python/yamlloader 1.2.2 1.3.2 1.4.1 1.5.1: Ordered YAML loader and dumper for PyYAML.
+dev-python/yamlloader 1.3.2 1.4.1 1.5.1: Ordered YAML loader and dumper for PyYAML.
 net-analyzer/check_3par 1.5-r1: Basic support for monitoring HP 3PAR arrays by Nagios
 net-analyzer/check_amavis 1.1 1.1-r1: Nagios plugin to check amavisd-new daemon
 net-analyzer/check_crl 0-r1: plugin that checks a CRL distribution point (CDP) over HTTP.
@@ -47,7 +47,7 @@ net-analyzer/graphite-web-gunicorn 1.0.0-r2: meta package for installing graphit
 net-analyzer/monitoring-plugins-gentoo 1.1.0 1.1.1 1.2.0: icinga/nagios check plugins specific for gentoo
 net-analyzer/nagios-check_logfiles 4.1 4.1.0.1 4.1.1: A nagios plugin for checking logfiles
 www-apps/Thruk 3.18 3.20 3.20.2: multibackend monitoring webinterface for Nagios/Icinga and others
-www-apps/icingaweb2 2.12.1-r1 2.12.1-r2 2.12.1-r3 2.12.2: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.12.1-r2 2.12.1-r3 2.12.2: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-businessprocess 2.4.1 2.5.0 2.5.1: Create top-level views of your applications in a graphical editor.
 www-apps/icingaweb2-module-cube 1.3.2 1.3.3: Drill-down view for Icinga web 2 based on custom variables.
 www-apps/icingaweb2-module-dependency 1.0.0 1.0.0-r1: maps network topology and displays realtime status of Icinga 2 Networks
