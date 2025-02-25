@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A nagios/icinga plugin for checking VMWare ESX server health
+EAPI=8
+HOMEPAGE=https://www.claudiokuenzler.com/monitoring-plugins/check_esxi_hardware.php
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-python/pywbem
+SLOT=0
+SRC_URI=https://github.com/Napsty/check_esxi_hardware/archive/refs/tags/20250221.tar.gz -> check_esxi_hardware-20250221.tar.gz
+_md5_=09da264046f2acba5674ae9e005dac0a
