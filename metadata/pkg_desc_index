@@ -7,7 +7,7 @@ dev-libs/icinga-php-library 0.13.2 0.14.0 0.14.1: Icinga PHP libraries for Icing
 dev-libs/icinga-php-thirdparty 0.12.0 0.12.1: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83 1.90: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.23 1.24 1.25: DBI driver for XBase compatible database files
-dev-perl/GLPlugin 5.33 5.35 5.36 5.38 5.38.1 5.39.0.2 5.40 5.41: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
+dev-perl/GLPlugin 5.35 5.36 5.38 5.38.1 5.39.0.2 5.40 5.41: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.37 0.340.0 0.350.0 0.360.0: Perl extension for using UUID interfaces as defined in e2fsprogs
