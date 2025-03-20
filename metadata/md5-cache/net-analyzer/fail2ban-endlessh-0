@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=net-analyzer/fail2ban net-misc/endlessh
+DESCRIPTION=Combining the powers of endlessh and fail2ban.
+EAPI=8
+HOMEPAGE=https://github.com/itskenny0/fail2ban-endlessh
+KEYWORDS=~amd64
+LICENSE=Unlicense
+RDEPEND=net-analyzer/fail2ban net-misc/endlessh
+SLOT=0
+SRC_URI=https://github.com/itskenny0/fail2ban-endlessh/archive/0a55f4a2bfd3c948661b0b689dedfd27b606aa31.tar.gz -> fail2ban-endlessh-0.tar.gz
+_md5_=5fe0bddd5fdf48ea4b601085c59a7342
