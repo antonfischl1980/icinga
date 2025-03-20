@@ -1,0 +1,12 @@
+diff --git a/action.d/endlessh.conf b/action.d/endlessh.conf
+index f2094c8..8a8e241 100644
+--- a/action.d/endlessh.conf
++++ b/action.d/endlessh.conf
+@@ -1,6 +1,6 @@
+ [INCLUDES]
+ 
+-before = iptables-common.conf
++before = iptables.conf
+ 
+ [Definition]
+ actionban   = <iptables> -t nat -A PREROUTING -p tcp -s <ip> --dport 22 -j REDIRECT --to-port 2222
