@@ -15,7 +15,7 @@ PATCHES=(
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	net-analyzer/fail2ban
