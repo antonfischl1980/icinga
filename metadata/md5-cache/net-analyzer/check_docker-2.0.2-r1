@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://github.com/FLiPp3r90/check_docker/archive/c32f8f40943e0e052cdf2843c0f99d3652be1153.tar.gz -> check_docker-2.0.2.tar.gz
-_md5_=7971ad16addc72a638f33a08633249cd
+_md5_=0c0ba62c8c799b7a22b9a80bf2c2df39
