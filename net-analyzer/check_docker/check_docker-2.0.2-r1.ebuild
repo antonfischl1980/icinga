@@ -26,6 +26,9 @@ src_install(){
 	insinto /usr/share/icinga2/include/plugins-contrib.d/
 	doins "${FILESDIR}/${PN}.conf"
 
+	insinto /etc/sudoers.d/
+	newins "${FILESDIR}/${PN}.sudo" "${PN}"
+
 	insinto /usr/share/icingaweb2/modules/graphite/templates/
 	doins "${FILESDIR}/${PN}.ini"
 }

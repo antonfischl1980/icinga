@@ -5,5 +5,5 @@ PHP_TARGETS="-* php8-2"
 # Anton Fischl <github@fischl-online.de> (2025-01-04)
 # User 'icinga' must be part of group 'icingaweb2' for 'www-apps/icingaweb2-module-businessprocess' to work properly
 # see https://wiki.gentoo.org/wiki/Practical_guide_to_the_GLEP_81_migration
-ACCT_USER_ICINGA_GROUPS_ADD="icingaweb2 docker"
+ACCT_USER_ICINGA_GROUPS_ADD="icingaweb2"
 
