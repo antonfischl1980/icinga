@@ -13,9 +13,10 @@ dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handl
 dev-perl/UUID 0.350.0 0.360.0 0.370.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/forks 0.360.0-r2: Emulate threads with fork
 dev-perl/thruk_libs 3.18 3.20 3.20.2 3.22: easy build thruk perl dependencies
-dev-python/carbon 1.1.10-r1: Backend data caching and persistence daemon for Graphite
+dev-python/carbon 1.1.10-r1 1.1.10-r2: Backend data caching and persistence daemon for Graphite
 dev-python/django 3.2.25: High-level Python web framework
 dev-python/django-tagging 0.5.0-r1: Generic tagging application for Django
+dev-python/legacy-cgi 2.6.3: Fork of the standard library cgi and cgitb modules removed in Python 3.13
 dev-python/pywbem 1.6.3 1.7.2 1.7.3: pywbem - A WBEM client
 dev-python/yamlloader 1.3.2 1.4.1 1.5.1: Ordered YAML loader and dumper for PyYAML.
 net-analyzer/check_3par 1.5-r1: Basic support for monitoring HP 3PAR arrays by Nagios
