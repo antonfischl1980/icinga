@@ -14,7 +14,7 @@ SRC_URI="https://github.com/NETWAYS/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2 MIT BSD MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
