@@ -17,11 +17,11 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="php_targets_php8-1 php_targets_php8-2 php_targets_php8-3"
+IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4"
 PHP_DEPEND="
-	php_targets_php8-1? ( dev-lang/php:8.1[curl] )
 	php_targets_php8-2? ( dev-lang/php:8.2[curl] )
 	php_targets_php8-3? ( dev-lang/php:8.3[curl] )
+	php_targets_php8-4? ( dev-lang/php:8.4[curl] )
 "
 DEPEND="
 	>=www-apps/icingaweb2-2.9.0
