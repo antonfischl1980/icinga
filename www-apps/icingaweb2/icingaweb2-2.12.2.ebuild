@@ -22,13 +22,16 @@ SLOT="0"
 IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
 REQUIRED_USE="( ?? ( apache2-server nginx ) ) apache2? ( apache2-server )"
 
-IUSE="${IUSE} php_targets_php8-2 php_targets_php8-3"
+IUSE="${IUSE} php_targets_php8-2 php_targets_php8-3 php_targets_php8-4"
 PHP_DEPEND="
 	php_targets_php8-2? (
 		dev-lang/php:8.2[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 	)
 	php_targets_php8-3? (
 		dev-lang/php:8.3[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+	)
+	php_targets_php8-4? (
+		dev-lang/php:8.4[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 	)
 "
 DEPEND=">=net-analyzer/icinga2-2.1.1
