@@ -18,6 +18,7 @@ DEPEND="
 	virtual/perl-Text-ParseWords
 	virtual/perl-Time-HiRes
 "
+RDEPEND="${DEPEND}"
 
 LICENSE="GPL-2+"
 SLOT="0"
