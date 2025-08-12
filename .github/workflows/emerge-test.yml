@@ -23,7 +23,7 @@ jobs:
       image: ghcr.io/antonfischl1980/gentoo-ci:main
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     # emerge --sync not needed in this run
 
@@ -87,7 +87,7 @@ jobs:
         echo "ebuild: ${{ matrix.ebuild }}"
 
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: setup portage
       env:
@@ -148,7 +148,7 @@ jobs:
         echo "ebuild: ${{ matrix.ebuild }}"
 
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: setup portage
       env:
