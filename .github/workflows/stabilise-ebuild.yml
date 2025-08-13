@@ -13,7 +13,7 @@ jobs:
       skip: ${{ steps.find-ebuilds.outputs.skip }}
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
 
@@ -51,7 +51,7 @@ jobs:
         package: ${{ fromJSON(needs.find-ebuilds-to-stabilise.outputs.TODO_JSON) }}
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     # https://github.com/peter-evans/create-pull-request/issues/1170
     - name: Bug workaround
