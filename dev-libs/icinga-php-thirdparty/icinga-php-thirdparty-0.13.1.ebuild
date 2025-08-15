@@ -9,7 +9,7 @@ SRC_URI="https://github.com/Icinga/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4"
 PHP_DEPEND="
