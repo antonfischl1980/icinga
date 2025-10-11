@@ -3,9 +3,9 @@ DESCRIPTION=Bleeding edge Icinga Web 2 libraries
 EAPI=8
 HOMEPAGE=https://github.com/Icinga/icingaweb2-module-incubator/
 IUSE=php_targets_php8-2 php_targets_php8-3 php_targets_php8-4
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) php_targets_php8-4? ( dev-lang/php:8.4[curl] ) >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-thirdparty-0.12.1 >=dev-libs/icinga-php-library-0.13.1
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-incubator/tar.gz/v0.23.0 -> icingaweb2-module-incubator-0.23.0.tar.gz
-_md5_=2c071c1cf6a25ce3fff8cbaeca52c605
+_md5_=6d768b43e1d7aef56ac5b6ffe305b26c
