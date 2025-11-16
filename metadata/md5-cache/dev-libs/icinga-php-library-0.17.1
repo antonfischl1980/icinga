@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) !php_targets_php8-2? ( !dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 ) !php_targets_php8-3? ( !dev-lang/php:8.3 ) php_targets_php8-4? ( dev-lang/php:8.4 ) !php_targets_php8-4? ( !dev-lang/php:8.4 )
+DESCRIPTION=Icinga PHP libraries for Icinga Web 2
+EAPI=8
+HOMEPAGE=https://github.com/Icinga/icinga-php-library
+IUSE=php_targets_php8-2 php_targets_php8-3 php_targets_php8-4
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) !php_targets_php8-2? ( !dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 ) !php_targets_php8-3? ( !dev-lang/php:8.3 ) php_targets_php8-4? ( dev-lang/php:8.4 ) !php_targets_php8-4? ( !dev-lang/php:8.4 )
+SLOT=0
+SRC_URI=https://github.com/Icinga/icinga-php-library/archive/refs/tags/v0.17.1.tar.gz -> icinga-php-library-0.17.1.tar.gz
+_md5_=f6f3a58cb5e41ab862ea05931f45804a
