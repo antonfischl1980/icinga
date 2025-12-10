@@ -23,7 +23,6 @@ RDEPEND="dev-perl/DBD-Sybase
 	dev-perl/DBI
 	virtual/perl-Data-Dumper
 	virtual/perl-File-Temp
-	virtual/perl-Net-Ping
 	virtual/perl-Time-HiRes"
 
 S="${WORKDIR}/${MY_P}"
