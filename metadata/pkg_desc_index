@@ -7,7 +7,7 @@ dev-libs/icinga-php-library 0.16.1 0.17.0 0.17.1 0.18.0 0.18.1: Icinga PHP libra
 dev-libs/icinga-php-thirdparty 0.12.1 0.13.0 0.13.1 0.14.0: Icinga PHP libraries for Icinga Web 2
 dev-perl/DBD-Oracle 1.80 1.83 1.90: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.24 1.25 1.26: DBI driver for XBase compatible database files
-dev-perl/GLPlugin 5.45 5.51 5.52 5.53: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
+dev-perl/GLPlugin 5.51 5.52 5.53: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
 dev-perl/Net-IMAP-Simple 1.221.200: Perl extension for simple IMAP account handling
 dev-perl/UUID 0.350.0 0.360.0 0.370.0: Perl extension for using UUID interfaces as defined in e2fsprogs
@@ -17,8 +17,8 @@ dev-python/carbon 1.1.10-r1 1.1.10-r2: Backend data caching and persistence daem
 dev-python/django 3.2.25: High-level Python web framework
 dev-python/django-tagging 0.5.0-r2 0.5.0-r3: Generic tagging application for Django
 dev-python/legacy-cgi 2.6.3: Fork of the standard library cgi and cgitb modules removed in Python 3.13
-dev-python/pywbem 1.7.2 1.7.3 1.8.0 1.8.1: pywbem - A WBEM client
-dev-python/yamlloader 1.4.1 1.5.1 1.5.2 1.6.0: Ordered YAML loader and dumper for PyYAML.
+dev-python/pywbem 1.7.3 1.8.0 1.8.1: pywbem - A WBEM client
+dev-python/yamlloader 1.5.1 1.5.2 1.6.0: Ordered YAML loader and dumper for PyYAML.
 net-analyzer/check_3par 1.5-r1: Basic support for monitoring HP 3PAR arrays by Nagios
 net-analyzer/check_amavis 1.1 1.1-r1: Nagios plugin to check amavisd-new daemon
 net-analyzer/check_crl 0-r1: plugin that checks a CRL distribution point (CDP) over HTTP.
