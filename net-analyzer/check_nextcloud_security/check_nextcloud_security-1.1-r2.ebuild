@@ -6,10 +6,10 @@ EAPI=8
 MY_PN="check_nextcloud"
 MY_PV="${PV}"
 MY_P="${MY_PN}-${MY_PV}"
-S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Monitoring plugin to check the status of nextcloud security scan for a given URL"
 HOMEPAGE="https://github.com/janvonde/check_nextcloud/"
 SRC_URI="https://github.com/janvonde/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
