@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
-DEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 )
+DEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 ) php_targets_php8-4? ( dev-lang/php:8.4 )
 DESCRIPTION=Monitoring plugin to check the status of nextcloud security scan for a given URL
 EAPI=8
 HOMEPAGE=https://github.com/janvonde/check_nextcloud/
-IUSE=php_targets_php8-2 php_targets_php8-3
+IUSE=php_targets_php8-2 php_targets_php8-3 php_targets_php8-4
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 )
+RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 ) php_targets_php8-4? ( dev-lang/php:8.4 )
 SLOT=0
 SRC_URI=https://github.com/janvonde/check_nextcloud/archive/refs/tags/v1.1.tar.gz -> check_nextcloud_security-1.1.tar.gz
-_md5_=a2f4eeca3c6e981acbdc42469fb3246a
+_md5_=f1b3b969a8daa51c95ca3ac1a21aaf99
