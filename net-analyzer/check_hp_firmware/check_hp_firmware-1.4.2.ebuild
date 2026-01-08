@@ -9,7 +9,7 @@ DESCRIPTION="checks if HPE controllers an SSDs are not affected by certain vulne
 HOMEPAGE="https://github.com/NETWAYS/check_hp_firmware"
 
 SRC_URI="https://github.com/NETWAYS/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://nextcloud.fischl-online.de/s/ToTHoKYDRx3Wq3M/download/${P}-deps.tar.xz
+	https://github.com/antonfischl1980/check_hp_firmware/releases/download/v${PV}/check_hp_firmware-${PV}-vendor.tar.xz
 	"
 
 LICENSE="GPL-2 MIT BSD MPL-2.0"
