@@ -5,7 +5,7 @@ app-misc/go-carbon 0.17.1 0.17.3 0.18.0: Golang implementation of Graphite/Carbo
 app-text/xlsx2csv 0.8.2 0.8.3 0.8.4 0.8.6: Convert MS Office xlsx files to CSV
 dev-libs/icinga-php-library 0.17.1 0.18.0 0.18.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/icinga-php-thirdparty 0.13.0 0.13.1 0.14.0: Icinga PHP libraries for Icinga Web 2
-dev-perl/DBD-Oracle 1.80 1.83 1.90: Oracle database driver for the DBI module
+dev-perl/DBD-Oracle 1.80 1.83 1.90-r1: Oracle database driver for the DBI module
 dev-perl/DBD-Sybase 1.24 1.25 1.26: DBI driver for XBase compatible database files
 dev-perl/GLPlugin 5.51 5.52 5.53 5.54 6.0: Perl modules providing the basis for labs.consol.de Nagios/Naemon/Icinga plugins
 dev-perl/List-Compare 0.53 0.55: Manipulation of electronic mail addresses
