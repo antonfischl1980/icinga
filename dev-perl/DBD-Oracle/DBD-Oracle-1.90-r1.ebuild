@@ -7,6 +7,9 @@ DIST_AUTHOR="ZARQUON"
 
 inherit perl-module
 
+PATCHES=(
+	"${FILESDIR}"/"${P}-empty-return.patch"
+)
 DESCRIPTION="Oracle database driver for the DBI module"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
