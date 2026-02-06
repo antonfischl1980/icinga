@@ -7,4 +7,4 @@ LICENSE=BSD
 RDEPEND=dev-perl/MIME-tools
 SLOT=0
 SRC_URI=https://github.com/glensc/monitoring-plugin-check_amavis/archive/refs/tags/v1.1.tar.gz -> check_amavis-1.1.tar.gz
-_md5_=6d3ef784ffc421d762d23897f969bf83
+_md5_=5f7cd237707b124f045343e9ff550c64

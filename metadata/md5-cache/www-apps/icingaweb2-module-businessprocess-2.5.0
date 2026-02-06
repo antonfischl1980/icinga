@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.13.0 >=dev-libs/icinga-php-thirdparty-0.12.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-businessprocess/tar.gz/v2.5.0 -> icingaweb2-module-businessprocess-2.5.0.tar.gz
-_md5_=69739b48607246c97254a9daa765a8c9
+_md5_=ea06b53618eb4b409c2a4583f2a6a2f0

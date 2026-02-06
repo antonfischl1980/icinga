@@ -7,4 +7,4 @@ LICENSE=GPL-3
 RDEPEND=dev-perl/Mail-IMAPClient
 SLOT=0
 SRC_URI=http://buhacoff.net/software/check_email_delivery/archive/check_email_delivery-0.7.1b.tar.gz
-_md5_=4d2729125810c3f4d14ece59f3a608a0
+_md5_=667a223ae257c285b9170972509cf790

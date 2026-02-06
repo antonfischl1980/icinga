@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/GLPlugin
 SLOT=0
 SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_tl_health-1.8.0.1.tar.gz
-_md5_=607d9ab2a30a75a02e9ef3bc1fb06574
+_md5_=38790d7f8eef6b97970d7ab263708ed2

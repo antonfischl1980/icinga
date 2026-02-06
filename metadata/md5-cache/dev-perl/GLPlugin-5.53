@@ -9,4 +9,4 @@ RDEPEND=dev-perl/JSON
 SLOT=0
 SRC_URI=https://github.com/lausser/GLPlugin/archive/18ea0406ebe3c24afd9425ef6e67b1835e543858.tar.gz -> GLPlugin-5.53.tar.gz
 _eclasses_=perl-functions	1863acf0982afafc67797e3ce7275b4c
-_md5_=f6a2e42f9c7d88efa94a111813692b98
+_md5_=76818f4302bba8c0a87d1e6d474112c8

@@ -7,4 +7,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://github.com/riskersen/Monitoring/archive/cc0232e2fa30d3403c662d0ee1a34b99f85c3a52.tar.gz -> check_fortigate-1.8.10.tar.gz
-_md5_=75f2ca66e657305d6c374f8889004427
+_md5_=c1aa85913155276d9be1aa4b468439a4

@@ -8,4 +8,4 @@ LICENSE=Unlicense
 RDEPEND=net-analyzer/fail2ban net-misc/endlessh
 SLOT=0
 SRC_URI=https://github.com/itskenny0/fail2ban-endlessh/archive/0a55f4a2bfd3c948661b0b689dedfd27b606aa31.tar.gz -> fail2ban-endlessh-0.tar.gz
-_md5_=960e04886319efee6c00701833a4bf8b
+_md5_=8d710cc95246a0c0417d8cb4d6b8ed5d

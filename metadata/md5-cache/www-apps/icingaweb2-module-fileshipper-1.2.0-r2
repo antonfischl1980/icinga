@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=www-apps/icingaweb2-module-director php_targets_php8-2? ( yaml? ( dev-php/pecl-yaml ) xlsx? ( dev-lang/php:8.2[zip] ) dev-lang/php:8.2[xml?] ) php_targets_php8-3? ( yaml? ( dev-php/pecl-yaml ) xlsx? ( dev-lang/php:8.3[zip] ) dev-lang/php:8.3[xml?] ) php_targets_php8-4? ( yaml? ( dev-php/pecl-yaml ) xlsx? ( dev-lang/php:8.4[zip] ) dev-lang/php:8.4[xml?] )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-fileshipper/tar.gz/v1.2.0 -> icingaweb2-module-fileshipper-1.2.0.tar.gz
-_md5_=0f721b151bf306d7c7a489c0cffc8990
+_md5_=50da680dce39e2b7dd047c06d0c91ba8

@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=dev-python/pywbem dev-python/packaging
 SLOT=0
 SRC_URI=https://github.com/Napsty/check_esxi_hardware/archive/refs/tags/20250221.tar.gz -> check_esxi_hardware-20250221.tar.gz
-_md5_=71d313fd399e94f6a50c79588e08fc71
+_md5_=98bc91338d19cf3bf7822fac57476c46

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
 SLOT=0
 SRC_URI=https://codeload.github.com/nbuchwitz/icingaweb2-module-map/tar.gz/v2.0.0 -> icingaweb2-module-map-2.0.0.tar.gz
-_md5_=fe124e0a89cb476e28a0af45d9f89347
+_md5_=f52edd8531112b4d266704d7200b8c68

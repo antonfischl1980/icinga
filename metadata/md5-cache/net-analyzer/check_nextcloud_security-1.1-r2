@@ -9,4 +9,4 @@ LICENSE=GPL-3
 RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2 ) php_targets_php8-3? ( dev-lang/php:8.3 ) php_targets_php8-4? ( dev-lang/php:8.4 )
 SLOT=0
 SRC_URI=https://github.com/janvonde/check_nextcloud/archive/refs/tags/v1.1.tar.gz -> check_nextcloud_security-1.1.tar.gz
-_md5_=f1b3b969a8daa51c95ca3ac1a21aaf99
+_md5_=d8368825530e6502074f280dae81bd68

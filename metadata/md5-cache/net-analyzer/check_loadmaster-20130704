@@ -6,4 +6,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://www.thomas-dohl.de/downloads/nagios_icinga/check_loadmaster.pl
-_md5_=5c8402a854796e603b4648c34df0dd0f
+_md5_=0d386397d9f042980aaa208814dc5b4b

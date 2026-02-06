@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-thirdparty-0.8.0 >=dev-libs/icinga-php-library-0.5.0
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-incubator/tar.gz/v0.22.0 -> icingaweb2-module-incubator-0.22.0.tar.gz
-_md5_=361d7c4438b6eef11644406a4b5fd35c
+_md5_=98793858732eb8d06cecd07d305852e0

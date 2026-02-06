@@ -7,4 +7,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=acct-user/graphite-web net-analyzer/graphite-web[sqlite] www-servers/gunicorn
 SLOT=0
-_md5_=96808c56c247c23bca0d91a423df75b5
+_md5_=3f73dfd6a22313ecc554f9e5f4f5a0c4
