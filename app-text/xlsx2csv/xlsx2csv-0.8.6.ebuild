@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/dilshod/xlsx2csv/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="dev-lang/perl"
 
