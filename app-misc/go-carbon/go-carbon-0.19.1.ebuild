@@ -11,7 +11,7 @@ SRC_URI="https://github.com/go-graphite/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
