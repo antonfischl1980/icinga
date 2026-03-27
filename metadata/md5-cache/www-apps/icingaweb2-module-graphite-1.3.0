@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Module for displaying Graphite data directly in Icinga Web 2
+EAPI=8
+HOMEPAGE=https://github.com/Icinga/icingaweb2-module-graphite/
+IUSE=php_targets_php8-2 php_targets_php8-3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) >=dev-libs/icinga-php-library-0.13.0 >=dev-libs/icinga-php-thirdparty-0.12.0 >=www-apps/icingaweb2-2.9.0
+SLOT=0
+SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-graphite/tar.gz/v1.3.0 -> icingaweb2-module-graphite-1.3.0.tar.gz
+_md5_=6e03bbe14b3ca25b9c0ae5a9f1b7bd96
