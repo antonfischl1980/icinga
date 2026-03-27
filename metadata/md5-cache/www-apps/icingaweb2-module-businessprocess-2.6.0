@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
-DEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.13.0 >=dev-libs/icinga-php-thirdparty-0.12.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) php_targets_php8-4? ( dev-lang/php:8.4[curl] )
+DEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.19.0 >=dev-libs/icinga-php-thirdparty-0.15.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) php_targets_php8-4? ( dev-lang/php:8.4[curl] ) php_targets_php8-5? ( dev-lang/php:8.5[curl] )
 DESCRIPTION=Create top-level views of your applications in a graphical editor.
 EAPI=8
 HOMEPAGE=https://github.com/Icinga/icingaweb2-module-businessprocess/
-IUSE=php_targets_php8-2 php_targets_php8-3 php_targets_php8-4
+IUSE=php_targets_php8-2 php_targets_php8-3 php_targets_php8-4 php_targets_php8-5
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.13.0 >=dev-libs/icinga-php-thirdparty-0.12.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) php_targets_php8-4? ( dev-lang/php:8.4[curl] )
+RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.19.0 >=dev-libs/icinga-php-thirdparty-0.15.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] ) php_targets_php8-4? ( dev-lang/php:8.4[curl] ) php_targets_php8-5? ( dev-lang/php:8.5[curl] )
 SLOT=0
 SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-businessprocess/tar.gz/v2.6.0 -> icingaweb2-module-businessprocess-2.6.0.tar.gz
-_md5_=acf166fd1af9f53402a4110e0a54b441
+_md5_=e9742015f535eac2f1040a953049cfaf
