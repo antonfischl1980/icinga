@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
+DESCRIPTION=Drill-down view for Icinga web 2 based on custom variables.
+EAPI=8
+HOMEPAGE=https://github.com/Icinga/icingaweb2-module-cube/
+IUSE=php_targets_php8-2 php_targets_php8-3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
+SLOT=0
+SRC_URI=https://codeload.github.com/Icinga/icingaweb2-module-cube/tar.gz/v1.4.0 -> icingaweb2-module-cube-1.4.0.tar.gz
+_md5_=4ba8d7fc31a9345cd48a43b2badd96a4
