@@ -1,6 +1,6 @@
-# Anton Fischl <github@fischl-online.de> (2024-11-14)
-# php8-2 covers everything we need (at this point)
-PHP_TARGETS="-* php8-2"
+# Anton Fischl <github@fischl-online.de> (2026-04-02)
+# php8-3 covers everything we need (at this point)
+PHP_TARGETS="-* php8-3"
 
 # Anton Fischl <github@fischl-online.de> (2025-01-04)
 # User 'icinga' must be part of group 'icingaweb2' for 'www-apps/icingaweb2-module-businessprocess' to work properly
