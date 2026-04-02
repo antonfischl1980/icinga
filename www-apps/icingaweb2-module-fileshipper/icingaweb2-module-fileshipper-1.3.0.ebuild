@@ -17,7 +17,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4 yaml xlsx xml"
+IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4 php_targets_php8-5 yaml xlsx xml"
 PHP_DEPEND="
 	php_targets_php8-2? (
 		yaml? ( dev-php/pecl-yaml )
@@ -33,6 +33,11 @@ PHP_DEPEND="
 		yaml? ( dev-php/pecl-yaml )
 		xlsx? ( dev-lang/php:8.4[zip] )
 		dev-lang/php:8.4[xml?]
+	)
+	php_targets_php8-5? (
+		yaml? ( dev-php/pecl-yaml )
+		xlsx? ( dev-lang/php:8.5[zip] )
+		dev-lang/php:8.5[xml?]
 	)
 "
 RDEPEND="
