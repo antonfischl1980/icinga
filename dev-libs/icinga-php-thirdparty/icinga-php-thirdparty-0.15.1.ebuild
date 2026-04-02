@@ -11,7 +11,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4"
+IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4 php_targets_php8-5"
 PHP_DEPEND="
 	php_targets_php8-2? ( dev-lang/php:8.2 )
 	!php_targets_php8-2? ( !dev-lang/php:8.2 )
@@ -19,6 +19,8 @@ PHP_DEPEND="
 	!php_targets_php8-3? ( !dev-lang/php:8.3 )
 	php_targets_php8-4? ( dev-lang/php:8.4 )
 	!php_targets_php8-4? ( !dev-lang/php:8.4 )
+	php_targets_php8-5? ( dev-lang/php:8.5 )
+	!php_targets_php8-5? ( !dev-lang/php:8.5 )
 "
 DEPEND="${PHP_DEPEND}"
 RDEPEND="${DEPEND}"
