@@ -36,7 +36,7 @@ net-analyzer/check_nextcloud_security 1.1-r2: Monitoring plugin to check the sta
 net-analyzer/check_nwc_health 11.0.1.1 11.2.4 12.10.1: plugin which checks the health of network components and interfaces.
 net-analyzer/check_openvpn 0.0.1: Nagios/Icinga check for OpenVPN availability monitoring
 net-analyzer/check_oracle_health 3.3.2 3.3.2.1 3.3.3.2: A nagios plugin for checking Oracle server health
-net-analyzer/check_poe_consumption_snmp 1.0.0-r1 1.0.1-r1: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
+net-analyzer/check_poe_consumption_snmp 1.0.1-r1 1.0.2: Nagios/Icinga check for PoE capable Switches implementing POWER-ETHERNET-MIB
 net-analyzer/check_postgres 2.26.0: Nagios/Icinga plugin for checking status of PostgreSQL databases
 net-analyzer/check_pve 1.5.0 1.6.0: Icinga check command for Proxmox VE via API
 net-analyzer/check_redis 0.7.3-r1: Redis Check for Nagios/Icinga2
