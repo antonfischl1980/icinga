@@ -7,6 +7,10 @@ DESCRIPTION="Icinga check command for Proxmox VE via API"
 HOMEPAGE="https://github.com/nbuchwitz/check_pve"
 SRC_URI="https://github.com/nbuchwitz/check_pve/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
+PATCHES=(
+	"${FILESDIR}/command.conf.patch"
+)
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64"

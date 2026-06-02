@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,6 +6,10 @@ EAPI=8
 DESCRIPTION="Icinga check command for Proxmox VE via API"
 HOMEPAGE="https://github.com/nbuchwitz/check_pve"
 SRC_URI="https://github.com/nbuchwitz/check_pve/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
+PATCHES=(
+	"${FILESDIR}/command.conf.patch"
+)
 
 LICENSE="GPL-2"
 SLOT="0"

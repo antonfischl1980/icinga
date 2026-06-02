@@ -1,0 +1,29 @@
+diff --git a/icinga2/command.conf b/icinga2/command.conf
+index 1b681a8..8c66800 100644
+--- a/icinga2/command.conf
++++ b/icinga2/command.conf
+@@ -9,6 +9,11 @@ object CheckCommand "pve" {
+                         required = true
+                         description = "Hostname for PVE API"
+                 }
++                "--api-port" = {
++                        value = "$pve_api_port$"
++                        required = false
++                        description = "Port for PVE API"
++                }
+                 "-u" = {
+                         value = "$pve_user$"
+                         required = true
+@@ -16,10 +21,12 @@ object CheckCommand "pve" {
+                 }
+                 "-p" = {
+                         value = "$pve_password$"
++                        required = false
+                         description = "API user password"
+                 }
+                 "-t" = {
+                         value = "$pve_token$"
++                        required = false
+                         description = "API user token"
+                 }
+                 "-k" = {
