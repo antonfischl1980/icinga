@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-python/requests dev-python/packaging
 SLOT=0
 SRC_URI=https://github.com/nbuchwitz/check_pve/archive/refs/tags/v1.5.0.tar.gz -> check_pve-1.5.0.tar.gz
-_md5_=c8c294feb48205c39bfb4e6b202d23a9
+_md5_=abbc33621885cdd0c9176da1fe9d0cc9
