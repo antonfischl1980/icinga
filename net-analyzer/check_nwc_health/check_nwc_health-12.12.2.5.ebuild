@@ -3,18 +3,14 @@
 
 EAPI=8
 
-inherit autotools git-r3
+inherit autotools perl-functions
 
 MY_PN="${PN#nagios-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="plugin which checks the health of network components and interfaces."
 HOMEPAGE="https://labs.consol.de/nagios/check_nwc_health/"
-#SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
-#SRC_URI="https://github.com/lausser/check_nwc_health/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-EGIT_REPO_URI="https://github.com/lausser/check_nwc_health.git"
-EGIT_COMMIT="${PV}"
-EGIT_SUBMODULES=( "GLPlugin" )
+SRC_URI="https://github.com/lausser/check_nwc_health/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,13 +23,16 @@ RDEPEND="
 	dev-perl/File-Slurp
 	dev-perl/GLPlugin
 	"
-BDEPEND=""
+BDEPEND="
+	dev-perl/GLPlugin
+"
 
 src_prepare(){
 	default
 	eautoreconf
 
-	git clone https://github.com/lausser/GLPlugin.git
+	mkdir -p GLPlugin/lib/
+	cp -a "$(perl_get_vendorlib)/Monitoring" GLPlugin/lib/ || die
 }
 
 src_configure(){
