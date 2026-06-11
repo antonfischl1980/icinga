@@ -9,7 +9,6 @@ while read -r PLUGIN;do
 	echo "Checking ${PLUGIN}"
 
 	REMOTE_URL="$(grep 'remote-id type="github"' "${PLUGIN}"/metadata.xml |head -1|sed -E 's#^.*<remote-id[^>]+>#https://github.com/#; s#</remote-id>#.git#')"
-	echo "$REMOTE_URL"|grep -q "^https://github.com/lausser/" && continue # ignore repos from Lausser, he stopped tagging versions a few years ago
 	echo "remote URL: ${REMOTE_URL}"
 
 	FILTER="$(grep "${PLUGIN}" .github/bin/find-updates.filter|awk '{print $2}')"
@@ -29,35 +28,7 @@ while read -r PLUGIN;do
 	echo "${PLUGIN}" >>/checked.lst
 done < <(grep -l 'remote-id type="github"' -- */*/metadata.xml|xargs dirname)
 
-#consol
-while read -r PLUGIN;do 
-	echo "xxxxxxxxxxxxxxxxxxxxx"
-	echo "Checking ${PLUGIN}"
-
-	REMOTE_NAME="${PLUGIN##*/}"
-	REMOTE_NAME="${REMOTE_NAME##nagios-}"
-	echo "REMOTE_NAME: ${REMOTE_NAME}"
-
-	REMOTE_VERSION="$(wget https://labs.consol.de/nagios/"${REMOTE_NAME}"/ -qO -|grep -Eoi '<a [^>]+>'|grep -Eo "/${REMOTE_NAME}-[0-9\.]+.tar.gz"|sed "s#^/##g;s#.tar.gz##g;s#${REMOTE_NAME}-##g")"
-	if [ -z "$REMOTE_VERSION" ]; then
-		echo "Keine Remote-Version"
-		continue
-	fi
-	echo "${REMOTE_VERSION} (version upstream)"
-
-	LOCAL_VERSION="$(equery l -o "$PLUGIN::icinga" --format='$version'|tail -1)"
-	echo "${LOCAL_VERSION} (version local)"
-
-	if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ];then
-		echo "bump needed"
-		echo "$PLUGIN-$REMOTE_VERSION" >> /todo.lst
-	fi
-
-	echo "${PLUGIN}" >>/checked.lst
-done < <(grep -l 'remote-id type="github".*lausser' -- */*/metadata.xml|xargs dirname|grep -v "dev-perl/GLPlugin")
-
-
-# dev-perl/GLPlugin
+ dev-perl/GLPlugin
 echo "xxxxxxxxxxxxxxxxxxxxx"
 echo "Checking dev-perl/GLPlugin"
 REMOTE_VERSION="$(wget -qO - "https://raw.githubusercontent.com/lausser/GLPlugin/master/lib/Monitoring/GLPlugin.pm" | awk '/VERSION/{print gensub(/.*[^0-9\.]([0-9\.]+)[^0-9\.].*/, "\\1", "g", $0)}')"
