@@ -21,8 +21,8 @@ IUSE="php_targets_php8-2 php_targets_php8-3 php_targets_php8-4 php_targets_php8-
 PHP_DEPEND="
 	php_targets_php8-2? ( dev-lang/php:8.2[curl] )
 	php_targets_php8-3? ( dev-lang/php:8.3[curl] )
-	php_targets_php8-3? ( dev-lang/php:8.4[curl] )
-	php_targets_php8-3? ( dev-lang/php:8.5[curl] )
+	php_targets_php8-4? ( dev-lang/php:8.4[curl] )
+	php_targets_php8-5? ( dev-lang/php:8.5[curl] )
 "
 DEPEND=">=net-analyzer/icinga2-2.4.3
 	>=www-apps/icingaweb2-2.12.5
