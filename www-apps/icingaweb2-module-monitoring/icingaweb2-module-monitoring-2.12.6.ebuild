@@ -1,0 +1,38 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="Create top-level views of your applications in a graphical editor."
+HOMEPAGE="https://github.com/Icinga/icingaweb2-module-monitoring"
+if [[ "${PV}" == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Icinga/${PN}.git"
+else
+	KEYWORDS="amd64 x86"
+	SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${PV}"
+fi
+
+LICENSE="GPL-2"
+SLOT="0"
+
+IUSE="php_targets_php8-2 php_targets_php8-3"
+PHP_DEPEND="
+	php_targets_php8-2? (
+		dev-lang/php:8.2
+	)
+	php_targets_php8-3? (
+		dev-lang/php:8.3
+	)
+"
+RDEPEND="
+	www-apps/icingaweb2
+	${PHP_DEPEND}
+	"
+BDEPEND=""
+
+src_install() {
+	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
+	doins -r "${S}"/*
+}
