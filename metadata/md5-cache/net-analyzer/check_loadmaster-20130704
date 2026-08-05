@@ -1,9 +1,0 @@
-DEFINED_PHASES=install unpack
-DESCRIPTION=KEMP LoadMaster Nagios Monitoring Plugin
-EAPI=7
-HOMEPAGE=https://www.thomas-dohl.de/?Projekte___Nagios%2FIcinga___Plugin_Loadmaster
-KEYWORDS=amd64 x86
-LICENSE=GPL-3
-SLOT=0
-SRC_URI=https://www.thomas-dohl.de/downloads/nagios_icinga/check_loadmaster.pl
-_md5_=0d386397d9f042980aaa208814dc5b4b
