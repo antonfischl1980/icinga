@@ -27,7 +27,7 @@ PHP_DEPEND="
 	)
 "
 RDEPEND="
-	www-apps/icingaweb2
+	>=www-apps/icingaweb2-2.13.0
 	${PHP_DEPEND}
 	"
 BDEPEND=""
