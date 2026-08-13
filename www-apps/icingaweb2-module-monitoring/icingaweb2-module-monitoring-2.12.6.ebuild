@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Create top-level views of your applications in a graphical editor."
+DESCRIPTION="Create top-level views of your applications in a graphical editor"
 HOMEPAGE="https://github.com/Icinga/icingaweb2-module-monitoring"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
