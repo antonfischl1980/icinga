@@ -40,7 +40,7 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		apache2-server? ( >=www-servers/apache-2.4.0 )
 		nginx? ( >=www-servers/nginx-1.7.0:* )
 		${PHP_DEPEND}
-		>=dev-libs/icinga-php-library-0.13.0
+		<dev-libs/icinga-php-library-1.0.0
 		>=dev-libs/icinga-php-thirdparty-0.12.0
 		acct-group/icingacmd
 		acct-group/icingaweb2"
