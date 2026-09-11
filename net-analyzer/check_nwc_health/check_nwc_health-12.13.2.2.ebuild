@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lausser/check_nwc_health/archive/refs/tags/${PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
