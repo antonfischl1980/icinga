@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="DBI driver for XBase compatible database files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
