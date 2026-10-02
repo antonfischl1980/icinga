@@ -13,7 +13,7 @@ HOMEPAGE="https://pywbem.github.io/pywbem/ https://pypi.org/project/pywbem/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 x86"
 RESTRICT="test"
 
 RDEPEND=">=dev-python/ply-3.10[${PYTHON_USEDEP}]
