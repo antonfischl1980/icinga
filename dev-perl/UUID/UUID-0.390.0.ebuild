@@ -11,7 +11,7 @@ DESCRIPTION="Perl extension for using UUID interfaces as defined in e2fsprogs"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ppc x86"
 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-7.60.0
