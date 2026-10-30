@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Create top-level views of your applications in a graphical editor.
+EAPI=8
+HOMEPAGE=https://github.com/nbuchwitz/icingaweb2-module-map/
+IUSE=php_targets_php8-2 php_targets_php8-3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
+SLOT=0
+SRC_URI=https://codeload.github.com/nbuchwitz/icingaweb2-module-map/tar.gz/v2.1.0 -> icingaweb2-module-map-2.1.0.tar.gz
+_md5_=ef7d05cea0adc3a1080dea1f39031511
