@@ -23,8 +23,8 @@ PHP_DEPEND="
 	php_targets_php8-3? ( dev-lang/php:8.3[curl] )
 "
 RDEPEND="
-	>=www-apps/icingaweb2-2.9.0
-	>=dev-libs/icinga-php-library-0.9.0
+	>=www-apps/icingaweb2-2.14.0
+	>=dev-libs/icinga-php-library-1.0.0
 	${PHP_DEPEND}
 	"
 DEPEND=""
