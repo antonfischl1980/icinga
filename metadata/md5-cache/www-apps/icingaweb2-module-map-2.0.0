@@ -5,7 +5,7 @@ HOMEPAGE=https://github.com/nbuchwitz/icingaweb2-module-map/
 IUSE=php_targets_php8-2 php_targets_php8-3
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
+RDEPEND=>=www-apps/icingaweb2-2.9.0 >=dev-libs/icinga-php-library-0.9.0 www-apps/icingaweb2-module-monitoring php_targets_php8-2? ( dev-lang/php:8.2[curl] ) php_targets_php8-3? ( dev-lang/php:8.3[curl] )
 SLOT=0
 SRC_URI=https://codeload.github.com/nbuchwitz/icingaweb2-module-map/tar.gz/v2.0.0 -> icingaweb2-module-map-2.0.0.tar.gz
-_md5_=f8b8fedc7612efb9c49253f9e5add20d
+_md5_=123ea22a128c6a3d4e33469fac812507
