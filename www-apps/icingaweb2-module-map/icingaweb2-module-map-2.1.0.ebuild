@@ -30,6 +30,10 @@ RDEPEND="
 	"
 DEPEND=""
 
+src_compile() {
+	return
+}
+
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
 	doins -r "${S}"/*
