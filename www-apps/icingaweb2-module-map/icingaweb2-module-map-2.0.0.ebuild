@@ -25,6 +25,7 @@ PHP_DEPEND="
 RDEPEND="
 	>=www-apps/icingaweb2-2.9.0
 	>=dev-libs/icinga-php-library-0.9.0
+	www-apps/icingaweb2-module-monitoring
 	${PHP_DEPEND}
 	"
 DEPEND=""
